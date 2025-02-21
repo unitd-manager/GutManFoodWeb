@@ -263,102 +263,10 @@
 
 //  export default Shopcart;
 
-// import React, { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-// //import { Link } from 'react-router-dom';
-// import { Form } from 'react-bootstrap';
-// import Header from './../Layout/Header';
-// import Footer from './../Layout/Footer';
-// import { fetchCart,updateCart, deleteFromCart } from '../../redux/features/cartSlice';
-// import store from '../../redux/store';
 
-// const Shopcart = () => {
-//     const dispatch = useDispatch();
-//     // const { items, loading } = useSelector(state => state.cart);
-// 	// const cartState = useSelector(state => state.cart);
-// 	const cartItems = store.getState().cart.items;
-// 	console.log('cartitems',cartItems);
-//     const userId = 1; // Replace with actual user ID logic
-//  	const loading=false;
-// const items=[];
-//     useEffect(() => {
-//         dispatch(fetchCart(userId));
-//     }, [dispatch, userId]);
-
-//     const handleQuantityChange = (productId, quantity) => {
-//         dispatch(updateCart({ userId, productId, quantity }));
-//     };
-
-//     const handleRemove = (productId) => {
-//         dispatch(deleteFromCart({ userId, productId }));
-//     };
-
-//     return (
-//         <>
-//             <Header />
-//             <div className="page-content bg-white">
-//                 <div className="section-full content-inner">
-//                     <div className="container">
-//                         <div className="row">
-//                             <div className="col-lg-12">
-//                                 <div className="table-responsive m-b50">
-//                                     <table className="table check-tbl">
-//                                         <thead>
-//                                             <tr>
-//                                                 <th>Product</th>
-//                                                 <th>Product Name</th>
-//                                                 <th>Unit Price</th>
-//                                                 <th>Quantity</th>
-//                                                 <th>Total</th>
-//                                                 <th>Remove</th>
-//                                             </tr>
-//                                         </thead>
-//                                         <tbody>
-//                                             {loading ? (
-//                                                 <tr><td colSpan="6">Loading...</td></tr>
-//                                             ) : (
-//                                                 items?.map(item => (
-//                                                     <tr key={item.id}>
-//                                                         <td className="product-item-img">
-//                                                             <img src={item.image} alt={item.name} width="50" />
-//                                                         </td>
-//                                                         <td>{item.name}</td>
-//                                                         <td>${item.price.toFixed(2)}</td>
-//                                                         <td>
-//                                                             <Form.Control
-//                                                                 as="select"
-//                                                                 value={item.quantity}
-//                                                                 onChange={(e) => handleQuantityChange(item.id, Number(e.target.value))}
-//                                                             >
-//                                                                 {[1, 2, 3, 4, 5].map(num => (
-//                                                                     <option key={num} value={num}>{num}</option>
-//                                                                 ))}
-//                                                             </Form.Control>
-//                                                         </td>
-//                                                         <td>${(item.price * item.quantity).toFixed(2)}</td>
-//                                                         <td>
-//                                                             <button onClick={() => handleRemove(item.id)} className="btn btn-danger">X</button>
-//                                                         </td>
-//                                                     </tr>
-//                                                 ))
-//                                             )}
-//                                         </tbody>
-//                                     </table>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//             <Footer />
-//         </>
-//     );
-// };
-
-// export default Shopcart;
-
-import React, { useEffect } from 'react';
+import React, { useEffect,useCallback,useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
@@ -368,6 +276,7 @@ import {
 	clearCartData,
 	updateCartData,
   } from "../../redux/actions/cartItemActions";
+import imageBase from '../../constants/imageBase';
 
 const Shopcart = () => {
     const dispatch = useDispatch();
@@ -376,19 +285,46 @@ const cartItems = useSelector((state) => state.cartItems.cartItems);
 console.log('Cart Items:', cartItems);
   const loading=false;
     const userId = 1; // Replace with actual user ID logic
-
+const history=useHistory();
     useEffect(() => {
         dispatch(fetchCartData(user));
     }, [dispatch, user]);
 
-    const handleQuantityChange = (productId, quantity) => {
-        dispatch(updateCartData({ userId, productId, quantity }));
-    };
+	const cartTotalPrice = useMemo(() => {
+		return cartItems.reduce((total, item) => {
+			const discountedPrice = item.price;
+		  return total + discountedPrice * item.qty;
+		}, 0);
+	  }, [cartItems]);
+   
+  const handleIncreaseQuantity = useCallback(
+    (item) => {
+      const updatedItem = { ...item, qty: item.qty + 1 };
+      dispatch(updateCartData(updatedItem));
+    },
+    [dispatch]
+  );
 
+  const handleDecreaseQuantity = useCallback(
+    (item) => {
+      if (item.qty > 1) {
+        const updatedItem = { ...item, qty: item.qty - 1 };
+        dispatch(updateCartData(updatedItem));
+      }
+    },
+    [dispatch]
+  );
     const handleRemove = (productId) => {
         dispatch(removeCartData({ userId, productId }));
     };
-
+	const handleClearCart = useCallback(() => {
+		const confirmClear = window.confirm(
+		  "Are you sure you want to clear the cart?"
+		);
+		if (confirmClear) {
+		  dispatch(clearCartData(user));
+		}
+	  }, [dispatch, user]);
     return (
         <>
             <Header />
@@ -414,31 +350,40 @@ console.log('Cart Items:', cartItems);
                                                 <tr><td colSpan="6">Loading...</td></tr>
                                             ) : (
                                                 cartItems?.map((item) => (
-                                                    <tr key={item.id}>
+                                                    <tr key={item.basket_id}>
                                                         <td className="product-item-img">
-                                                            <img src={item.image} alt={item.name} width="50" />
+                                                            <img src={`${imageBase}${item.images[0]}`} alt={item.title} width="50" />
                                                         </td>
-                                                        <td>{item.name}</td>
-                                                        <td>${item.price.toFixed(2)}</td>
+                                                        <td>{item.title}</td>
+                                                        <td>${item?.price?.toFixed(2)}</td>
                                                         <td>
-                                                            <Form.Control
-                                                                as="select"
-                                                                value={item.quantity}
-                                                                onChange={(e) =>
-                                                                    handleQuantityChange(item.id, Number(e.target.value))
-                                                                }
-                                                            >
-                                                                {[1, 2, 3, 4, 5].map((num) => (
-                                                                    <option key={num} value={num}>
-                                                                        {num}
-                                                                    </option>
-                                                                ))}
-                                                            </Form.Control>
+														<td className="product-quantity">
+                            <div className="cart-plus-minus">
+                              <button
+                                className="dec qtybutton"
+                                onClick={() => handleDecreaseQuantity(item)}
+                              >
+                                -
+                              </button>
+                              <input
+                                className="cart-plus-minus-box"
+                                type="text"
+                                value={item.qty}
+                                readOnly
+                              />
+                              <button
+                                className="inc qtybutton"
+                                onClick={() => handleIncreaseQuantity(item)}
+                              >
+                                +
+                              </button>
+                            </div>
+                          </td>
                                                         </td>
-                                                        <td>${(item.price * item.quantity).toFixed(2)}</td>
+                                                        <td>${(item.price * item.qty).toFixed(2)}</td>
                                                         <td>
                                                             <button
-                                                                onClick={() => handleRemove(item.id)}
+                                                                onClick={() => handleRemove(item)}
                                                                 className="btn btn-danger"
                                                             >
                                                                 X
@@ -450,11 +395,78 @@ console.log('Cart Items:', cartItems);
                                         </tbody>
                                     </table>
                                 </div>
+                                <div className="text-right">
+                                    <button 
+                                        onClick={handleClearCart}
+                                        className="btn btn-danger mt-3"
+                                        style={{marginBottom: '20px'}}
+                                    >
+                                        Clear Cart
+                                    </button>
+                                </div>
+								<div className="row">
+ 							<div className="col-lg-6 col-md-6 m-b30">
+							<form className="shop-form"> 
+								<h3>Calculate Shipping</h3>
+ 									<div className="form-group">
+ 										<Form.Group controlId="exampleForm.ControlSelect1">
+ 											<Form.Control as="select">
+ 												<option value="">Credit Card Type</option>
+ 												<option value="">Another option</option>
+ 												<option value="">A option</option>
+ 												<option value="">Potato</option>												
+ 											</Form.Control>
+										</Form.Group>
+											
+								</div>	
+									<div className="row">										<div className="form-group col-lg-6">
+											<input type="text" className="form-control" placeholder="Credit Card Number" />
+										</div>
+									<div className="form-group col-lg-6">
+ 											<input type="text" className="form-control" placeholder="Card Verification Number" />
+										</div>
+									</div>
+ 									<div className="form-group">
+ 										<input type="text" className="form-control" placeholder="Coupon Code" />
+ 									</div>
+ 									<div className="form-group">
+ 									<button className="btn btnhover" type="button">Apply Coupon</button>
+ 								</div>
+								</form>	
+							</div>
+ 							<div className="col-lg-6 col-md-6">
+ 								<h3>Cart Subtotal</h3>
+ 								<table className="table-bordered check-tbl">
+ 									<tbody>
+ 										<tr>
+ 											<td>Order Subtotal</td>
+ 											<td>{`$ ${cartTotalPrice.toFixed(2)}`}</td>
+ 										</tr>
+ 										<tr>
+ 											<td>Shipping</td>
+ 											<td>Free Shipping</td>
+ 										</tr>
+ 										<tr>
+ 											<td>Coupon</td>
+ 											<td>$00.00</td>
+ 										</tr>
+ 										<tr>
+ 											<td>Total</td>
+ 											<td>{`$ ${cartTotalPrice.toFixed(2)}`}</td> 										</tr>
+ 									</tbody>
+ 								</table>
+ 								<div className="form-group">
+ 									<button className="btn btnhover" onClick={()=>{history.push('/shop-checkout')}} type="button">Proceed to Checkout</button>
+ 								</div>
+ 							</div>
+ 						</div> 				   </div>
+					
+ 				</div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                
+            
             <Footer />
         </>
     );
