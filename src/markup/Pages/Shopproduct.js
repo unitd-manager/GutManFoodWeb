@@ -6,6 +6,11 @@ import Owl from './../Element/Owl';
 import {Form} from 'react-bootstrap';
 import api from '../../constants/api';
 import imageBase from '../../constants/imageBase';
+import { insertCartData,updateCartData } from "../../redux/actions/cartItemActions";
+import { insertWishlistData,removeWishlistData } from "../../redux/actions/wishlistItemActions";
+import { getUser } from "../../common/user";
+import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
 
 var img1= require('./../../images/banner/bnr1.jpg');
 
@@ -18,6 +23,64 @@ const Shopproduct = () => {
   // const foundProduct = getProductsBySlug(productData, slug);
   console.log("products", foundProduct);
   const [loading, setLoading] = useState(false);
+   const[user,setUser]=useState();
+
+   const dispatch=useDispatch();
+   const cartItems = useSelector((state) => state.cartItems.cartItems);
+   const wishlistItems=useSelector(state=>state.wishlistItems.wishlistItems);
+
+  const onUpdateCart = (data) => {
+    // if (avaiableQuantity === 0) {
+    //   return;
+    // }
+    console.log('updatedata',data);
+  if(user){
+    console.log('user',user);
+    data.contact_id=user.contact_id
+    dispatch(updateCartData(data));    }
+  else{
+   
+  }   
+   
+  };
+
+  const onAddToCart = (data) => {
+   
+    if(user){
+      if(data.price){
+    data.contact_id=user.contact_id
+  
+    dispatch(insertCartData(data));}
+    }
+    else{
+      console.log('please login');
+    }
+   
+  };
+  
+  const onAddToWishlist = (data) => {
+    if(user){
+
+      data.contact_id=user.contact_id
+      dispatch(insertWishlistData(data));
+      toast.success("Added to wishlist!");
+  }
+    else{
+      console.log('please login');
+    }
+  };
+
+
+   
+  useEffect(()=>{
+   
+    const userInfo=getUser();
+    setUser(userInfo)
+
+   
+  },[])
+
+
   useEffect(() => {
     setLoading(true);
     api
@@ -210,9 +273,44 @@ const Shopproduct = () => {
 												</div>
 											</div>
 										</div> */}
-										<button className="btn btnhover">
+										<button className="btn btnhover" onClick={() => { 
+              if(cartItems.filter(
+                cartItem => cartItem.product_id === foundProduct.product_id
+              )[0]?.qty>0){
+                foundProduct.qty=parseFloat(cartItems.filter(
+                cartItem => cartItem.product_id === foundProduct.product_id
+              )[0]?.qty) +Number(1);
+              foundProduct.basket_id=cartItems.filter(
+                cartItem => cartItem.product_id === foundProduct.product_id
+              )[0].basket_id;
+              onUpdateCart(foundProduct)
+            }else{
+            onAddToCart(foundProduct)
+            }
+        }}>
 											<i className="ti-shopping-cart"></i>Add To Cart
 										</button>
+
+                     <button 
+                      onClick={() => {
+                        const isInWishlist = wishlistItems.filter(
+                          wishlistItem => wishlistItem.product_id === foundProduct.product_id
+                        )[0];
+                        console.log('wishlistitem',isInWishlist);
+                        if(isInWishlist) {
+                          dispatch(removeWishlistData(isInWishlist));
+                          
+                        } else {
+                          onAddToWishlist(foundProduct);
+                        }
+                      }} 
+                      className={`btn btnhover m-1 ${wishlistItems.some(item => item.product_id === foundProduct.product_id) ? 'btn-primary' : ''}`}
+                              >
+  <i className="ti-heart m-r5"></i>
+  {wishlistItems.some(item => item.product_id === foundProduct.product_id) 
+    ? 'Remove from Wishlist' 
+    : 'Add To Wishlist'}
+                              </button>
 									</form>
 									</div>
 								</div>
