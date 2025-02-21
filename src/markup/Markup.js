@@ -7,7 +7,7 @@ import Index2 from './Pages/Index2';
 
 import About from './Pages/About';
 import Ourservices from './Pages/Ourservices';
-import Faq from './Pages/Faq';
+import Faqs from './Pages/Faq';
 import Booking from './Pages/Booking';
 import Error from './Pages/Error';
 import Calendar from './Pages/Calendar';
@@ -63,7 +63,7 @@ class Markup extends Component{
 					
 					<Route path='/about-1' exact component ={About} />
 					<Route path='/our-services' exact component ={Ourservices} />
-					<Route path='/faq' exact component ={Faq} />
+					<Route path='/faq' exact component ={Faqs} />
 					<Route path='/booking' exact component ={Booking} />
 					<Route path='/error-404' exact component ={Error} />
 					<Route path='/calendar' exact component ={Calendar} />

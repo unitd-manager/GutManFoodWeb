@@ -1,214 +1,385 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
+// import { Link } from 'react-router-dom';
+// import Header from './../Layout/Header';
+// import Footer from './../Layout/Footer';
+// import {Form} from 'react-bootstrap';
+
+// var bnr = require('./../../images/banner/bnr2.jpg');
+
+// class Shopwishlist extends Component{
+// 	render(){
+// 		return(
+// 			<>
+// 			<Header />
+			
+// 			<div className="page-content bg-white">
+				
+// 				<div className="dlab-bnr-inr overlay-black-middle bg-pt" style={{backgroundImage: "url( " + bnr + " )"}}>
+// 					<div className="container">
+// 						<div className="dlab-bnr-inr-entry">
+// 							<h1 className="text-white">Wishlist</h1>
+							
+// 							<div className="breadcrumb-row">
+// 								<ul className="list-inline">
+// 									<li><Link to={'./'}>Home</Link></li>
+// 									<li>Wishlist</li>
+// 								</ul>
+// 							</div>
+							
+// 						</div>
+// 					</div>
+// 				</div>
+				
+// 				<div className="section-full content-inner">
+					
+// 					<div className="container">
+// 						<div className="row">
+// 							<div className="col-lg-12">
+// 								<div className="table-responsive">
+// 									<table className="table check-tbl">
+// 										<thead>
+// 											<tr>
+// 												<th>Product</th>
+// 												<th>Product name</th>
+// 												<th>Unit Price</th>
+// 												<th>Quantity</th>
+// 												<th>Add to cart </th>
+// 												<th>Close</th>
+// 											</tr>
+// 										</thead>
+// 										<tbody>
+// 											<tr className="alert">
+// 												<td className="product-item-img">
+// 													<img src={require('./../../images/product/thumb/item1.jpg')} alt="" />
+// 												</td>
+// 												<td className="product-item-name">Pizza</td>
+// 												<td className="product-item-price">$28.00</td>
+// 												<td className="product-item-quantity">
+// 													<div className="quantity btn-quantity max-w80">
+// 														<Form>
+// 															<Form.Group controlId="exampleForm.SelectCustom">
+																
+// 																	<Form.Control as="select" custom>
+// 																		<option>1</option>
+// 																		<option>2</option>
+// 																		<option>3</option>
+// 																		<option>4</option>
+// 																		<option>5</option>
+// 																	</Form.Control>
+// 															</Form.Group>
+// 														</Form>
+// 													</div>
+// 												</td>
+// 												<td className="product-item-totle">
+// 													<Link to={'/shop-cart'} className="btn btnhover">Add To Cart</Link>
+// 												</td>
+// 												<td className="product-item-close">
+// 													<Link to={''} data-dismiss="alert" aria-label="close" className="ti-close"></Link>
+// 												</td>
+// 											</tr>
+// 											<tr className="alert">
+// 												<td className="product-item-img">
+// 													<img src={require('./../../images/product/thumb/item2.jpg')} alt="" />
+// 												</td>
+// 												<td className="product-item-name">Burger</td>
+// 												<td className="product-item-price">$28.00</td>
+// 												<td className="product-item-quantity">
+// 													<div className="quantity btn-quantity max-w80">
+// 														<Form>
+// 															<Form.Group controlId="exampleForm.SelectCustom">
+																
+// 																	<Form.Control as="select" custom>
+// 																		<option>1</option>
+// 																		<option>2</option>
+// 																		<option>3</option>
+// 																		<option>4</option>
+// 																		<option>5</option>
+// 																	</Form.Control>
+// 															</Form.Group>
+// 														</Form>
+// 													</div>
+// 												</td>
+// 												<td className="product-item-totle">
+// 													<Link to={'/shop-cart'} className="btn btnhover">Add To Cart</Link>
+// 												</td>
+// 												<td className="product-item-close">
+// 													<Link to={''} data-dismiss="alert" aria-label="close" className="ti-close"></Link>
+// 												</td>
+// 											</tr>
+// 											<tr className="alert">
+// 												<td className="product-item-img">
+// 													<img src={require('./../../images/product/thumb/item3.jpg')} alt="" />
+// 												</td>
+// 												<td className="product-item-name">Cup Cake</td>
+// 												<td className="product-item-price">$28.00</td>
+// 												<td className="product-item-quantity">
+// 													<div className="quantity btn-quantity max-w80">
+// 														<Form>
+// 															<Form.Group controlId="exampleForm.SelectCustom">
+																
+// 																	<Form.Control as="select" custom>
+// 																		<option>1</option>
+// 																		<option>2</option>
+// 																		<option>3</option>
+// 																		<option>4</option>
+// 																		<option>5</option>
+// 																	</Form.Control>
+// 															</Form.Group>
+// 														</Form>
+// 													</div>
+// 												</td>
+// 												<td className="product-item-totle">
+// 													<Link to={'/shop-cart'} className="btn btnhover">Add To Cart</Link>
+// 												</td>
+// 												<td className="product-item-close">
+// 													<Link to={''} data-dismiss="alert" aria-label="close" className="ti-close"></Link>
+// 												</td>
+// 											</tr>
+// 											<tr className="alert">
+// 												<td className="product-item-img">
+// 													<img src={require('./../../images/product/thumb/item4.jpg')} alt="" />
+// 												</td>
+// 												<td className="product-item-name">Pizza</td>
+// 												<td className="product-item-price">$28.00</td>
+// 												<td className="product-item-quantity">
+// 													<div className="quantity btn-quantity max-w80">
+// 														<Form>
+// 															<Form.Group controlId="exampleForm.SelectCustom">
+																
+// 																	<Form.Control as="select" custom>
+// 																		<option>1</option>
+// 																		<option>2</option>
+// 																		<option>3</option>
+// 																		<option>4</option>
+// 																		<option>5</option>
+// 																	</Form.Control>
+// 															</Form.Group>
+// 														</Form>
+// 													</div>
+// 												</td>
+// 												<td className="product-item-totle">
+// 													<Link to={'/shop-cart'} className="btn btnhover">Add To Cart</Link>
+// 												</td>
+// 												<td className="product-item-close">
+// 													<Link to={''} data-dismiss="alert" aria-label="close" className="ti-close"></Link>
+// 												</td>
+// 											</tr>
+// 											<tr className="alert">
+// 												<td className="product-item-img">
+// 													<img src={require('./../../images/product/thumb/item5.jpg')} alt="" />
+// 												</td>
+// 												<td className="product-item-name">Burger</td>
+// 												<td className="product-item-price">$28.00</td>
+// 												<td className="product-item-quantity">
+// 													<div className="quantity btn-quantity max-w80">
+// 														<Form>
+// 															<Form.Group controlId="exampleForm.SelectCustom">
+																
+// 																	<Form.Control as="select" custom>
+// 																		<option>1</option>
+// 																		<option>2</option>
+// 																		<option>3</option>
+// 																		<option>4</option>
+// 																		<option>5</option>
+// 																	</Form.Control>
+// 															</Form.Group>
+// 														</Form>
+// 													</div>
+// 												</td>
+// 												<td className="product-item-totle">
+// 													<Link to={'/shop-cart'} className="btn btnhover">Add To Cart</Link>
+// 												</td>
+// 												<td className="product-item-close">
+// 													<Link to={''} data-dismiss="alert" aria-label="close" className="ti-close"></Link>
+// 												</td>
+// 											</tr>
+// 										</tbody>
+// 									</table>
+// 								</div>
+// 							</div>
+// 						</div>
+// 					 </div>
+					
+// 				</div>
+				
+// 			</div>
+			
+// 			<Footer />
+// 			</>
+// 		)
+		
+// 	}
+// }
+
+// export default Shopwishlist; 
+
+import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
-import {Form} from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
+import { clearWishlistData, fetchWishlistData,removeWishlistData } from "../../redux/actions/wishlistItemActions";
+import { insertCartData } from "../../redux/actions/cartItemActions";
+import {
+	addToWishlist,
+	deleteFromWishlist,
+  } from "../../redux/actions/wishlistActions";
+  import { addToCart } from "../../redux/actions/cartActions";
+import { useSelector } from 'react-redux';
+import { getUser } from '../../common/user';
 
-var bnr = require('./../../images/banner/bnr2.jpg');
+const bnr = require('./../../images/banner/bnr2.jpg');
 
-class Shopwishlist extends Component{
-	render(){
-		return(
-			<>
-			<Header />
-			
-			<div className="page-content bg-white">
-				
-				<div className="dlab-bnr-inr overlay-black-middle bg-pt" style={{backgroundImage: "url( " + bnr + " )"}}>
-					<div className="container">
-						<div className="dlab-bnr-inr-entry">
-							<h1 className="text-white">Wishlist</h1>
-							
-							<div className="breadcrumb-row">
-								<ul className="list-inline">
-									<li><Link to={'./'}>Home</Link></li>
-									<li>Wishlist</li>
-								</ul>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-				
-				<div className="section-full content-inner">
-					
-					<div className="container">
-						<div className="row">
-							<div className="col-lg-12">
-								<div className="table-responsive">
-									<table className="table check-tbl">
-										<thead>
-											<tr>
-												<th>Product</th>
-												<th>Product name</th>
-												<th>Unit Price</th>
-												<th>Quantity</th>
-												<th>Add to cart </th>
-												<th>Close</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr className="alert">
-												<td className="product-item-img">
-													<img src={require('./../../images/product/thumb/item1.jpg')} alt="" />
-												</td>
-												<td className="product-item-name">Pizza</td>
-												<td className="product-item-price">$28.00</td>
-												<td className="product-item-quantity">
-													<div className="quantity btn-quantity max-w80">
-														<Form>
-															<Form.Group controlId="exampleForm.SelectCustom">
-																
-																	<Form.Control as="select" custom>
-																		<option>1</option>
-																		<option>2</option>
-																		<option>3</option>
-																		<option>4</option>
-																		<option>5</option>
-																	</Form.Control>
-															</Form.Group>
-														</Form>
-													</div>
-												</td>
-												<td className="product-item-totle">
-													<Link to={'/shop-cart'} className="btn btnhover">Add To Cart</Link>
-												</td>
-												<td className="product-item-close">
-													<Link to={''} data-dismiss="alert" aria-label="close" className="ti-close"></Link>
-												</td>
-											</tr>
-											<tr className="alert">
-												<td className="product-item-img">
-													<img src={require('./../../images/product/thumb/item2.jpg')} alt="" />
-												</td>
-												<td className="product-item-name">Burger</td>
-												<td className="product-item-price">$28.00</td>
-												<td className="product-item-quantity">
-													<div className="quantity btn-quantity max-w80">
-														<Form>
-															<Form.Group controlId="exampleForm.SelectCustom">
-																
-																	<Form.Control as="select" custom>
-																		<option>1</option>
-																		<option>2</option>
-																		<option>3</option>
-																		<option>4</option>
-																		<option>5</option>
-																	</Form.Control>
-															</Form.Group>
-														</Form>
-													</div>
-												</td>
-												<td className="product-item-totle">
-													<Link to={'/shop-cart'} className="btn btnhover">Add To Cart</Link>
-												</td>
-												<td className="product-item-close">
-													<Link to={''} data-dismiss="alert" aria-label="close" className="ti-close"></Link>
-												</td>
-											</tr>
-											<tr className="alert">
-												<td className="product-item-img">
-													<img src={require('./../../images/product/thumb/item3.jpg')} alt="" />
-												</td>
-												<td className="product-item-name">Cup Cake</td>
-												<td className="product-item-price">$28.00</td>
-												<td className="product-item-quantity">
-													<div className="quantity btn-quantity max-w80">
-														<Form>
-															<Form.Group controlId="exampleForm.SelectCustom">
-																
-																	<Form.Control as="select" custom>
-																		<option>1</option>
-																		<option>2</option>
-																		<option>3</option>
-																		<option>4</option>
-																		<option>5</option>
-																	</Form.Control>
-															</Form.Group>
-														</Form>
-													</div>
-												</td>
-												<td className="product-item-totle">
-													<Link to={'/shop-cart'} className="btn btnhover">Add To Cart</Link>
-												</td>
-												<td className="product-item-close">
-													<Link to={''} data-dismiss="alert" aria-label="close" className="ti-close"></Link>
-												</td>
-											</tr>
-											<tr className="alert">
-												<td className="product-item-img">
-													<img src={require('./../../images/product/thumb/item4.jpg')} alt="" />
-												</td>
-												<td className="product-item-name">Pizza</td>
-												<td className="product-item-price">$28.00</td>
-												<td className="product-item-quantity">
-													<div className="quantity btn-quantity max-w80">
-														<Form>
-															<Form.Group controlId="exampleForm.SelectCustom">
-																
-																	<Form.Control as="select" custom>
-																		<option>1</option>
-																		<option>2</option>
-																		<option>3</option>
-																		<option>4</option>
-																		<option>5</option>
-																	</Form.Control>
-															</Form.Group>
-														</Form>
-													</div>
-												</td>
-												<td className="product-item-totle">
-													<Link to={'/shop-cart'} className="btn btnhover">Add To Cart</Link>
-												</td>
-												<td className="product-item-close">
-													<Link to={''} data-dismiss="alert" aria-label="close" className="ti-close"></Link>
-												</td>
-											</tr>
-											<tr className="alert">
-												<td className="product-item-img">
-													<img src={require('./../../images/product/thumb/item5.jpg')} alt="" />
-												</td>
-												<td className="product-item-name">Burger</td>
-												<td className="product-item-price">$28.00</td>
-												<td className="product-item-quantity">
-													<div className="quantity btn-quantity max-w80">
-														<Form>
-															<Form.Group controlId="exampleForm.SelectCustom">
-																
-																	<Form.Control as="select" custom>
-																		<option>1</option>
-																		<option>2</option>
-																		<option>3</option>
-																		<option>4</option>
-																		<option>5</option>
-																	</Form.Control>
-															</Form.Group>
-														</Form>
-													</div>
-												</td>
-												<td className="product-item-totle">
-													<Link to={'/shop-cart'} className="btn btnhover">Add To Cart</Link>
-												</td>
-												<td className="product-item-close">
-													<Link to={''} data-dismiss="alert" aria-label="close" className="ti-close"></Link>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					 </div>
-					
-				</div>
-				
-			</div>
-			
-			<Footer />
-			</>
-		)
-		
-	}
-}
+const Shopwishlist = () => {
+	const [user, setUser] = useState();
+  const [loading, setLoading] = useState(false);
+const wishlistItems=useSelector(state=>state.wishlistItems.wishlistItems);
+console.log('wishlistItems',wishlistItems);
 
-export default Shopwishlist; 
+  const getWishlistItems=(userin)=>{
+    fetchWishlistData(userin)
+   
+  }
+
+  const deleteItemFromWishlist = (Item) => {
+  
+    removeWishlistData(Item)
+ 
+  };
+
+  const clearWishlistItems = () => {
+    clearWishlistData(user)
+  
+  };
+
+  const onAddToCart = (data) => {
+
+    data.contact_id = user.contact_id;
+    insertCartData(data);
+  
+  };
+
+  useEffect(() => {
+    // setLoading(true)
+    const userInfo = getUser();
+    setUser(userInfo);
+    if (userInfo) {
+getWishlistItems(userInfo)
+
+    }
+    else{
+     setLoading(false) 
+    }
+  }, []);
+    const [wishlist, setWishlist] = useState([
+        { id: 1, name: 'Pizza', price: 28.00, image: require('./../../images/product/thumb/item1.jpg') },
+        { id: 2, name: 'Burger', price: 28.00, image: require('./../../images/product/thumb/item2.jpg') },
+        { id: 3, name: 'Cup Cake', price: 28.00, image: require('./../../images/product/thumb/item3.jpg') },
+        { id: 4, name: 'Pizza', price: 28.00, image: require('./../../images/product/thumb/item4.jpg') },
+        { id: 5, name: 'Burger', price: 28.00, image: require('./../../images/product/thumb/item5.jpg') },
+    ]);
+
+    const [cart, setCart] = useState([]);
+
+    const addToCart = (item) => {
+        setCart([...cart, item]);
+        removeFromWishlist(item.id);
+    };
+
+    const removeFromWishlist = (id) => {
+        setWishlist(wishlist.filter(item => item.id !== id));
+    };
+
+    return (
+        <>
+            <Header />
+            <div className="page-content bg-white">
+                <div className="dlab-bnr-inr overlay-black-middle bg-pt" style={{ backgroundImage: `url(${bnr})` }}>
+                    <div className="container">
+                        <div className="dlab-bnr-inr-entry">
+                            <h1 className="text-white">Wishlist</h1>
+                            <div className="breadcrumb-row">
+                                <ul className="list-inline">
+                                    <li><Link to={'./'}>Home</Link></li>
+                                    <li>Wishlist</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="section-full content-inner">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-lg-12">
+                                <div className="table-responsive">
+                                    <table className="table check-tbl">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Product Name</th>
+                                                <th>Unit Price</th>
+                                                <th>Quantity</th>
+                                                <th>Add to Cart</th>
+                                                <th>Remove</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {wishlistItems.length > 0 ? (
+                                                wishlistItems.map(item => (
+                                                    <tr key={item.id} className="alert">
+                                                        <td className="product-item-img">
+                                                            <img src={item.image} alt={item.name} />
+                                                        </td>
+                                                        <td className="product-item-name">{item.name}</td>
+                                                        <td className="product-item-price">${item.price.toFixed(2)}</td>
+                                                        <td className="product-item-quantity">
+                                                            <div className="quantity btn-quantity max-w80">
+                                                                <Form>
+                                                                    <Form.Group controlId={`quantity-${item.id}`}>
+                                                                        <Form.Control as="select">
+                                                                            {[1, 2, 3, 4, 5].map(qty => (
+                                                                                <option key={qty} value={qty}>{qty}</option>
+                                                                            ))}
+                                                                        </Form.Control>
+                                                                    </Form.Group>
+                                                                </Form>
+                                                            </div>
+                                                        </td>
+                                                        <td className="product-item-totle">
+                                                            <button 
+                                                                className="btn btnhover" 
+                                                                onClick={() => addToCart(item)}
+                                                            >
+                                                                Add To Cart
+                                                            </button>
+                                                        </td>
+                                                        <td className="product-item-close">
+                                                            <button 
+                                                                className="btn btn-danger" 
+                                                                onClick={() => removeFromWishlist(item.id)}
+                                                            >
+                                                                ×
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                ))
+                                            ) : (
+                                                <tr>
+                                                    <td colSpan="6" className="text-center">Your wishlist is empty.</td>
+                                                </tr>
+                                            )}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <Footer />
+        </>
+    );
+};
+
+export default Shopwishlist;
