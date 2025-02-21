@@ -8,7 +8,7 @@ import thunk from "redux-thunk";
 import { save, load } from "redux-localstorage-simple";
 import { Provider } from "react-redux";
 import store from './redux/store';
-
+import { Toaster } from 'react-hot-toast';
  
 
 import Markup from './markup/Markup';
@@ -16,6 +16,7 @@ import Markup from './markup/Markup';
 function App() {
   return (
     <div className="App">
+      <Toaster position="top-right" reverseOrder={false} />
 		<Markup />
    
     </div>

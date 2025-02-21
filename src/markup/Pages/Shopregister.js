@@ -3,6 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import Header from "./../Layout/Header";
 import Footer from "./../Layout/Footer";
 import api from "../../constants/api";
+import toast from 'react-hot-toast';
 
 const bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -103,7 +104,7 @@ const ShopRegister = () => {
           .then((res) => {
             console.log(res.data.data);
             console.log('otp',otp);
-           
+           toast.success("Account created Successfully");
             setTimeout(() => {
               // Pass the contact ID as state to the next page
               history.push({
@@ -117,7 +118,7 @@ const ShopRegister = () => {
             console.log('cont',formData);
           })
           .catch(() => {
-           
+           toast.error("Error in creating Account")
           });
 
     console.log("Submitted Data:", formData);

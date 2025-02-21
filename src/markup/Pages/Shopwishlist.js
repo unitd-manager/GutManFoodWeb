@@ -219,14 +219,11 @@ import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 import { Form } from 'react-bootstrap';
 import { clearWishlistData, fetchWishlistData,removeWishlistData } from "../../redux/actions/wishlistItemActions";
-import { insertCartData } from "../../redux/actions/cartItemActions";
-import {
-	addToWishlist,
-	deleteFromWishlist,
-  } from "../../redux/actions/wishlistActions";
+import { insertCartData,updateCartData } from "../../redux/actions/cartItemActions";
   import { addToCart } from "../../redux/actions/cartActions";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../common/user';
+import imageBase from '../../constants/imageBase';
 
 const bnr = require('./../../images/banner/bnr2.jpg');
 
@@ -234,31 +231,40 @@ const Shopwishlist = () => {
 	const [user, setUser] = useState();
   const [loading, setLoading] = useState(false);
 const wishlistItems=useSelector(state=>state.wishlistItems.wishlistItems);
+const cartItems = useSelector((state) => state.cartItems.cartItems);
 console.log('wishlistItems',wishlistItems);
-
+const dispatch=useDispatch();
   const getWishlistItems=(userin)=>{
-    fetchWishlistData(userin)
+    dispatch(fetchWishlistData(userin))
    
   }
 
   const deleteItemFromWishlist = (Item) => {
   
-    removeWishlistData(Item)
+    dispatch(removeWishlistData(Item))
  
   };
 
   const clearWishlistItems = () => {
-    clearWishlistData(user)
+    dispatch(clearWishlistData(user))
   
   };
 
   const onAddToCart = (data) => {
 
     data.contact_id = user.contact_id;
-    insertCartData(data);
+    dispatch(insertCartData(data));
   
   };
 
+	const onUpdateCart = (data) => {
+	 
+	  
+	  data.contact_id=user.contact_id
+	  dispatch(updateCartData(data));    	 
+	};
+  
+	
   useEffect(() => {
     // setLoading(true)
     const userInfo = getUser();
@@ -271,25 +277,9 @@ getWishlistItems(userInfo)
      setLoading(false) 
     }
   }, []);
-    const [wishlist, setWishlist] = useState([
-        { id: 1, name: 'Pizza', price: 28.00, image: require('./../../images/product/thumb/item1.jpg') },
-        { id: 2, name: 'Burger', price: 28.00, image: require('./../../images/product/thumb/item2.jpg') },
-        { id: 3, name: 'Cup Cake', price: 28.00, image: require('./../../images/product/thumb/item3.jpg') },
-        { id: 4, name: 'Pizza', price: 28.00, image: require('./../../images/product/thumb/item4.jpg') },
-        { id: 5, name: 'Burger', price: 28.00, image: require('./../../images/product/thumb/item5.jpg') },
-    ]);
+   
 
-    const [cart, setCart] = useState([]);
-
-    const addToCart = (item) => {
-        setCart([...cart, item]);
-        removeFromWishlist(item.id);
-    };
-
-    const removeFromWishlist = (id) => {
-        setWishlist(wishlist.filter(item => item.id !== id));
-    };
-
+  
     return (
         <>
             <Header />
@@ -329,10 +319,10 @@ getWishlistItems(userInfo)
                                                 wishlistItems.map(item => (
                                                     <tr key={item.id} className="alert">
                                                         <td className="product-item-img">
-                                                            <img src={item.image} alt={item.name} />
+                                                            <img src={`${imageBase}${item.images[0]}`} alt={item.title} />
                                                         </td>
-                                                        <td className="product-item-name">{item.name}</td>
-                                                        <td className="product-item-price">${item.price.toFixed(2)}</td>
+                                                        <td className="product-item-name">{item.title}</td>
+                                                        <td className="product-item-price">${item.price?.toFixed(2)}</td>
                                                         <td className="product-item-quantity">
                                                             <div className="quantity btn-quantity max-w80">
                                                                 <Form>
@@ -349,7 +339,21 @@ getWishlistItems(userInfo)
                                                         <td className="product-item-totle">
                                                             <button 
                                                                 className="btn btnhover" 
-                                                                onClick={() => addToCart(item)}
+                                                                onClick={() => { 
+																	if(cartItems.filter(
+																	  cartItem => cartItem.product_id === item.product_id
+																	)[0]?.qty>0){
+																		item.qty=parseFloat(cartItems.filter(
+																	  cartItem => cartItem.product_id === item.product_id
+																	)[0]?.qty) +Number(1);
+																	item.basket_id=cartItems.filter(
+																	  cartItem => cartItem.product_id === item.product_id
+																	)[0].basket_id;
+																	onUpdateCart(item)
+																  }else{
+																  onAddToCart(item)
+																  }
+															  }}
                                                             >
                                                                 Add To Cart
                                                             </button>
@@ -357,7 +361,7 @@ getWishlistItems(userInfo)
                                                         <td className="product-item-close">
                                                             <button 
                                                                 className="btn btn-danger" 
-                                                                onClick={() => removeFromWishlist(item.id)}
+                                                                onClick={() => deleteItemFromWishlist(item)}
                                                             >
                                                                 ×
                                                             </button>

@@ -1,4 +1,5 @@
 import api from "../../constants/api";
+import toast from 'react-hot-toast';
 
 export const FETCH_CART_DATA_REQUEST = 'FETCH_CART_DATA_REQUEST';
 export const FETCH_CART_DATA_SUCCESS = 'FETCH_CART_DATA_SUCCESS';
@@ -47,17 +48,16 @@ export const fetchCartData = (userInfo) => {
       // Make the API call with error handling
       api.post('/contact/addToCart', data)
         .then((response) => {
-          if (response && response.data) {
+         
             dispatch(insertCartDataSuccess(response.data));
-          } else {
-            dispatch(insertCartDataFailure('Invalid response format'));
-          }
+            toast.success("Added to Cart!");
         })
         .catch((error) => {
-          console.error('Add to cart error:', error);
+          
           dispatch(insertCartDataFailure(
-            error.response?.data?.message || 'Network error occurred'
+            error
           ));
+          toast.error("Unable to add to Cart!");
         });
     };
   };
@@ -78,17 +78,16 @@ export const fetchCartData = (userInfo) => {
       api
       .post("/contact/update-cart", data)
         .then((response) => {
-          if (response?.data?.success) {
+          
             dispatch(updateCartDataSuccess(data));
-          } else {
-            dispatch(updateCartDataFailure(response?.data?.message || 'Invalid response format'));
-          }
+            toast.success("Updated to Cart!");
           })
         .catch((error) => {
-          console.error('Update cart error:', error);
+         
           dispatch(updateCartDataFailure(
-            error.response?.data?.message || 'Network error occurred'
+            error
           ));
+          toast.error("Unable to update Cart!");
         });
     };
   };
@@ -102,8 +101,11 @@ export const fetchCartData = (userInfo) => {
       api
       .post("/contact/deleteCartItem", { basket_id: Item.basket_id })
         .then(() => {dispatch(removeCartDataSuccess(Item));
+          toast.success("Item removed from Cart!");
          })
-        .catch((error) => dispatch(removeCartDataFailure(error)));
+        .catch((error) => {dispatch(removeCartDataFailure(error))
+          toast.error("Unable to remove item from Cart!");
+        });
     };
   };
 
@@ -115,8 +117,11 @@ export const fetchCartData = (userInfo) => {
       api
       .post("/contact/clearCartItems", { contact_id: user.contact_id })
         .then((res) => {dispatch(clearCartDataSuccess(res.data.data));
+          toast.success("Cart is cleared!");
           })
-        .catch((error) => dispatch(clearCartDataFailure(error)));
+        .catch((error) => {dispatch(clearCartDataFailure(error))
+          toast.error("Unable to clear Cart!");
+    });
     };
   };
 

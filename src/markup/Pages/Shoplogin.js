@@ -136,6 +136,7 @@ import {
   import {
 	fetchCartData
   } from "../../redux/actions/cartItemActions";
+  import toast from 'react-hot-toast';
 
 var bnr = require("./../../images/banner/bnr3.jpg");
 
@@ -164,6 +165,7 @@ const dispatch=useDispatch();
 				setError("Invalid email or password");
 			  } 
 			  else {
+				toast.success('Successfully Logged in')
 				localStorage.setItem("user", JSON.stringify(res.data.data));
 				localStorage.setItem("token", JSON.stringify(res.data.token));
 	   dispatch(fetchCartData(res.data.data));
@@ -175,6 +177,7 @@ const dispatch=useDispatch();
 		})
 		.catch((err) => {
 			setError("Invalid email or password");
+			toast.error("Invalid email or password");
 		});
 	};
 

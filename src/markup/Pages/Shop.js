@@ -6,10 +6,15 @@ import Footer from "./../Layout/Footer";
 import api from "./../../constants/api";
 import imageBase from "../../constants/imageBase";
 import { insertCartData,updateCartData } from "../../redux/actions/cartItemActions";
-import { insertWishlistData } from "../../redux/actions/wishlistItemActions";
+import { insertWishlistData,removeWishlistData } from "../../redux/actions/wishlistItemActions";
 import { getUser } from "../../common/user";
+import toast from 'react-hot-toast';
+
 
 const Shop = () => {
+  
+
+
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
@@ -18,7 +23,9 @@ const Shop = () => {
   const itemsPerPage = 20;
 const dispatch=useDispatch();
 const cartItems = useSelector((state) => state.cartItems.cartItems);
+const wishlistItems=useSelector(state=>state.wishlistItems.wishlistItems);
 console.log('cartitems', cartItems);
+console.log('wishlistitems',wishlistItems);
   // Fetch products from API with pagination and search query
   const fetchProducts = async (page = 1, search = "") => {
     setLoading(true);
@@ -74,7 +81,7 @@ console.log('cartitems', cartItems);
   
         data.contact_id=user.contact_id
         dispatch(insertWishlistData(data));
-      
+        toast.success("Added to wishlist!");
     }
       else{
         console.log('please login');
@@ -181,13 +188,7 @@ console.log('cartitems', cartItems);
                               </Link>
                             </h4>
                             <div className="quantity-selector mb-2">
-            <input
-              type="number"
-              min="1"
-              defaultValue="1"
-              className="form-control"
-              style={{ width: '60px', margin: '0 auto' }}
-            />
+           
           </div>
           <button 
         onClick={() => { 
@@ -210,8 +211,19 @@ console.log('cartitems', cartItems);
             <i className="ti-shopping-cart m-r5"></i> Add To Cart
           </button>
           <button 
-            onClick={() => onAddToWishlist(product)} 
-            className="btn btnhover m-1"
+  onClick={() => {
+    const isInWishlist = wishlistItems.filter(
+      cartItem => cartItem.product_id === product.product_id
+    )[0];
+    console.log('wishlistitem',isInWishlist);
+    if(isInWishlist) {
+      dispatch(removeWishlistData(isInWishlist));
+      
+    } else {
+      onAddToWishlist(product);
+    }
+  }} 
+  className={`btn btnhover m-1 ${wishlistItems.some(item => item.product_id === product.product_id) ? 'btn-primary' : ''}`}
           >
             <i className="ti-heart m-r5"></i> 
           </button>

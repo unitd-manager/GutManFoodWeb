@@ -1,4 +1,5 @@
 import api from "../../constants/api";
+import toast from 'react-hot-toast';
 
 export const FETCH_WISHLIST_DATA_REQUEST = 'FETCH_WISHLIST_DATA_REQUEST';
 export const FETCH_WISHLIST_DATA_SUCCESS = 'FETCH_WISHLIST_DATA_SUCCESS';
@@ -35,7 +36,7 @@ export const fetchWishlistData = (userInfo) => {
     };
   };
   
-  export const insertWishlistData = (data,addToast) => {
+  export const insertWishlistData = (data) => {
     
     return (dispatch) => {
       dispatch(insertWishlistDataRequest(data));
@@ -43,11 +44,11 @@ export const fetchWishlistData = (userInfo) => {
       // Make the API call
       api.post('/contact/insertToWishlist',data)
         .then(() => {dispatch(insertWishlistDataSuccess(data));
-          addToast("Item Added to Wishlist", {
-            appearance: "success",
-            autoDismiss: true,
-           })})
-        .catch((error) => dispatch(insertWishlistDataFailure(error)));
+          toast.success("Added to wishlist!");})
+        .catch((error) => {dispatch(insertWishlistDataFailure(error));
+          toast.error("Unable to add to wishlist!");
+
+        });
     };
   };
 
@@ -59,11 +60,10 @@ export const fetchWishlistData = (userInfo) => {
       api
       .post("/contact/deleteWishlistItem", { wish_list_id: Item.wish_list_id })
         .then((res) => {dispatch(removeWishlistDataSuccess(Item));
-          addToast("Item removed from Wishlist", {
-            appearance: "success",
-            autoDismiss: true,
-           })})
-        .catch((error) => dispatch(removeWishlistDataFailure(error)));
+          toast.success("Item removed from Wishlist")})
+        .catch((error) => {dispatch(removeWishlistDataFailure(error))
+      toast.error("Unable to delete")
+    });
     };
   };
 
@@ -82,11 +82,12 @@ export const fetchWishlistData = (userInfo) => {
       api
       .post("/contact/clearWishlistItems", { contact_id: user.contact_id })
         .then((res) => {dispatch(clearWishlistDataSuccess(res.data.data));
-          addToast("Wishlist is cleared", {
-            appearance: "success",
-            autoDismiss: true,
-           })})
-        .catch((error) => dispatch(clearWishlistDataFailure(error)));
+          toast.success("Wishlist is cleared")
+          })
+        .catch((error) => {dispatch(clearWishlistDataFailure(error));
+          toast.error("Unable to clear wishlist")
+
+        });
     };
   };
 
