@@ -49,6 +49,7 @@ import Shopregister from './Pages/Shopregister';
 
 import Contact from './Pages/Contact';
 import Contact2 from './Pages/Contact2';
+import MailVerification from './Pages/Mailverification';
 
 
 
@@ -101,7 +102,7 @@ class Markup extends Component{
 					<Route path='/shop-checkout' exact component ={Shopchekout} />
 					<Route path='/shop-login' exact component ={Shoplogin} />
 					<Route path='/shop-register' exact component ={Shopregister} />
-					
+					<Route path='/mail-verification' exact component ={MailVerification} />
 					
 					<Route path='/contact-1' exact component ={Contact} />
 					<Route path='/contact-2' exact component ={Contact2} />

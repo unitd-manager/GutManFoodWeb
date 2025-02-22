@@ -105,14 +105,14 @@ const ShopRegister = () => {
             console.log(res.data.data);
             console.log('otp',otp);
            toast.success("Account created Successfully");
-            setTimeout(() => {
-              // Pass the contact ID as state to the next page
-              history.push({
-                pathname: `/register-verification/${formData.email}`,
-               state: { otpNo: formData.otp_no, mobNo: formData.mobile },
+            // setTimeout(() => {
+            //   // Pass the contact ID as state to the next page
+            //   history.push({
+            //     pathname: `/register-verification/${formData.email}`,
+            //    state: { otpNo: formData.otp_no, mobNo: formData.mobile },
              
-              });
-            }, 1000);
+            //   });
+            // }, 1000);
            
             // console.log('contact',res.data.data.contact_id);
             console.log('cont',formData);
@@ -160,7 +160,7 @@ const ShopRegister = () => {
                 <div className="p-a30 border-1 max-w500 m-auto radius-sm">
                   <form id="register-form" onSubmit={submitHandler}>
                     <h3 className="m-b5">Personal Information</h3>
-                    <p>If you have an account with us, please log in.</p>
+                    <p>If you have an account with us,please<Link to={'/shop-login'} > log in.</Link></p>
 
                     {formFields.map((field) => (
                       <div key={field.name} className="form-group">
