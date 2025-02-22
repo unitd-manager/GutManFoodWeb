@@ -332,6 +332,7 @@ const ShopCheckout = () => {
 
   const user = getUser();
   const userContactId = user?.contact_id;
+  console.log('contactId',user?.contact_id)
 
   const removeBasket = async () => {
     try {
@@ -354,7 +355,7 @@ const ShopCheckout = () => {
           const orderId = response.data.data.insertId;
           Promise.all(
             cartItems.map((item) =>
-              api.post("/orders/insertOrderItem1", {
+              api.post("/orders/insertOrderItem", {
                 qty: item.qty,
                 unit_price: item.price,
                 contact_id: userContactId,
@@ -776,8 +777,8 @@ const ShopCheckout = () => {
                     <tr>
                       <th>IMAGE</th>
                       <th>PRODUCT NAME</th>
-                      {/* <th>PRICE</th>
-					  <th>QUANTITY</th> */}
+                      {/* <th>PRICE</th> */}
+					  <th>QUANTITY</th> 
                       <th>TOTAL</th>
                     </tr>
                   </thead>
@@ -788,6 +789,7 @@ const ShopCheckout = () => {
                           <img src={`${imageBase}${product.images}`} alt="" />
                         </td>
                         <td>{product.title}</td>
+                        <td>{product.qty}</td>
                         <td className="product-price">{product.price}</td>
                       </tr>
                     ))}

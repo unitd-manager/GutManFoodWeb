@@ -9,11 +9,12 @@ import { insertCartData,updateCartData } from "../../redux/actions/cartItemActio
 import { insertWishlistData,removeWishlistData } from "../../redux/actions/wishlistItemActions";
 import { getUser } from "../../common/user";
 import toast from 'react-hot-toast';
+import { useHistory } from 'react-router-dom';
 
 
 const Shop = () => {
   
-
+  const history=useHistory();
 
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -71,7 +72,14 @@ console.log('wishlistitems',wishlistItems);
       dispatch(insertCartData(data));}
       }
       else{
-        console.log('please login');
+       
+          const userConfirmed = window.confirm(
+            "Please Login. Click 'OK' to go to the Login page or 'Cancel' to stay."
+          );
+          if (userConfirmed) {
+            history.push("/shop-login"); // Navigate to the login page
+      
+        }
       }
      
     };
@@ -84,7 +92,13 @@ console.log('wishlistitems',wishlistItems);
         toast.success("Added to wishlist!");
     }
       else{
-        console.log('please login');
+        const userConfirmed = window.confirm(
+          "Please Login. Click 'OK' to go to the Login page or 'Cancel' to stay."
+        );
+        if (userConfirmed) {
+          history.push("/shop-login"); // Navigate to the login page
+    
+      }
       }
     };
   
