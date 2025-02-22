@@ -288,14 +288,19 @@
 
 // export default Shopchekout;
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useCallback } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import Header from "./../Layout/Header";
 import Footer from "./../Layout/Footer";
 import { Form } from "react-bootstrap";
 import api from "../../constants/api";
 import { getUser } from "../../common/user";
+import {
+	clearCartData,
+  } from "../../redux/actions/cartItemActions";
 import imageBase from "../../constants/imageBase";
+
 
 const bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -303,7 +308,8 @@ const ShopCheckout = () => {
   const location = useLocation();
   const cartItems = location.state || {};
   const history = useHistory();
-
+  const dispatch = useDispatch();
+  
   const [orderDetail, setOrderDetail] = useState({});
   const [allCountries, setAllCountries] = useState([]);
 
@@ -334,15 +340,21 @@ const ShopCheckout = () => {
   const userContactId = user?.contact_id;
   console.log('contactId',user?.contact_id)
 
-  const removeBasket = async () => {
-    try {
-      await api.post("/orders/deleteBasketContact", {
-        contact_id: userContactId,
-      });
-    } catch (error) {
-      console.error("Error removing item:", error);
-    }
-  };
+  // const removeBasket = async () => {
+  //   try {
+  //     await api.post("/orders/deleteBasketContact", {
+  //       contact_id: userContactId,
+  //     });
+  //   } catch (error) {
+  //     console.error("Error removing item:", error);
+  //   }
+  // };
+
+  const handleClearCart = useCallback(() => {
+		
+		  dispatch(clearCartData(user));
+		
+	  }, [dispatch, user]);
 
   const placeOrder = () => {
     api
@@ -369,7 +381,7 @@ const ShopCheckout = () => {
             .then((responses) => {
               if (responses.every((res) => res.status === 200)) {
                 sendEmail();
-                removeBasket();
+                handleClearCart();
               } else {
                 console.error("Error placing order items");
               }

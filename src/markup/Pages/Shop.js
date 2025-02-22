@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import Header from "./../Layout/Header";
 import Footer from "./../Layout/Footer";
 import api from "./../../constants/api";
 import imageBase from "../../constants/imageBase";
-import { insertCartData,updateCartData } from "../../redux/actions/cartItemActions";
-import { insertWishlistData,removeWishlistData } from "../../redux/actions/wishlistItemActions";
+import {
+  insertCartData,
+  updateCartData,
+} from "../../redux/actions/cartItemActions";
+import {
+  insertWishlistData,
+  removeWishlistData,
+} from "../../redux/actions/wishlistItemActions";
 import { getUser } from "../../common/user";
-import toast from 'react-hot-toast';
-import { useHistory } from 'react-router-dom';
-import '../../css/pagination.css'
+import toast from "react-hot-toast";
+import { useHistory } from "react-router-dom";
+import "../../css/pagination.css";
 
 const Shop = () => {
-  
-  const history=useHistory();
+  const history = useHistory();
 
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -22,11 +27,13 @@ const Shop = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 8;
-const dispatch=useDispatch();
-const cartItems = useSelector((state) => state.cartItems.cartItems);
-const wishlistItems=useSelector(state=>state.wishlistItems.wishlistItems);
-console.log('cartitems', cartItems);
-console.log('wishlistitems',wishlistItems);
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cartItems.cartItems);
+  const wishlistItems = useSelector(
+    (state) => state.wishlistItems.wishlistItems
+  );
+  console.log("cartitems", cartItems);
+  console.log("wishlistitems", wishlistItems);
   // Fetch products from API with pagination and search query
   const fetchProducts = async (page = 1, search = "") => {
     setLoading(true);
@@ -44,74 +51,59 @@ console.log('wishlistitems',wishlistItems);
     }
     setLoading(false);
   };
-  const[user,setUser]=useState();
-  const [sessionId, setSessionId] = useState('');
-  console.log('user',user)
+  const [user, setUser] = useState();
+  const [sessionId, setSessionId] = useState("");
+  console.log("user", user);
 
-    const onUpdateCart = (data) => {
-      // if (avaiableQuantity === 0) {
-      //   return;
-      // }
-      console.log('updatedata',data);
-    if(user){
-      console.log('user',user);
-      data.contact_id=user.contact_id
-      dispatch(updateCartData(data));    }
-    else{
-     
-    }   
-     
-    };
-  
-    const onAddToCart = (data) => {
-     
-      if(user){
-        if(data.price){
-      data.contact_id=user.contact_id
-    
-      dispatch(insertCartData(data));}
-      }
-      else{
-       
-          const userConfirmed = window.confirm(
-            "Please Login. Click 'OK' to go to the Login page or 'Cancel' to stay."
-          );
-          if (userConfirmed) {
-            history.push("/shop-login"); // Navigate to the login page
-      
-        }
-      }
-     
-    };
-    
-    const onAddToWishlist = (data) => {
-      if(user){
-  
-        data.contact_id=user.contact_id
-        dispatch(insertWishlistData(data));
-        toast.success("Added to wishlist!");
+  const onUpdateCart = (data) => {
+    // if (avaiableQuantity === 0) {
+    //   return;
+    // }
+    console.log("updatedata", data);
+    if (user) {
+      console.log("user", user);
+      data.contact_id = user.contact_id;
+      dispatch(updateCartData(data));
+    } else {
     }
-      else{
-        const userConfirmed = window.confirm(
-          "Please Login. Click 'OK' to go to the Login page or 'Cancel' to stay."
-        );
-        if (userConfirmed) {
-          history.push("/shop-login"); // Navigate to the login page
-    
+  };
+
+  const onAddToCart = (data) => {
+    if (user) {
+      if (data.price) {
+        data.contact_id = user.contact_id;
+
+        dispatch(insertCartData(data));
       }
+    } else {
+      const userConfirmed = window.confirm(
+        "Please Login. Click 'OK' to go to the Login page or 'Cancel' to stay."
+      );
+      if (userConfirmed) {
+        history.push("/shop-login"); // Navigate to the login page
       }
-    };
-  
-  
-     
-    useEffect(()=>{
-     
-      const userInfo=getUser();
-      setUser(userInfo)
-  
-     
-    },[])
-  
+    }
+  };
+
+  const onAddToWishlist = (data) => {
+    if (user) {
+      data.contact_id = user.contact_id;
+      dispatch(insertWishlistData(data));
+      toast.success("Added to wishlist!");
+    } else {
+      const userConfirmed = window.confirm(
+        "Please Login. Click 'OK' to go to the Login page or 'Cancel' to stay."
+      );
+      if (userConfirmed) {
+        history.push("/shop-login"); // Navigate to the login page
+      }
+    }
+  };
+
+  useEffect(() => {
+    const userInfo = getUser();
+    setUser(userInfo);
+  }, []);
 
   // Fetch products when page or search query changes
   useEffect(() => {
@@ -140,13 +132,22 @@ console.log('wishlistitems',wishlistItems);
 
       <div className="page-content bg-white">
         {/* Banner */}
-        <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(https://via.placeholder.com/1500x500)" }}>
+        <div
+          className="dlab-bnr-inr overlay-black-middle"
+          style={{
+            backgroundImage: "url(https://via.placeholder.com/1500x500)",
+          }}
+        >
           <div className="container">
             <div className="dlab-bnr-inr-entry">
               <h1 className="text-white">Shop</h1>
               <div className="breadcrumb-row">
                 <ul className="list-inline">
-                  <li><Link to="/"><i className="fa fa-home"></i></Link></li>
+                  <li>
+                    <Link to="/">
+                      <i className="fa fa-home"></i>
+                    </Link>
+                  </li>
                   <li>Shop</li>
                 </ul>
               </div>
@@ -180,25 +181,56 @@ console.log('wishlistitems',wishlistItems);
                 <>
                   <div className="row">
                     {visibleGallery.map((product) => (
-                      <div className="col-lg-3 col-md-6 col-sm-6" key={product.product_id}>
-  <div className="item-box shop-item" style={{height: '450px'}}>
-    <div className="item-img" style={{height: '250px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden'}}>
-      {product?.images[0] ? (
-        <img 
-          src={`${imageBase}${product.images[0]}`} 
-          alt={product.title}
-          style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'contain'}}
-        />
-      ) : (
-        <div style={{width: '100%', height: '100%', background: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-          <span>No Image Available</span>
-        </div>
-      )}
-                            {product.sale_price && <span className="sale">Sale!</span>}
+                      <div
+                        className="col-lg-3 col-md-6 col-sm-6"
+                        key={product.product_id}
+                      >
+                        <div
+                          className="item-box shop-item"
+                          style={{ height: "450px" }}
+                        >
+                          <div
+                            className="item-img"
+                            style={{
+                              height: "250px",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              overflow: "hidden",
+                            }}
+                          >
+                            {product?.images[0] ? (
+                              <img
+                                src={`${imageBase}${product.images[0]}`}
+                                alt={product.title}
+                                style={{
+                                  maxWidth: "100%",
+                                  maxHeight: "100%",
+                                  objectFit: "contain",
+                                }}
+                              />
+                            ) : (
+                              <div
+                                style={{
+                                  width: "100%",
+                                  height: "100%",
+                                  background: "#f5f5f5",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                }}
+                              >
+                                <span>No Image Available</span>
+                              </div>
+                            )}
+                            {product.sale_price && (
+                              <span className="sale">Sale!</span>
+                            )}
                             <div className="price">
                               {product.sale_price ? (
                                 <>
-                                  <del>${product.original_price}</del> ${product.sale_price}
+                                  <del>${product.original_price}</del> $
+                                  {product.sale_price}
                                 </>
                               ) : (
                                 <>${product.price}</>
@@ -207,50 +239,69 @@ console.log('wishlistitems',wishlistItems);
                           </div>
                           <div className="item-info text-center">
                             <h4 className="item-title">
-                              <Link to={`/shop-product-details/${product.product_id}`}>
-								{product.title.length > 20 ? product.title.slice(0, 20) + "..." : product.title}
+                              <Link
+                                to={`/shop-product-details/${product.product_id}`}
+                              >
+                                {product.title.length > 20
+                                  ? product.title.slice(0, 20) + "..."
+                                  : product.title}
                               </Link>
                             </h4>
-                            <div className="quantity-selector mb-2">
-           
-          </div>
-          <button 
-        onClick={() => { 
-              if(cartItems.filter(
-                cartItem => cartItem.product_id === product.product_id
-              )[0]?.qty>0){
-              product.qty=parseFloat(cartItems.filter(
-                cartItem => cartItem.product_id === product.product_id
-              )[0]?.qty) +Number(1);
-              product.basket_id=cartItems.filter(
-                cartItem => cartItem.product_id === product.product_id
-              )[0].basket_id;
-              onUpdateCart(product)
-            }else{
-            onAddToCart(product)
-            }
-        }}
-            className="btn btnhover m-1"
-          >
-            <i className="ti-shopping-cart m-r5"></i> Add To Cart
-          </button>
-          <button 
-  onClick={() => {
-    const isInWishlist = wishlistItems.filter(
-      cartItem => cartItem.product_id === product.product_id
-    )[0];
-    console.log('wishlistitem',isInWishlist);
-    if(isInWishlist) {
-      dispatch(removeWishlistData(isInWishlist));
-      
-    } else {
-      onAddToWishlist(product);
-    }
-  }} 
-  className={`btn btnhover m-1 ${wishlistItems.some(item => item.product_id === product.product_id) ? 'btn-primary' : ''}`}
-          >
-            <i className="ti-heart m-r5"></i> 
-          </button>
+                            <div className="quantity-selector mb-2"></div>
+                            <button
+                              onClick={() => {
+                                if (
+                                  cartItems.filter(
+                                    (cartItem) =>
+                                      cartItem.product_id === product.product_id
+                                  )[0]?.qty > 0
+                                ) {
+                                  product.qty =
+                                    parseFloat(
+                                      cartItems.filter(
+                                        (cartItem) =>
+                                          cartItem.product_id ===
+                                          product.product_id
+                                      )[0]?.qty
+                                    ) + Number(1);
+                                  product.basket_id = cartItems.filter(
+                                    (cartItem) =>
+                                      cartItem.product_id === product.product_id
+                                  )[0].basket_id;
+                                  onUpdateCart(product);
+                                } else {
+                                  onAddToCart(product);
+                                }
+                              }}
+                              className="btn btnhover m-1"
+                            >
+                              <i className="ti-shopping-cart m-r5"></i> Add To
+                              Cart
+                            </button>
+                            <button
+                              onClick={() => {
+                                const isInWishlist = wishlistItems.filter(
+                                  (cartItem) =>
+                                    cartItem.product_id === product.product_id
+                                )[0];
+                                console.log("wishlistitem", isInWishlist);
+                                if (isInWishlist) {
+                                  dispatch(removeWishlistData(isInWishlist));
+                                } else {
+                                  onAddToWishlist(product);
+                                }
+                              }}
+                              className={`btn btnhover m-1 ${
+                                wishlistItems.some(
+                                  (item) =>
+                                    item.product_id === product.product_id
+                                )
+                                  ? "btn-primary"
+                                  : ""
+                              }`}
+                            >
+                              <i className="ti-heart m-r5"></i>
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -258,67 +309,85 @@ console.log('wishlistitems',wishlistItems);
                   </div>
 
                   <div className="th-pagination text-center pt-4">
-  <ul className="pagination justify-content-center">
-    {/* First Page */}
-    <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-      <button
-        className="page-link"
-        onClick={() => handlePageChange(1)}
-        disabled={currentPage === 1}
-      >
-        First
-      </button>
-    </li>
+                    <ul className="pagination justify-content-center">
+                      {/* First Page */}
+                      <li
+                        className={`page-item ${
+                          currentPage === 1 ? "disabled" : ""
+                        }`}
+                      >
+                        <button
+                          className="page-link"
+                          onClick={() => handlePageChange(1)}
+                          disabled={currentPage === 1}
+                        >
+                          First
+                        </button>
+                      </li>
 
-    {/* Previous Page */}
-    <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-      <button
-        className="page-link"
-        onClick={() => handlePageChange(currentPage - 1)}
-        disabled={currentPage === 1}
-      >
-        &laquo; Prev
-      </button>
-    </li>
+                      {/* Previous Page */}
+                      <li
+                        className={`page-item ${
+                          currentPage === 1 ? "disabled" : ""
+                        }`}
+                      >
+                        <button
+                          className="page-link"
+                          onClick={() => handlePageChange(currentPage - 1)}
+                          disabled={currentPage === 1}
+                        >
+                          &laquo; Prev
+                        </button>
+                      </li>
 
-    {/* Page Numbers */}
-    {Array.from({ length: totalPage }, (_, index) => (
-      <li key={index + 1} className={`page-item ${currentPage === index + 1 ? "active" : ""}`}>
-        <button
-          className="page-link"
-          onClick={() => handlePageChange(index + 1)}
-        >
-          {index + 1}
-        </button>
-      </li>
-    ))}
+                      {/* Page Numbers */}
+                      {Array.from({ length: totalPage }, (_, index) => (
+                        <li
+                          key={index + 1}
+                          className={`page-item ${
+                            currentPage === index + 1 ? "active" : ""
+                          }`}
+                        >
+                          <button
+                            className="page-link"
+                            onClick={() => handlePageChange(index + 1)}
+                          >
+                            {index + 1}
+                          </button>
+                        </li>
+                      ))}
 
-    {/* Next Page */}
-    <li className={`page-item ${currentPage === totalPage ? "disabled" : ""}`}>
-      <button
-        className="page-link"
-        onClick={() => handlePageChange(currentPage + 1)}
-        disabled={currentPage === totalPage}
-      >
-        Next &raquo;
-      </button>
-    </li>
+                      {/* Next Page */}
+                      <li
+                        className={`page-item ${
+                          currentPage === totalPage ? "disabled" : ""
+                        }`}
+                      >
+                        <button
+                          className="page-link"
+                          onClick={() => handlePageChange(currentPage + 1)}
+                          disabled={currentPage === totalPage}
+                        >
+                          Next &raquo;
+                        </button>
+                      </li>
 
-    {/* Last Page */}
-    <li className={`page-item ${currentPage === totalPage ? "disabled" : ""}`}>
-      <button
-        className="page-link"
-        onClick={() => handlePageChange(totalPage)}
-        disabled={currentPage === totalPage}
-      >
-        Last
-      </button>
-    </li>
-  </ul>
-</div>
-
-
-                
+                      {/* Last Page */}
+                      <li
+                        className={`page-item ${
+                          currentPage === totalPage ? "disabled" : ""
+                        }`}
+                      >
+                        <button
+                          className="page-link"
+                          onClick={() => handlePageChange(totalPage)}
+                          disabled={currentPage === totalPage}
+                        >
+                          Last
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
                 </>
               ) : (
                 <div className="text-center">
