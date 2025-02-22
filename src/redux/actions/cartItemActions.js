@@ -27,10 +27,10 @@ export const EMPTY_CART_DATA_FAILURE = 'EMPTY_CART_DATA_FAILURE';
 
 export const fetchCartData = (userInfo) => {
     return (dispatch) => {
-      dispatch(fetchDataRequest({contact_id:userInfo.contact_id}));
+      dispatch(fetchDataRequest({contact_id:userInfo?.contact_id}));
      
       // Make the API call
-      api.post('/contact/getCartProductsByContactId',{contact_id:userInfo.contact_id})
+      api.post('/contact/getCartProductsByContactId',{contact_id:userInfo?.contact_id})
         .then((res) => {
           res.data.data.forEach(element => {
             element.images=String(element.images).split(',')

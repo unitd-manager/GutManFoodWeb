@@ -349,7 +349,7 @@ const history=useHistory();
                                             {loading ? (
                                                 <tr><td colSpan="6">Loading...</td></tr>
                                             ) : (
-                                                cartItems?.map((item) => (
+                                               cartItems.length > 0 ? cartItems?.map((item) => (
                                                     <tr key={item.basket_id}>
                                                         <td className="product-item-img">
                                                             <img src={`${imageBase}${item.images}`} alt={item.title} width="50" />
@@ -358,7 +358,7 @@ const history=useHistory();
                                                         <td>${item?.price?.toFixed(2)}</td>
                                                         <td>
 														<td className="product-quantity">
-                            <div className="cart-plus-minus">
+                            {/* <div className="cart-plus-minus">
                               <button
                                 className="dec qtybutton"
                                 onClick={() => handleDecreaseQuantity(item)}
@@ -377,7 +377,59 @@ const history=useHistory();
                               >
                                 +
                               </button>
-                            </div>
+                            </div> */}
+							<div style={{
+  display: "flex",
+  alignItems: "center",
+  border: "1px solid #ddd",
+  borderRadius: "6px",
+  overflow: "hidden",
+  maxWidth: "120px"
+}}>
+  <button 
+    onClick={() => handleDecreaseQuantity(item)} 
+    style={{
+      background: "#f5f5f5",
+      border: "none",
+      padding: "8px 12px",
+      cursor: "pointer",
+      fontSize: "16px",
+      transition: "background 0.3s"
+    }}
+    onMouseEnter={(e) => e.target.style.background = "#ddd"}
+    onMouseLeave={(e) => e.target.style.background = "#f5f5f5"}
+  >
+    -
+  </button>
+  <input 
+    type="text" 
+    value={item.qty} 
+    readOnly 
+    style={{
+      width: "40px",
+      textAlign: "center",
+      border: "none",
+      fontSize: "16px",
+      padding: "5px 0"
+    }}
+  />
+  <button 
+    onClick={() => handleIncreaseQuantity(item)} 
+    style={{
+      background: "#f5f5f5",
+      border: "none",
+      padding: "8px 12px",
+      cursor: "pointer",
+      fontSize: "16px",
+      transition: "background 0.3s"
+    }}
+    onMouseEnter={(e) => e.target.style.background = "#ddd"}
+    onMouseLeave={(e) => e.target.style.background = "#f5f5f5"}
+  >
+    +
+  </button>
+</div>
+
                           </td>
                                                         </td>
                                                         <td>${(item.price * item.qty).toFixed(2)}</td>
@@ -390,7 +442,12 @@ const history=useHistory();
                                                             </button>
                                                         </td>
                                                     </tr>
-                                                ))
+                                                )):  (
+													<tr>
+														<td colSpan="6" className="text-center">Your cart is empty.</td>
+													</tr>
+												)
+											   
                                             )}
                                         </tbody>
                                     </table>

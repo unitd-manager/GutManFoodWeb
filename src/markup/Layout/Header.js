@@ -6,10 +6,12 @@ import { getUser } from '../../common/user';
 import { BsBox } from 'react-icons/bs';
 import { BiLogIn } from 'react-icons/bi';
 import { MdOutlineAppRegistration } from 'react-icons/md';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
 	
-	
+	const cartItems = useSelector((state) => state.cartItems.cartItems);
+	const wishlistItems=useSelector(state=>state.wishlistItems.wishlistItems);
 	  const user = getUser();
 	 
 	const logout=()=>{
@@ -164,7 +166,7 @@ const Header = () => {
             </li>
             <li>
               <Link to={'/shop-register'}>
-                <MdOutlineAppRegistration size={20} title="Register" /> Register
+                <MdOutlineAppRegistration size={22} title="Register" /> Register
               </Link>
             </li>
           </>
@@ -181,10 +183,11 @@ const Header = () => {
 										</ul>
 									</li>
 									<li>
-										<Link to={'/shop-cart'}><AiOutlineShoppingCart size={20} />  </Link>
+										<Link to={'/shop-cart'}><AiOutlineShoppingCart size={22} /> <span style={getBadgeStyle(cartItems.length)}>{cartItems.length}</span> </Link>
 									</li>
 									<li>
-										<Link to={'/shop-wishlist'}><AiOutlineHeart size={20} /></Link>
+										<Link to={'/shop-wishlist'}><AiOutlineHeart size={22} /><span style={getBadgeStyle(wishlistItems.length)} >{wishlistItems.length}
+          </span></Link>
 									</li>
                                 {/* <li>
                                     <Link to={''}>Contact Us <i className="fa fa-chevron-down"></i></Link>
@@ -201,5 +204,23 @@ const Header = () => {
 			</header>	
     );
 }
-
+const getBadgeStyle = (count) => ({
+	position: "absolute",
+	top: "35px",   // Moves it closer to the icon
+	right: "-8px",  // Adjusts horizontal position
+	background: count === 0 ? "red" : "#05d3b1",
+	color: "white",
+	fontSize: "12px",
+	fontWeight: "bold",
+	borderRadius: "50%",
+	padding: "3px 6px",
+	minWidth: "18px",
+	height: "18px",
+	lineHeight: "16px",
+	textAlign: "center",
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
+});
+  
 export default Header;

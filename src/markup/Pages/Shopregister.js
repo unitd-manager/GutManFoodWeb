@@ -117,8 +117,8 @@ const ShopRegister = () => {
             // console.log('contact',res.data.data.contact_id);
             console.log('cont',formData);
           })
-          .catch(() => {
-           toast.error("Error in creating Account")
+          .catch((err) => {
+           toast.error(err.message)
           });
 
     console.log("Submitted Data:", formData);
