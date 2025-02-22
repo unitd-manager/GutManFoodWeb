@@ -10,7 +10,7 @@ import { insertWishlistData,removeWishlistData } from "../../redux/actions/wishl
 import { getUser } from "../../common/user";
 import toast from 'react-hot-toast';
 import { useHistory } from 'react-router-dom';
-
+import '../../css/pagination.css'
 
 const Shop = () => {
   
@@ -21,7 +21,7 @@ const Shop = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const itemsPerPage = 20;
+  const itemsPerPage = 8;
 const dispatch=useDispatch();
 const cartItems = useSelector((state) => state.cartItems.cartItems);
 const wishlistItems=useSelector(state=>state.wishlistItems.wishlistItems);
@@ -124,6 +124,16 @@ console.log('wishlistitems',wishlistItems);
     setCurrentPage(1); // Reset to first page on new search
   };
 
+  const totalPage = Math.ceil(products.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const visibleGallery = products.slice(startIndex, endIndex);
+
   return (
     <>
       <Header />
@@ -166,10 +176,10 @@ console.log('wishlistitems',wishlistItems);
                 <div className="text-center">
                   <h4>Loading products...</h4>
                 </div>
-              ) : products.length > 0 ? (
+              ) : visibleGallery.length > 0 ? (
                 <>
                   <div className="row">
-                    {products.map((product) => (
+                    {visibleGallery.map((product) => (
                       <div className="col-lg-3 col-md-6 col-sm-6" key={product.product_id}>
   <div className="item-box shop-item" style={{height: '450px'}}>
     <div className="item-img" style={{height: '250px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden'}}>
@@ -247,24 +257,68 @@ console.log('wishlistitems',wishlistItems);
                     ))}
                   </div>
 
-                  {/* Pagination */}
-                  <div className="pagination mt-4 text-center">
-                    <button
-                      className="btn btn-primary mx-2"
-                      disabled={currentPage === 1}
-                      onClick={() => setCurrentPage((prev) => prev - 1)}
-                    >
-                      Previous
-                    </button>
-                    <span>Page {currentPage} of {totalPages}</span>
-                    <button
-                      className="btn btn-primary mx-2"
-                      disabled={currentPage === totalPages}
-                      onClick={() => setCurrentPage((prev) => prev + 1)}
-                    >
-                      Next
-                    </button>
-                  </div>
+                  <div className="th-pagination text-center pt-4">
+  <ul className="pagination justify-content-center">
+    {/* First Page */}
+    <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+      <button
+        className="page-link"
+        onClick={() => handlePageChange(1)}
+        disabled={currentPage === 1}
+      >
+        First
+      </button>
+    </li>
+
+    {/* Previous Page */}
+    <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+      <button
+        className="page-link"
+        onClick={() => handlePageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+      >
+        &laquo; Prev
+      </button>
+    </li>
+
+    {/* Page Numbers */}
+    {Array.from({ length: totalPage }, (_, index) => (
+      <li key={index + 1} className={`page-item ${currentPage === index + 1 ? "active" : ""}`}>
+        <button
+          className="page-link"
+          onClick={() => handlePageChange(index + 1)}
+        >
+          {index + 1}
+        </button>
+      </li>
+    ))}
+
+    {/* Next Page */}
+    <li className={`page-item ${currentPage === totalPage ? "disabled" : ""}`}>
+      <button
+        className="page-link"
+        onClick={() => handlePageChange(currentPage + 1)}
+        disabled={currentPage === totalPage}
+      >
+        Next &raquo;
+      </button>
+    </li>
+
+    {/* Last Page */}
+    <li className={`page-item ${currentPage === totalPage ? "disabled" : ""}`}>
+      <button
+        className="page-link"
+        onClick={() => handlePageChange(totalPage)}
+        disabled={currentPage === totalPage}
+      >
+        Last
+      </button>
+    </li>
+  </ul>
+</div>
+
+
+                
                 </>
               ) : (
                 <div className="text-center">
