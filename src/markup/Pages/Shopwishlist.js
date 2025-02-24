@@ -309,7 +309,7 @@ getWishlistItems(userInfo)
                                                 <th>Product</th>
                                                 <th>Product Name</th>
                                                 <th>Unit Price</th>
-                                                <th>Quantity</th>
+                                                {/* <th>Quantity</th> */}
                                                 <th>Add to Cart</th>
                                                 <th>Remove</th>
                                             </tr>
@@ -323,7 +323,7 @@ getWishlistItems(userInfo)
                                                         </td>
                                                         <td className="product-item-name">{item.title}</td>
                                                         <td className="product-item-price">${item.price?.toFixed(2)}</td>
-                                                        <td className="product-item-quantity">
+                                                        {/* <td className="product-item-quantity">
                                                             <div className="quantity btn-quantity max-w80">
                                                                 <Form>
                                                                     <Form.Group controlId={`quantity-${item.id}`}>
@@ -335,7 +335,7 @@ getWishlistItems(userInfo)
                                                                     </Form.Group>
                                                                 </Form>
                                                             </div>
-                                                        </td>
+                                                        </td> */}
                                                         <td className="product-item-totle">
                                                             <button 
                                                                 className="btn btnhover" 

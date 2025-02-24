@@ -96,42 +96,67 @@ const Header = () => {
 									<Link to="#"><AiOutlineUser size={20} /></Link>
 									<ul className="sub-menu">
 										{user ? (
-											<>
-												<li><Link to="/orders">My Orders</Link></li>
-												<li>
-													<button onClick={logout} style={{ background: "none", border: "none", cursor: "pointer" }}>
-														Logout
-													</button>
-												</li>
-											</>
-										) : (
-											<>
-												<li><Link to="/shop-login"><BiLogIn size={20} /> Sign In</Link></li>
-												<li><Link to="/shop-register"><MdOutlineAppRegistration size={22} /> Register</Link></li>
-											</>
-										)}
-									</ul>
-								</li>
-								<li>
-									<Link to="/shop-cart"><AiOutlineShoppingCart size={22} />
-										<span style={getBadgeStyle(cartItems.length)}>{cartItems.length}</span>
-									</Link>
-								</li>
-								<li>
-									<Link to="/shop-wishlist"><AiOutlineHeart size={22} />
-										<span style={getBadgeStyle(wishlistItems.length)}>{wishlistItems.length}</span>
-									</Link>
-								</li>
-							</ul>
-
+          <>
+            <li>
+              <Link to="/shop-Orders">
+			  <i className="fa fa-box"></i> My Orders
+              </Link>
+            </li>
+            <li>
+			<Link to={''}>
+              <button onClick={logout} style={{ background: "none", border: "none", cursor: "pointer" }}>
+			  <i className="fa fa-right-from-bracket"></i> Logout
+              </button>
+			  </Link>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link to={'/shop-login'}>
+                <BiLogIn size={20} title="Login" /> Sign In
+              </Link>
+            </li>
+            <li>
+              <Link to={'/shop-register'}>
+                <MdOutlineAppRegistration size={22} title="Register" /> Register
+              </Link>
+            </li>
+          </>
+        )}
+										</ul>
+										
+									</li>
+									<li>
+										<Link to={''}>Shop <i className="fa fa-chevron-down"></i></Link>
+										<ul className="sub-menu">
+											<li><Link to ={'/shop'}>Shop</Link></li>
+											<li><Link to ={'/shop-sidebar'}>Shop Sidebar</Link></li>
+											
+										</ul>
+									</li>
+									<li>
+										<Link to={'/shop-cart'}><AiOutlineShoppingCart size={22} /> <span style={getBadgeStyle(cartItems.length)}>{cartItems.length}</span> </Link>
+									</li>
+									<li>
+										<Link to={'/shop-wishlist'}><AiOutlineHeart size={22} /><span style={getBadgeStyle(wishlistItems.length)} >{wishlistItems.length}
+          </span></Link>
+									</li>
+                                {/* <li>
+                                    <Link to={''}>Contact Us <i className="fa fa-chevron-down"></i></Link>
+										<ul className="sub-menu left">
+											<li><Link to={'/contact-1'}>Contact Us 1</Link></li>
+											<li><Link to={'/contact-2'}>Contact Us 2</Link></li>
+										</ul>
+									</li> */}
+								</ul>		
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</header>
-	);
-};
-
+			</header>	
+    );
+}
 const getBadgeStyle = (count) => ({
 	position: "absolute",
 	top: "35px",

@@ -42,6 +42,7 @@ import Shopsidebar from './Pages/Shopsidebar';
 import Shopproduct from './Pages/Shopproduct';
 import Shopcart from './Pages/Shopcart';
 import Shopwishlist from './Pages/Shopwishlist';
+import ShopOrders from './Pages/ShopOrders';
 import Shopchekout from './Pages/Shopchekout';
 import Shoplogin from './Pages/Shoplogin';
 import Shopregister from './Pages/Shopregister';
@@ -50,6 +51,8 @@ import Shopregister from './Pages/Shopregister';
 import Contact from './Pages/Contact';
 import Contact2 from './Pages/Contact2';
 import MailVerification from './Pages/Mailverification';
+import ResetPassword from './Pages/ResetPassword';
+import ForgotPassword from './Pages/ForgotPassword';
 
 
 
@@ -100,12 +103,18 @@ class Markup extends Component{
 					<Route path='/shop-product-details/:id' exact component ={Shopproduct} />					
 					<Route path='/shop-cart' exact component ={Shopcart} />					
 					<Route path='/shop-wishlist' exact component ={Shopwishlist} />
+					<Route path='/shop-Orders' exact component ={ShopOrders} />
 					<Route path='/shop-checkout' exact component ={Shopchekout} />
 					<Route path='/shop-login' exact component ={Shoplogin} />
 					<Route path='/shop-register' exact component ={Shopregister} />
 					<Route path='/mail-verification' exact component ={MailVerification} />
+<<<<<<< HEAD
 					<Route path="/CategoryDetail/:categoryId" exact component ={ProductDetails} />
 
+=======
+					<Route path='/reset-password' exact component ={ResetPassword} />
+					<Route path='/forgot-password' exact component ={ForgotPassword} />
+>>>>>>> b149d89f1546a5dd7624732a24c2b0a40c827e94
 					
 					<Route path='/contact-1' exact component ={Contact} />
 					<Route path='/contact-2' exact component ={Contact2} />

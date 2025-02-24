@@ -11,6 +11,9 @@ import { insertWishlistData,removeWishlistData } from "../../redux/actions/wishl
 import { getUser } from "../../common/user";
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
+import Review from '../Element/Review';
+import ProductStar from '../Element/ProductStar';
+import ProductImageGallery from '../Element/ProductImageGallery';
 
 var img1= require('./../../images/banner/bnr1.jpg');
 
@@ -146,24 +149,17 @@ const Shopproduct = () => {
 						<div className="section-full content-inner-1 bg-gray-light">
 							<div className="container woo-entry">
 								<div className="row">
-									<div className="col-lg-6 m-b30">
+									 <div className="col-lg-6 m-b30">
 										<div className="product-gallery on-show-slider lightgallery" id="lightgallery"> 
 											<div className="dlab-box">
-<div className="dlab-thum-bx" style={{height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-													{foundProduct?.images && foundProduct.images[0] ? (
-														<img src={`${imageBase}${foundProduct.images[0]}`} alt={foundProduct?.title || ''} style={{maxHeight: '100%', maxWidth: '100%', objectFit: 'contain'}} />
-													) : (
-														<div style={{height: '100%', width: '100%', backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-															<span>No Image Available</span>
-														</div>
-													)}
-													<span data-exthumbimage="images/product/item2.jpg" data-src={require("./../../images/product/item2.jpg")} className="check-km" title="Image 1 Title will come here">		
-														<i className="fa fa-search"></i>
-													</span>
-												</div>
+{/* <div className="dlab-thum-bx" style={{height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+													 */}
+{foundProduct?.images && <ProductImageGallery images={foundProduct?.images} />}
+												{/* </div> */}
 											</div>
 										</div>
-									</div>
+									</div> 
+									
 									<div className="col-lg-6 m-b30">
 										<form method="post" className="cart sticky-top">
 										<div className="dlab-post-title">
@@ -176,16 +172,19 @@ const Shopproduct = () => {
 										<div className="relative">
 											<h3 className="m-tb10">${foundProduct.price} </h3>
 											<div className="shop-item-rating">
-												<span className="rating-bx"> 
+												{/* <span className="rating-bx"> 
 													<i className="fa fa-star"></i> 
 													<i className="fa fa-star"></i> 
 													<i className="fa fa-star"></i> 
 													<i className="fa fa-star-o"></i> 
 													<i className="fa fa-star-o"></i> 
 												</span>
-												<span>4.5 Rating</span>
+												<span>4.5 Rating</span> */}
+												<ProductStar ratings={comments}/>
 											</div>
+											
 										</div>
+										
 										{/* <div className="shop-item-tage">
 											<span>Tags :- </span>
 											<Link to={''}>Cake</Link>
@@ -324,7 +323,12 @@ const Shopproduct = () => {
               <button
                 type="button"
                 onClick={() => setActiveTab("description")}
-                style={{ background: "none", border: "none", cursor: "pointer" }}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: "10px",
+                }}
               >
                 Description
               </button>
@@ -333,7 +337,12 @@ const Shopproduct = () => {
               <button
                 type="button"
                 onClick={() => setActiveTab("reviews")}
-                style={{ background: "none", border: "none", cursor: "pointer" }}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: "10px",
+                }}
               >
                 Review ({comments.length})
               </button>
@@ -346,57 +355,60 @@ const Shopproduct = () => {
               </div>
             )}
             {activeTab === "reviews" && (
-              <div id="reviews" className="tab-pane">
+              <div id="reviews" className="tab-pane active">
                 <div id="comments">
                   <ol className="commentlist">
-                    {comments.map((comment, index) => (
-                      <li className="comment" key={index}>
-                        <div className="comment_container">
-                          <img
-                            className="avatar avatar-60 photo"
-                            src={
-                              comment.user_image
-                                ? `${imageBase}${comment.user_image}`
-                                : require("./../../images/testimonials/pic1.jpg")
-                            }
-                            alt=""
-                          />
-                          <div className="comment-text">
-                            <div className="star-rating">
-                              <div data-rating={comment.rating || 0}>
-                                {[...Array(5)].map((_, i) => (
-                                  <i
-                                    key={i}
-                                    className={`fa fa-${
-                                      i < (comment.rating || 0)
-                                        ? "star"
-                                        : "star-o"
-                                    }`}
-                                    data-alt={i + 1}
-                                    title="regular"
-                                  />
-                                ))}
+                    {comments.length > 0 ? (
+                      comments.map((comment, index) => (
+                        <li className="comment" key={index}>
+                          <div className="comment_container">
+                            <img
+                              className="avatar avatar-60 photo"
+                              src={
+                                comment.user_image
+                                  ? `${imageBase}${comment?.user_image}`
+                                  : require("./../../images/testimonials/pic1.jpg")
+                              }
+                              alt=""
+                            />
+                            <div className="comment-text">
+							<div className="star-rating">
+  <div data-rating={comment.rating || 0}>
+    {[...Array(5)].map((_, i) => (
+      <i
+        key={i}
+        style={{ color: "#FFD700" }}
+        className={`fa fa-${i < (comment.rating || 0) ? "star" : "star-o"}`}
+        data-alt={i + 1}
+        title="regular"
+      />
+    ))}
+  </div>
+</div>
+                              <p className="meta">
+                                <strong className="author">
+                                  {comment?.first_name || ''}
+                                </strong>
+                                <span>
+                                  {" "}
+                                  {comment?.creation_date?new Date(comment.creation_date).toLocaleDateString():''}
+                                </span>
+                              </p>
+                              <div className="description">
+                                <p>{comment.comments}</p>
                               </div>
                             </div>
-                            <p className="meta">
-                              <strong className="author">
-                                {comment.user_name || "Anonymous"}
-                              </strong>
-                              <span>
-                                {" "}
-                                {new Date(comment.created_at).toLocaleDateString()}
-                              </span>
-                            </p>
-                            <div className="description">
-                              <p>{comment.comment}</p>
-                            </div>
                           </div>
-                        </div>
+                        </li>
+                      ))
+                    ) : (
+                      <li className="comment">
+                        <p>No reviews yet.</p>
                       </li>
-                    ))}
+                    )}
                   </ol>
                 </div>
-                <div id="review_form_wrapper">
+                {/* <div id="review_form_wrapper">
                   <div id="review_form">
                     <div id="respond" className="comment-respond">
                       <h3 className="comment-reply-title" id="reply-title">
@@ -478,15 +490,19 @@ const Shopproduct = () => {
                       </form>
                     </div>
                   </div>
-                </div>
+                </div> */}
+				<Review/>
               </div>
             )}
+			
           </div>
         </div>
       </div>
     </div>
-	</div>
-	</div>
+                </div>
+              </div>
+           
+	
 						
 						<Owl products={relatedProducts} deviceType="desktop" />
 						
