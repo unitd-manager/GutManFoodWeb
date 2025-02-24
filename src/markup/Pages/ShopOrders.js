@@ -81,7 +81,7 @@ const Shopwishlist = () => {
                             </td>
                             <td className="product-item-name">{item.qty}</td>
                             <td className="product-item-name">
-                              {item.order_date}
+                            {new Date(item.order_date).toLocaleDateString("en-GB")}
                             </td>
                             <td className="product-item-name">
                               {item.order_status}
