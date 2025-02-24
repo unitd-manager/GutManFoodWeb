@@ -42,6 +42,7 @@ import Shopsidebar from './Pages/Shopsidebar';
 import Shopproduct from './Pages/Shopproduct';
 import Shopcart from './Pages/Shopcart';
 import Shopwishlist from './Pages/Shopwishlist';
+import ShopOrders from './Pages/ShopOrders';
 import Shopchekout from './Pages/Shopchekout';
 import Shoplogin from './Pages/Shoplogin';
 import Shopregister from './Pages/Shopregister';
@@ -101,6 +102,7 @@ class Markup extends Component{
 					<Route path='/shop-product-details/:id' exact component ={Shopproduct} />					
 					<Route path='/shop-cart' exact component ={Shopcart} />					
 					<Route path='/shop-wishlist' exact component ={Shopwishlist} />
+					<Route path='/shop-Orders' exact component ={ShopOrders} />
 					<Route path='/shop-checkout' exact component ={Shopchekout} />
 					<Route path='/shop-login' exact component ={Shoplogin} />
 					<Route path='/shop-register' exact component ={Shopregister} />

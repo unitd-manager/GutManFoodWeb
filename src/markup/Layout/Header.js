@@ -145,14 +145,14 @@ const Header = () => {
 										{user ? (
           <>
             <li>
-              <Link to="/orders">
+              <Link to="/shop-Orders">
 			  <i className="fa fa-box"></i> My Orders
               </Link>
             </li>
             <li>
 			<Link to={''}>
               <button onClick={logout} style={{ background: "none", border: "none", cursor: "pointer" }}>
-			  <i className="fa fa-right-from-bracket"></i> Logout
+			  <i className="fa fa-right-from-bracket"></i> LOGOUT
               </button>
 			  </Link>
             </li>
