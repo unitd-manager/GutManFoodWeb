@@ -50,6 +50,8 @@ import Shopregister from './Pages/Shopregister';
 import Contact from './Pages/Contact';
 import Contact2 from './Pages/Contact2';
 import MailVerification from './Pages/Mailverification';
+import ResetPassword from './Pages/ResetPassword';
+import ForgotPassword from './Pages/ForgotPassword';
 
 
 
@@ -103,6 +105,8 @@ class Markup extends Component{
 					<Route path='/shop-login' exact component ={Shoplogin} />
 					<Route path='/shop-register' exact component ={Shopregister} />
 					<Route path='/mail-verification' exact component ={MailVerification} />
+					<Route path='/reset-password' exact component ={ResetPassword} />
+					<Route path='/forgot-password' exact component ={ForgotPassword} />
 					
 					<Route path='/contact-1' exact component ={Contact} />
 					<Route path='/contact-2' exact component ={Contact2} />

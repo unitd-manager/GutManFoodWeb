@@ -3,9 +3,9 @@
 =====================*/
 
 :root{
-	--color-primary: #510885;
-	--color-secondry: #510885;
-	--color-hover: #510885;
+	--color-primary: #a020f0;
+	--color-secondry: #a020f0;
+	--color-hover: #a020f0;
 }
 
 /* Hex */
@@ -75,7 +75,7 @@
 .fc-button.fc-state-down, 
 .fc-button.fc-state-active, 
 .fc-button.fc-state-default{
-    background-color: #510885;
+    background-color: #a020f0;
 }
 
 /*Hex color :hover */
@@ -100,10 +100,10 @@
 .owl-btn-1.primary .owl-next:hover,
 .owl-btn-2.primary .owl-prev:hover, 
 .owl-btn-2.primary .owl-next:hover{
-    background-color: #510885;
+    background-color: #a020f0;
 }
 .about-us .dlab-tabs .nav-tabs li.active{
-	border-right: 4px solid #510885;
+	border-right: 4px solid #a020f0;
 }
 /* Rgba color */
 .dlab-info-has.bg-primary,
@@ -113,7 +113,7 @@
 }
 .dlab-social-icon.dlab-social-icon-lg li a:focus,
 .dlab-social-icon.dlab-social-icon-lg li a:hover{
-    background-color: #510885 !important;
+    background-color: #a020f0 !important;
 }
 /*===================== 
 	Premery text color 
@@ -168,10 +168,10 @@ h6 a:hover,
 .comments-area p:before,
 .about-8-service .icon-bx-wraper:hover a,
 .header-nav .nav > li > a.nav-link.active{
-    color: #510885;
+    color: #a020f0;
 }
 .text-primary{
-	color: #510885!important;
+	color: #a020f0!important;
 }
 @media only screen and (max-width: 991px) {
 	.nav-dark.header-nav .nav > li > a:hover, 
@@ -247,16 +247,16 @@ input[type="radio"] + label:hover:before,
 	border-top: 1px solid rgba(0,0,0,0.1);
 }
 .bg-primary{
-	background-color: #510885 !important;
+	background-color: #a020f0 !important;
 }
 
 /* Text Selection */
 ::selection {
-	background: #510885;
+	background: #a020f0;
 	color: #fff;
 }
 ::-moz-selection {
-	background: #510885;
+	background: #a020f0;
 	color: #fff;
 }
 
