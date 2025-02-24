@@ -877,7 +877,7 @@ const ShopCheckout = () => {
                     {cartItems?.map((product, index) => (
                       <tr>
                         <td>
-                          <img src={`${imageBase}${product.images}`} alt="" />
+                          <img src={`${imageBase}${product.images[0]}`} alt="" />
                         </td>
                         <td>{product.title}</td>
                         <td>{product.qty}</td>
