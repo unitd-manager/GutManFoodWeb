@@ -36,7 +36,7 @@ import Blogsingle from './Pages/Blogsingle';
 import Blogsinglesidebar from './Pages/Blogsinglesidebar';
 import Blogsingleleftsidebar from './Pages/Blogsingleleftsidebar';
 
-
+import ProductDetails from './Pages/CategoryDetail';
 import Shop from './Pages/Shop';
 import Shopsidebar from './Pages/Shopsidebar';
 import Shopproduct from './Pages/Shopproduct';
@@ -57,9 +57,10 @@ class Markup extends Component{
 	
 	render(){
 		return(
-			<BrowserRouter basename='/react'>
+			<BrowserRouter basename='/'>
 				<Switch>
 					<Route path='/' exact component={Index1} />
+					<Route path='/Home' exact component={Index1} />
 					<Route path='/index-2' exact component={Index2} />
 					
 					<Route path='/about-1' exact component ={About} />
@@ -103,6 +104,8 @@ class Markup extends Component{
 					<Route path='/shop-login' exact component ={Shoplogin} />
 					<Route path='/shop-register' exact component ={Shopregister} />
 					<Route path='/mail-verification' exact component ={MailVerification} />
+					<Route path="/CategoryDetail/:categoryId" exact component ={ProductDetails} />
+
 					
 					<Route path='/contact-1' exact component ={Contact} />
 					<Route path='/contact-2' exact component ={Contact2} />
