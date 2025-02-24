@@ -145,7 +145,7 @@ const Header = () => {
 										{user ? (
           <>
             <li>
-              <Link to="/orders">
+              <Link to="/shop-Orders">
 			  <i className="fa fa-box"></i> My Orders
               </Link>
             </li>
