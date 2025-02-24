@@ -182,6 +182,7 @@ import CountUp from 'react-countup';
 import OurPartners from './../Element/OurPartners';
 import Slider from './../Element/Slider';
 import Accord from './../Element/Accord';
+import DummyInstagramFeed from '../Element/DummyInstaFeed';
 	
 //Images	
 var img1 = require('./../../images/background/bg5.jpg');
@@ -365,6 +366,7 @@ class Index1 extends Component{
 								</div>
 							</div>
 						</div>
+						<DummyInstagramFeed/>
 						<div className="section-full content-inner bg-gray" style={{backgroundImage:"url(" + img2 + ")",  backgroundSize:"100%"}}>
 							<div className="container">
 								<div className="row faq-area1">

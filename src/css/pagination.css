@@ -25,15 +25,15 @@
   }
   
   .page-link:hover {
-	background: #5fc9c6;
+	background: #510885;
 	color: white;
-	border-color: #5fc9c6;
+	border-color: #510885;
   }
   
   .page-item.active .page-link {
-	background: #5fc9c6;
+	background: #510885;
 	color: white;
-	border-color: #5fc9c6;
+	border-color: #510885;
   }
   
   .page-item.disabled .page-link {
