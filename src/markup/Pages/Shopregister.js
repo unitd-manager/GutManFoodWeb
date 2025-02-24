@@ -113,12 +113,14 @@ const ShopRegister = () => {
              
             //   });
             // }, 1000);
-           
+            sendMail();
             // console.log('contact',res.data.data.contact_id);
             console.log('cont',formData);
           })
           .catch((err) => {
+            
            toast.error(err.message)
+           console.log('err',err);
           });
 
     console.log("Submitted Data:", formData);

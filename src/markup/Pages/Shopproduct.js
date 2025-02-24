@@ -25,6 +25,8 @@ const Shopproduct = () => {
   const [loading, setLoading] = useState(false);
    const[user,setUser]=useState();
 
+   const [activeTab, setActiveTab] = useState("description");
+
    const dispatch=useDispatch();
    const cartItems = useSelector((state) => state.cartItems.cartItems);
    const wishlistItems=useSelector(state=>state.wishlistItems.wishlistItems);
@@ -315,100 +317,176 @@ const Shopproduct = () => {
 									</div>
 								</div>
 								<div className="row">
-									<div className="col-lg-12">
-										<div className="dlab-tabs product-description tabs-site-button m-t30">
-											<ul className="nav nav-tabs">
-												<li><Link data-toggle="tab" to="#description" className="active"> Description</Link></li>
-												<li><Link data-toggle="tab" to="#reviews"> Review({comments.length})</Link></li>
-											</ul>
-											<div className="tab-content">
-												<div id="description" className="tab-pane active">
-													{foundProduct?.description}
+      <div className="col-lg-12">
+        <div className="dlab-tabs product-description tabs-site-button m-t30">
+          <ul className="nav nav-tabs">
+            <li className={activeTab === "description" ? "active" : ""}>
+              <button
+                type="button"
+                onClick={() => setActiveTab("description")}
+                style={{ background: "none", border: "none", cursor: "pointer" }}
+              >
+                Description
+              </button>
+            </li>
+            <li className={activeTab === "reviews" ? "active" : ""}>
+              <button
+                type="button"
+                onClick={() => setActiveTab("reviews")}
+                style={{ background: "none", border: "none", cursor: "pointer" }}
+              >
+                Review ({comments.length})
+              </button>
+            </li>
+          </ul>
+          <div className="tab-content">
+            {activeTab === "description" && (
+              <div id="description" className="tab-pane active">
+                {foundProduct?.description}
+              </div>
+            )}
+            {activeTab === "reviews" && (
+              <div id="reviews" className="tab-pane">
+                <div id="comments">
+                  <ol className="commentlist">
+                    {comments.map((comment, index) => (
+                      <li className="comment" key={index}>
+                        <div className="comment_container">
+                          <img
+                            className="avatar avatar-60 photo"
+                            src={
+                              comment.user_image
+                                ? `${imageBase}${comment.user_image}`
+                                : require("./../../images/testimonials/pic1.jpg")
+                            }
+                            alt=""
+                          />
+                          <div className="comment-text">
+                            <div className="star-rating">
+                              <div data-rating={comment.rating || 0}>
+                                {[...Array(5)].map((_, i) => (
+                                  <i
+                                    key={i}
+                                    className={`fa fa-${
+                                      i < (comment.rating || 0)
+                                        ? "star"
+                                        : "star-o"
+                                    }`}
+                                    data-alt={i + 1}
+                                    title="regular"
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                            <p className="meta">
+                              <strong className="author">
+                                {comment.user_name || "Anonymous"}
+                              </strong>
+                              <span>
+                                {" "}
+                                {new Date(comment.created_at).toLocaleDateString()}
+                              </span>
+                            </p>
+                            <div className="description">
+                              <p>{comment.comment}</p>
+                            </div>
+                          </div>
                         </div>
-												<div id="reviews" className="tab-pane">
-													<div id="comments">
-														<ol className="commentlist">
-  {comments.map((comment, index) => (
-    <li className="comment" key={index}>
-																<div className="comment_container"> 
-        <img 
-          className="avatar avatar-60 photo" 
-          src={comment.user_image ? `${imageBase}${comment.user_image}` : require('./../../images/testimonials/pic1.jpg')} 
-          alt=""
-        />
-																	<div className="comment-text">
-          <div className="star-rating">
-            <div data-rating={comment.rating || 0}>
-              {[...Array(5)].map((_, i) => (
-                <i 
-                  key={i}
-                  className={`fa fa-${i < (comment.rating || 0) ? 'star' : 'star-o'}`} 
-                  data-alt={i + 1} 
-                  title="regular"
-                />
-              ))}
-																			</div>
-																		</div>
-																		<p className="meta"> 
-            <strong className="author">{comment.user_name || 'Anonymous'}</strong>
-            <span> {new Date(comment.created_at).toLocaleDateString()}</span>
-																		</p>
-																		<div className="description">
-            <p>{comment.comment}</p>
-																		</div>
-																	</div>
-																</div>
-															</li>
-  ))}
-														</ol>
-													</div>
-													<div id="review_form_wrapper">
-														<div id="review_form">
-															<div id="respond" className="comment-respond">
-																<h3 className="comment-reply-title" id="reply-title">Add a review</h3>
-																<p>Your email address will not be published. Required fields are marked *</p>
-																<form className="comment-form" method="post" >
-																	<div className="comment-form-rating">
-																		<label className="pull-left m-r20">Your Rating</label>
-																		<div className="rating-widget">
-
-																			<div className="rating-stars">
-																				<ul id="stars">
-                {[...Array(5)].map((_, index) => (
-                  <li key={index} className="star" title={["Poor", "Fair", "Good", "Excellent", "WOW!!!"][index]} data-value={index + 1}>
-																						<i className="fa fa-star fa-fw"></i>
-																					</li>
-                ))}
-																				</ul>
-																			</div>
-																		</div>
-																	</div>
-																	<div className="comment-form-author">
-																		<label>Name <span className="required">*</span></label>
-																		<input type="text" aria-required="true" size="30" value="" name="author" id="author" />
-																	</div>
-																	<div className="comment-form-email">
-																		<label>Email <span className="required">*</span></label>
-																		<input type="text" aria-required="true" size="30" value="" name="email" id="email" />
-																	</div>
-																	<div className="comment-form-comment">
-																		<label>Your Review</label>
-																		<textarea aria-required="true" rows="8" cols="45" name="comment" id="comment"></textarea>
-																	</div>
-																	<div className="form-submit">
-																		<input type="submit" value="Submit" className="btn" id="submit" name="submit" />
-																	</div>
-																</form>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+                <div id="review_form_wrapper">
+                  <div id="review_form">
+                    <div id="respond" className="comment-respond">
+                      <h3 className="comment-reply-title" id="reply-title">
+                        Add a review
+                      </h3>
+                      <p>
+                        Your email address will not be published. Required fields
+                        are marked *
+                      </p>
+                      <form className="comment-form" method="post">
+                        <div className="comment-form-rating">
+                          <label className="pull-left m-r20">Your Rating</label>
+                          <div className="rating-widget">
+                            <div className="rating-stars">
+                              <ul id="stars">
+                                {[...Array(5)].map((_, index) => (
+                                  <li
+                                    key={index}
+                                    className="star"
+                                    title={[
+                                      "Poor",
+                                      "Fair",
+                                      "Good",
+                                      "Excellent",
+                                      "WOW!!!",
+                                    ][index]}
+                                    data-value={index + 1}
+                                  >
+                                    <i className="fa fa-star fa-fw"></i>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="comment-form-author">
+                          <label>
+                            Name <span className="required">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            aria-required="true"
+                            size="30"
+                            name="author"
+                            id="author"
+                          />
+                        </div>
+                        <div className="comment-form-email">
+                          <label>
+                            Email <span className="required">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            aria-required="true"
+                            size="30"
+                            name="email"
+                            id="email"
+                          />
+                        </div>
+                        <div className="comment-form-comment">
+                          <label>Your Review</label>
+                          <textarea
+                            aria-required="true"
+                            rows="8"
+                            cols="45"
+                            name="comment"
+                            id="comment"
+                          ></textarea>
+                        </div>
+                        <div className="form-submit">
+                          <input
+                            type="submit"
+                            value="Submit"
+                            className="btn"
+                            id="submit"
+                            name="submit"
+                          />
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
+	</div>
 						
 						<Owl products={relatedProducts} deviceType="desktop" />
 						
