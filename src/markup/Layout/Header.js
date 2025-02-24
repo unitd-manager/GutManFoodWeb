@@ -152,7 +152,7 @@ const Header = () => {
             <li>
 			<Link to={''}>
               <button onClick={logout} style={{ background: "none", border: "none", cursor: "pointer" }}>
-			  <i className="fa fa-right-from-bracket"></i> Logout
+			  <i className="fa fa-right-from-bracket"></i> LOGOUT
               </button>
 			  </Link>
             </li>
