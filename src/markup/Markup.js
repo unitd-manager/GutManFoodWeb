@@ -108,13 +108,10 @@ class Markup extends Component{
 					<Route path='/shop-login' exact component ={Shoplogin} />
 					<Route path='/shop-register' exact component ={Shopregister} />
 					<Route path='/mail-verification' exact component ={MailVerification} />
-<<<<<<< HEAD
 					<Route path="/CategoryDetail/:categoryId" exact component ={ProductDetails} />
 
-=======
 					<Route path='/reset-password' exact component ={ResetPassword} />
 					<Route path='/forgot-password' exact component ={ForgotPassword} />
->>>>>>> b149d89f1546a5dd7624732a24c2b0a40c827e94
 					
 					<Route path='/contact-1' exact component ={Contact} />
 					<Route path='/contact-2' exact component ={Contact2} />
