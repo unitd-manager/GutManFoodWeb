@@ -309,7 +309,7 @@ const ShopCheckout = () => {
   const cartItems = location.state || {};
   const history = useHistory();
   const dispatch = useDispatch();
-  
+
   const [orderDetail, setOrderDetail] = useState({});
   const [allCountries, setAllCountries] = useState([]);
 
@@ -337,64 +337,142 @@ const ShopCheckout = () => {
   console.log("getTotalPrice", getTotalPrice());
 
   const user = getUser();
+
+  console.log('user',user)
   const userContactId = user?.contact_id;
-  console.log('contactId',user?.contact_id)
-
-  // const removeBasket = async () => {
-  //   try {
-  //     await api.post("/orders/deleteBasketContact", {
-  //       contact_id: userContactId,
-  //     });
-  //   } catch (error) {
-  //     console.error("Error removing item:", error);
-  //   }
-  // };
-
+  const userfirstname = user?.first_name;
+  const userlastname = user?.last_name;
+  const useremail= user?.email;
+  const useraddress1 = user?.address1;
+  const useraddress2 = user?.address2;
+  const userCity = user?.address_city;
+  const userState = user?.address_state;
+  const userCountry = user?.address_country_code;
+  const userPoCode = user?.address_po_code;
+  const userPhone = user?.mobile;
+  
   const handleClearCart = useCallback(() => {
 		
 		  dispatch(clearCartData(user));
 		
 	  }, [dispatch, user]);
 
-  const placeOrder = () => {
-    api
-      .post("/orders/insertorders", {
-        ...orderDetail,
-        contact_id: userContactId,
-      })
-      .then((response) => {
-        if (response.status === 200) {
-          const orderId = response.data.data.insertId;
-          Promise.all(
-            cartItems.map((item) =>
-              api.post("/orders/insertOrderItem", {
-                qty: item.qty,
-                unit_price: item.price,
-                contact_id: userContactId,
-                order_id: orderId,
-                cost_price: item.qty * item.price,
-                item_title: item.title,
-                product_id: item.product_id,
-              })
-            )
-          )
-            .then((responses) => {
-              if (responses.every((res) => res.status === 200)) {
-                sendEmail();
-                handleClearCart();
-              } else {
-                console.error("Error placing order items");
-              }
-            })
-            .catch((error) =>
-              console.error("Error placing order items:", error)
-            );
-        } else {
-          console.error("Order placement error");
+    const placeOrder = async () => {
+      try {
+        console.log("Starting placeOrder function...");
+    
+        // Step 1: Get order code
+        const orderCodeResponse = await api.post('/commonApi/getCodeValue', { type: 'orders' });
+    
+        if (orderCodeResponse.status !== 200 || !orderCodeResponse.data.data) {
+          console.error("Error getting order code");
+          return;
         }
-      })
-      .catch((error) => console.error("Error:", error));
-  };
+    
+        const orderCode = orderCodeResponse.data.data;
+        console.log("Order Code:", orderCode);
+    
+        // Step 2: Insert Order and get orderId
+        const orderResponse = await api.post("/orders/insertorders", {
+          ...orderDetail,
+          contact_id: userContactId,
+          order_code: orderCode,
+          cust_first_name:userfirstname,
+          cust_last_name:userlastname,
+          cust_email:useremail,
+          cust_address1:useraddress1,
+          cust_address2:useraddress2,
+          cust_address_city:userCity,
+          cust_address_state:userState,
+          cust_address_country:userCountry,
+          cust_address_po_code:userPoCode,
+          cust_phone:userPhone
+
+        });
+    
+        if (orderResponse.status !== 200 || !orderResponse.data.data.insertId) {
+          console.error("Order placement error");
+          return;
+        }
+    
+        const orderId = orderResponse.data.data.insertId;
+        console.log("Order ID:", orderId);
+    
+        // Step 3: Insert Order Items
+        console.log("Inserting order items...");
+        await Promise.all(
+          cartItems.map((item) =>
+            api.post("/orders/insertOrderItem", {
+              qty: item.qty,
+              unit_price: item.price,
+              contact_id: userContactId,
+              order_id: orderId,
+              cost_price: item.qty * item.price,
+              item_title: item.title,
+              product_id: item.product_id,
+            })
+          )
+        );
+        console.log("Order items inserted successfully.");
+    
+        // Step 4: Get Invoice Code
+        const invoiceCodeResponse = await api.post('/commonApi/getCodeValue', { type: 'invoice' });
+    
+        if (invoiceCodeResponse.status !== 200 || !invoiceCodeResponse.data.data) {
+          console.error("Error getting invoice code");
+          return;
+        }
+    
+        const invoiceCode = invoiceCodeResponse.data.data;
+        console.log("Invoice Code:", invoiceCode);
+    
+        // Step 5: Insert Invoice
+        const invoiceResponse = await api.post("/orders/insertInvoice", {
+          ...orderDetail,
+          contact_id: userContactId,
+          order_id: orderId,
+          invoice_code: invoiceCode,
+          invoice_date: new Date().toISOString().split("T")[0],
+          invoice_amount: getTotalPrice(),
+        });
+    
+        if (invoiceResponse.status !== 200 || !invoiceResponse.data.data.insertId) {
+          console.error("Invoice creation error");
+          return;
+        }
+    
+        const invoiceId = invoiceResponse.data.data.insertId;
+        console.log("Invoice ID:", invoiceId);
+    
+        // Step 6: Insert Invoice Items
+        console.log("Inserting invoice items...");
+        await Promise.all(
+          cartItems.map((item) =>
+            api.post("/orders/insertInvoiceItem", {
+              qty: item.qty,
+              unit_price: item.price,
+              contact_id: userContactId,
+              invoice_id: invoiceId,
+              cost_price: item.qty * item.price,
+              item_title: item.title,
+              product_id: item.product_id,
+            })
+          )
+        );
+        console.log("Invoice items inserted successfully.");
+    
+        // Step 7: Send Email & Clear Cart
+        console.log("Sending email and clearing cart...");
+        sendEmail();
+        handleClearCart();
+        console.log("Order process completed successfully.");
+    
+      } catch (error) {
+        console.error("Error placing order:", error);
+      }
+    };
+    
+    
 
   const sendEmail = () => {
     api
@@ -427,6 +505,7 @@ const ShopCheckout = () => {
 
   const handlePaymentFailure = (error) => {
     console.error("Payment Failed:", error);
+    window.confirm("Payment Failed:", error);
   };
 
   const onPaymentPress = () => {
