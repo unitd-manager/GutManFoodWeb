@@ -476,7 +476,7 @@ const ShopCheckout = () => {
 
   const sendEmail = () => {
     api
-      .post("/commonApi/sendUseremail", {
+      .post("/commonApi/sendUseremailApp", {
         to: orderDetail.shipping_email,
         subject: "Order Confirmed",
         phone: orderDetail.shipping_phone,
@@ -881,7 +881,7 @@ const ShopCheckout = () => {
                         </td>
                         <td>{product.title}</td>
                         <td>{product.qty}</td>
-                        <td className="product-price">{product.price}</td>
+                        <td className="product-price">{(product.price * product.qty).toFixed(2)}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -894,26 +894,26 @@ const ShopCheckout = () => {
                     <tbody>
                       <tr>
                         <td>Order Subtotal</td>
-                        <td className="product-price"> {getTotalPrice()}</td>
+                        <td className="product-price"> {getTotalPrice().toFixed(2)}</td>
                       </tr>
                       <tr>
                         <td>Shipping</td>
                         <td>Free Shipping</td>
                       </tr>
-                      {/* <tr>
+                      <tr>
                         <td>Coupon</td>
-                        <td className="product-price">$28.00</td>
-                      </tr> */}
+                        <td className="product-price">00.00</td>
+                      </tr>
                       <tr>
                         <td>Total</td>
                         <td className="product-price-total">
                           {" "}
-                          {getTotalPrice()}
+                          {getTotalPrice().toFixed(2)}
                         </td>
                       </tr>
                     </tbody>
                   </table>
-                  <h4>Payment Method</h4>
+                  {/* <h4>Payment Method</h4>
                   <div className="form-group">
                     <input
                       type="text"
@@ -944,7 +944,7 @@ const ShopCheckout = () => {
                       className="form-control"
                       placeholder="Card Verification Number"
                     />
-                  </div>
+                  </div> */}
                   <div className="form-group">
                     <button
                       className="btn button-lg btnhover btn-block"
