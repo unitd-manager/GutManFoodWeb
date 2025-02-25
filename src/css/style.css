@@ -3286,6 +3286,9 @@ blockquote cite{
     float: left;
     /* width: 36%; */
 }
+.text-center.section-head .text-bolds p {
+    color: white;
+  }
 .site-header.center .navbar-nav > li{
 	display: inline-block;
     float: none;

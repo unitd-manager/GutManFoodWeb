@@ -179,10 +179,13 @@ import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 import {Link} from 'react-router-dom';
 import CountUp from 'react-countup';
+
 import OurPartners from './../Element/OurPartners';
 import Slider from './../Element/Slider';
 import Category from './../Element/Category';
 import Booking from './../Pages/Booking';
+import Blog from './../Pages/blog';
+import Offer from './../Pages/Offer';
 import BestSeller from './../Element/BestSeller';
 // import Accord from './../Element/Accord';
 import DummyInstagramFeed from '../Element/DummyInstaFeed';
@@ -197,21 +200,6 @@ var img6 = require('./../../images/banner/bnr1.jpg');
 var img7 = require('./../../images/background/bg5.jpg'); 
 
 
-const blogNews = [
-	{
-		image: require('./../../images/blog/grid/pic1.jpg'),
-		title: 'Understand The Background Of Bakery Now.',
-	},
-	{
-		image: require('./../../images/blog/grid/pic2.jpg'),
-		title: 'Seven Reliable Sources To Learn About Bakery.',
-	},
-	{
-		image: require('./../../images/blog/grid/pic3.jpg'),
-		title: 'Ten Places That You Can Find Bakery.',
-	},
-]
-
 
 
 class Index1 extends Component{
@@ -224,95 +212,7 @@ class Index1 extends Component{
 					<div className="content-block">
 						<Slider />
 					<Category />			
-						<div className="section-full content-inner service-area2 bg-img-fix bg-line-top bg-line-bottom" style={{backgroundImage: "url(" + img4 + ")",  backgroundSize: "cover" }}>
-							<div className="container">
-								<div className="row">
-									<div className="col-lg-12">
-										<div className="section-head text-center">
-											<h2 className="text-white">What Do We Offer For You?</h2>
-											<p className="text-bold">Personalized health solutions to slow ageing and boost vitality.
-											Science-backed strategies for a healthier, longer life.</p>
-											<div className="dlab-separator style1 bg-primary"></div>
-										</div>
-									</div>
-								</div>
-								<div className="row">
-									<div className="col-lg-4 m-b30">
-										<img src={require('./../../images/special-diet-cakes.jpg')} className="img-cover radius-sm" alt="" />
-									</div>
-									<div className="col-lg-8">
-										<div className="row p-l30">
-											<div className="col-lg-6 col-sm-6 m-b30">
-												<div className="icon-bx-wraper text-white service-box2">
-													<div className="icon-bx">
-														<Link to={''} className="icon-cell"><img src={require('./../../images/icons/service-icon/icon2.png')} alt="" /></Link>
-													</div>
-													<div className="icon-content">
-														<h5 className="dlab-tilte">Pancakes</h5>
-														<p>Lorem Ipsum is dummy</p>
-													</div>
-												</div>
-											</div>
-											<div className="col-lg-6 col-sm-6 m-b30">
-												<div className="icon-bx-wraper text-white service-box2">
-													<div className="icon-bx">
-														<Link to={''} className="icon-cell"><img src={require('./../../images/icons/service-icon/icon3.png')} alt="" /></Link> 
-													</div>
-													<div className="icon-content">
-														<h5 className="dlab-tilte">Muffin</h5>
-														<p>Lorem Ipsum is dummy</p>
-													</div>
-												</div>
-											</div>
-											<div className="col-lg-6 col-sm-6 m-b30">
-												<div className="icon-bx-wraper text-white service-box2">
-													<div className="icon-bx">
-														<Link to={''} className="icon-cell"><img src={require('./../../images/icons/service-icon/icon4.png')} alt="" /></Link> 
-													</div>
-													<div className="icon-content">
-														<h5 className="dlab-tilte">Pumpkin cakes</h5>
-														<p>Lorem Ipsum is dummy</p>
-													</div>
-												</div>
-											</div>
-											<div className="col-lg-6 col-sm-6 m-b30">
-												<div className="icon-bx-wraper text-white service-box2">
-													<div className="icon-bx">
-														<Link to={''} className="icon-cell"><img src={require('./../../images/icons/service-icon/icon5.png')} alt="" /></Link> 
-													</div>
-													<div className="icon-content">
-														<h5 className="dlab-tilte">Pumpkin Cupcakes</h5>
-														<p>Lorem Ipsum is dummy</p>
-													</div>
-												</div>
-											</div>
-											<div className="col-lg-6 col-sm-6 m-b30">
-												<div className="icon-bx-wraper text-white service-box2">
-													<div className="icon-bx">
-														<Link to={''} className="icon-cell"><img src={require('./../../images/icons/service-icon/icon5.png')} alt="" /></Link> 
-													</div>
-													<div className="icon-content">
-														<h5 className="dlab-tilte">Cake Services</h5>
-														<p>Lorem Ipsum is dummy</p>
-													</div>
-												</div>
-											</div>
-											<div className="col-lg-6 col-sm-6 m-b30">
-												<div className="icon-bx-wraper text-white service-box2">
-													<div className="icon-bx"> 
-														<Link to={''} className="icon-cell"><img src={require('./../../images/icons/service-icon/icon1.png')} alt="" /></Link>  
-													</div>
-													<div className="icon-content">
-														<h5 className="dlab-tilte">Birthday Cake</h5>
-														<p>Lorem Ipsum is dummy</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+					<Offer />
 						
 						{/* <div className="section-full content-inner bg-gray" style={{backgroundImage:"url(" + img2 + ")",  backgroundSize:"100%"}}>
 							<div className="container">
@@ -399,13 +299,14 @@ class Index1 extends Component{
 										<div className="about-bx">
 											<div className="section-head text-center text-white">
 												<h4 className="text-white">Limited Time Offer</h4>
-												<p>Wedding Cake Sale !</p>
+												<p>Hurry! Grab this exclusive deal before it’s gone!</p>
 												<div className="icon-bx">
 													<img src={require('./../../images/icons/service-icon/icon2.png')} alt="" />
 												</div>
 											</div>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
-											<Link to={'about-1'} className="btn-secondry white btnhover btn-md"><i className="fa fa-cart"></i>GET NOW</Link>
+											<p>Don't miss out on this special offer—available for a limited time!
+											Act now and take advantage of exclusive savings!</p>
+											<Link to={"/Shop"} className="btn-secondry white btnhover btn-md"><i className="fa fa-cart"></i>GET NOW</Link>
 										</div>
 									</div>
 								</div>
@@ -419,46 +320,9 @@ class Index1 extends Component{
 								</div>
 							</div>
 							<DummyInstagramFeed/>
-							<div className="container content-inner">
-								<div className="row">
-									<div className="col-lg-12">
-										<div className="section-head text-center">
-											<div className="icon-bx icon-bx-xl">
-												<img src={require('./../../images/cake1.jpg')} alt="" />
-											</div>
-											<h3>From The Blog</h3>
-											<p>Latest news and updates</p>
-										</div>
-									</div>
-								</div>
-								<div className="row">
-									{blogNews.map((item,index) =>(
-									
-										<div className="col-lg-4 col-md-6" key={index}>
-											<div className="blog-post blog-grid blog-rounded" >
-												<div className="dlab-post-media dlab-img-effect"> 
-													<Link to={'/blog-single-sidebar'}><img src={item.image} alt="" /></Link> 
-												</div>
-												<div className="dlab-info p-a25">
-													<div className="dlab-post-title">
-														<h4 className="post-title"><Link to={'/blog-single-sidebar'}>{item.title}</Link></h4>
-													</div>
-													<div className="dlab-post-meta">
-														<ul>
-															<li className="post-folder">
-																<i className="fa fa-folder-open-o"></i> 
-																<Link to={''}>Cake</Link>,  
-																<Link to={''}> Biscuits</Link> 
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									))}
-									
-								</div>
-							</div>
+							<div className="section-full content-inner"></div>
+
+						<Blog/>
 						</div>
 					</div>		
 				</div>
