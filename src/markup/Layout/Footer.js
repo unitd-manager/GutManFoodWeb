@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-var bgfoter = require('./../../images/background/bg2.jpg');	
+var bgfoter = require('./../../images/footer.jpg');	
 
 
 class Footer extends Component{
