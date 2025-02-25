@@ -299,13 +299,14 @@ class Index1 extends Component{
 										<div className="about-bx">
 											<div className="section-head text-center text-white">
 												<h4 className="text-white">Limited Time Offer</h4>
-												<p>Wedding Cake Sale !</p>
+												<p>Hurry! Grab this exclusive deal before it’s gone!</p>
 												<div className="icon-bx">
 													<img src={require('./../../images/icons/service-icon/icon2.png')} alt="" />
 												</div>
 											</div>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
-											<Link to={'about-1'} className="btn-secondry white btnhover btn-md"><i className="fa fa-cart"></i>GET NOW</Link>
+											<p>Don't miss out on this special offer—available for a limited time!
+											Act now and take advantage of exclusive savings!</p>
+											<Link to={"/Shop"} className="btn-secondry white btnhover btn-md"><i className="fa fa-cart"></i>GET NOW</Link>
 										</div>
 									</div>
 								</div>

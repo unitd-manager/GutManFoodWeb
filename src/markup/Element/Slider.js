@@ -38,7 +38,7 @@ const Slider = () => {
 			  }}
             >
               <div className="content">
-                <span>GutMan</span>
+                <span>GutMan Foods</span>
                 <h2 className="title">{slide.title}</h2>
                 <h4
 				className="sub-title"
@@ -54,7 +54,7 @@ const Slider = () => {
                   data-toggle="modal"
                   data-target="#exampleModal"
                 >
-                  Subscribe Now
+                  Shop Now
                 </Link>
               </div>
             </div>
