@@ -677,6 +677,10 @@
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 10px;
+	color: #a020f0;
+}
+.blog-post.blog-grid .post-title a{
+	color: #a020f0;
 }
 .blog-post.blog-rounded{
 	border-radius: 4px;

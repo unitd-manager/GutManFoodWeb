@@ -118,7 +118,7 @@ const DummyInstagramFeed = () => {
                   bottom: "0",
                   left: "0",
                   right: "0",
-                  background: "rgba(0,0,0,0.5)",
+                  background: "rgb(160, 32, 240, 0.7)",
                   color: "#fff",
                   padding: "0.5rem",
                   textAlign: "center",
