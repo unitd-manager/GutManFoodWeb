@@ -17,6 +17,7 @@ import { getUser } from "../../common/user";
 import toast from "react-hot-toast";
 import { useHistory } from "react-router-dom";
 import "../../css/pagination.css";
+import Swal from "sweetalert2";
 
 const Shop = () => {
   const history = useHistory();
@@ -69,6 +70,22 @@ const Shop = () => {
       data.contact_id = user.contact_id;
       dispatch(updateCartData(data));
     } else {
+      
+      Swal.fire({
+        title: 'You are not logged in!',
+        text: "Do you want to login?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'Cancel',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push('/shop-login')
+          
+        }
+      });
     }
   };
 
@@ -83,12 +100,22 @@ const Shop = () => {
         dispatch(insertCartData(data));
       }
     } else {
-      const userConfirmed = window.confirm(
-        "Please Login. Click 'OK' to go to the Login page or 'Cancel' to stay."
-      );
-      if (userConfirmed) {
-        history.push("/shop-login"); // Navigate to the login page
-      }
+      
+      Swal.fire({
+        title: 'You are not logged in!',
+        text: "Do you want to login?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'Cancel',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push('/shop-login')
+          
+        }
+      });
     }
     setTimeout(() => {
       setIsAdding(false);
@@ -104,12 +131,23 @@ const Shop = () => {
       dispatch(insertWishlistData(data));
       toast.success("Added to wishlist!");
     } else {
-      const userConfirmed = window.confirm(
-        "Please Login. Click 'OK' to go to the Login page or 'Cancel' to stay."
-      );
-      if (userConfirmed) {
-        history.push("/shop-login"); // Navigate to the login page
-      }
+   
+                  Swal.fire({
+                    title: 'You are not logged in!',
+                    text: "Do you want to login?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: 'Cancel',
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      history.push('/shop-login')
+                      
+                    }
+                  });
+               
     }
     setTimeout(() => {
       setIsAdding(false);
@@ -261,13 +299,27 @@ const Shop = () => {
                           <Link
                                 to={`/shop-product-details/${product.product_id}`}
                               >
-                            <h6 className="item-title">
+                                <div  style={{
+      minHeight: "40px", // fixed height for two lines
+      maxHeight: "40px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      overflow: "hidden",
+    }}>
+                            <h6 className="item-title"  style={{
+        display: "-webkit-box",
+        WebkitLineClamp: 2,       // limit to 2 lines
+        WebkitBoxOrient: "vertical",
+        overflow: "hidden",
+        margin: 0,
+        textAlign: "center",
+      }}>
                              
-                                {product.title.length > 30
-                                  ? product.title.slice(0, 30) + "..."
-                                  : product.title}
+                                {product.title}
                              
                             </h6>
+                            </div>
                             </Link>
                             {/* <div className="quantity-selector mb-2"></div> */}
                             <button

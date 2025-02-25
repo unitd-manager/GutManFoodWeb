@@ -325,7 +325,7 @@ class Index1 extends Component{
 								</div>
 							</div>
 						</div> */}
-						<div className="section-full content-inner"></div>
+						<div className="section-full content-inner-3"></div>
 					<BestSeller />
 						<div className="section-full bg-white" style={{backgroundImage:"url(" + img3 + ")", backgroundSize:"100%" }}>
 							<div className="container content-inner">

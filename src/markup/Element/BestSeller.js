@@ -41,7 +41,7 @@ const Portfolio = () => {
       >
         Best Seller
       </h2>
-      <div className="container-fluid">
+      <div className="container">
         <div className="row">
           {portfolioItems&&portfolioItems.map((item, index) => (
             <div key={item.id} className="col-lg-3 col-md-6 col-sm-6">
