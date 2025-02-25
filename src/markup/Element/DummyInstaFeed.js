@@ -11,7 +11,7 @@ const dummyPosts = [
   {
     id: 2,
     image:
-      'https://images.unsplash.com/photo-1553163147-622ab57e14a7?auto=format&fit=crop&w=300&q=60',
+      'https://m.media-amazon.com/images/I/61f0XAJtJnL.UF1000,1000_QL80.jpg',
     link: 'https://instagram.com',
     caption: 'Keto Diet',
   },
@@ -25,14 +25,14 @@ const dummyPosts = [
   {
     id: 4,
     image:
-      'https://images.unsplash.com/photo-1612874740700-23a8a0bfe7e8?auto=format&fit=crop&w=300&q=60',
+      'https://www.mayoclinichealthsystem.org/-/media/national-files/images/hometown-health/2021/items-promoting-healthy-weight.jpg?sc_lang=en&hash=9C54C2EEB9D5163EC0823F673962A339',
     link: 'https://instagram.com',
     caption: 'Balanced Weight Reduction',
   },
   {
     id: 5,
     image:
-      'https://images.unsplash.com/photo-1604908177528-d4a6d2eb7d81?auto=format&fit=crop&w=300&q=60',
+      'https://drbest.in/wp-content/uploads/2019/07/001.jpg',
     link: 'https://instagram.com',
     caption: 'Essential Health Boosters',
   },
@@ -46,7 +46,7 @@ const dummyPosts = [
   {
     id: 7,
     image:
-      'https://images.unsplash.com/photo-1566843979283-0b7a8e94653e?auto=format&fit=crop&w=300&q=60',
+      'https://www.makeaheadmealmom.com/wp-content/uploads/2019/09/EasyBreakfastPastries_FeaturedImage_Compressed.jpg',
     link: 'https://instagram.com',
     caption: 'Guiltfree Pastries',
   },
