@@ -277,6 +277,7 @@ import {
 	updateCartData,
   } from "../../redux/actions/cartItemActions";
 import imageBase from '../../constants/imageBase';
+import Swal from 'sweetalert2';
 
 const Shopcart = () => {
     const dispatch = useDispatch();
@@ -289,7 +290,7 @@ console.log('state',useSelector((state) => state));
 const history=useHistory();
     useEffect(() => {
         dispatch(fetchCartData(user));
-    }, [dispatch, user]);
+    }, []);
 
 	const cartTotalPrice = useMemo(() => {
 		return cartItems.reduce((total, item) => {
@@ -315,17 +316,42 @@ const history=useHistory();
     },
     [dispatch]
   );
-    const handleRemove = (productId) => {
-        dispatch(removeCartData({ userId, productId }));
+    const handleRemove = (item) => {
+      console.log('deletable product',item);
+        dispatch(removeCartData(item));
     };
-	const handleClearCart = useCallback(() => {
-		const confirmClear = window.confirm(
-		  "Are you sure you want to clear the cart?"
-		);
-		if (confirmClear) {
-		  dispatch(clearCartData(user));
-		}
-	  }, [dispatch, user]);
+	// const handleClearCart = useCallback(() => {
+	// 	const confirmClear = window.confirm(
+	// 	  "Are you sure you want to clear the cart?"
+	// 	);
+	// 	if (confirmClear) {
+	// 	  dispatch(clearCartData(user));
+	// 	}
+	//   }, [dispatch, user]);
+
+   const handleClearCart = useCallback(() => {
+              Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you really want to clear the cart?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, clear it!',
+                cancelButtonText: 'Cancel',
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  dispatch(clearCartData(user));
+                  Swal.fire({
+                    title: 'Cleared!',
+                    text: 'Your cart has been cleared.',
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                  });
+                }
+              });
+            }, [dispatch, user]);
+    
     return (
         <>
             <Header />
@@ -353,33 +379,17 @@ const history=useHistory();
                                                cartItems.length > 0 ? cartItems?.map((item) => (
                                                     <tr key={item.basket_id}>
                                                         <td className="product-item-img">
-                                                            <img src={`${imageBase}${item?.images}`} alt={item.title} width="50" />
+                                                        <img
+    src={`${imageBase}${Array.isArray(item?.images) ? item?.images[0] : item?.images}`}
+    alt={item.title}
+    width="50"
+  />
                                                         </td>
                                                         <td>{item.title}</td>
                                                         <td>${item?.price?.toFixed(2)}</td>
                                                         <td>
-														<td >
-                            {/* <div className="cart-plus-minus">
-                              <button
-                                className="dec qtybutton"
-                                onClick={() => handleDecreaseQuantity(item)}
-                              >
-                                -
-                              </button>
-                              <input
-                                className="cart-plus-minus-box"
-                                type="text"
-                                value={item.qty}
-                                readOnly
-                              />
-                              <button
-                                className="inc qtybutton"
-                                onClick={() => handleIncreaseQuantity(item)}
-                              >
-                                +
-                              </button>
-                            </div> */}
-							<div style={{
+														<td style={{ border: "none" }} >
+                           							<div style={{
   display: "flex",
   alignItems: "center",
   border: "none",

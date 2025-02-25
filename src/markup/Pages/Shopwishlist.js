@@ -213,7 +213,7 @@
 
 // export default Shopwishlist; 
 
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect,useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
@@ -224,6 +224,7 @@ import { insertCartData,updateCartData } from "../../redux/actions/cartItemActio
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../common/user';
 import imageBase from '../../constants/imageBase';
+import Swal from 'sweetalert2';
 
 const bnr = require('./../../images/banner/bnr2.jpg');
 
@@ -245,10 +246,10 @@ const dispatch=useDispatch();
  
   };
 
-  const clearWishlistItems = () => {
-    dispatch(clearWishlistData(user))
+//   const clearWishlistItems = () => {
+//     dispatch(clearWishlistData(user))
   
-  };
+//   };
 
   const onAddToCart = (data) => {
 
@@ -264,6 +265,36 @@ const dispatch=useDispatch();
 	  dispatch(updateCartData(data));    	 
 	};
   
+        // const handleClearWishlist = useCallback(() => {
+        //     const confirmClear = window.confirm(
+        //       "Are you sure you want to clear the cart?"
+        //     );
+        //     if (confirmClear) {
+        //       dispatch(clearWishlistData(user));
+        //     }
+        //   }, [dispatch, user]);
+        const handleClearWishlist = useCallback(() => {
+            Swal.fire({
+              title: 'Are you sure?',
+              text: "Do you really want to clear the wishlist?",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, clear it!',
+              cancelButtonText: 'Cancel',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                dispatch(clearWishlistData(user));
+                Swal.fire({
+                  title: 'Cleared!',
+                  text: 'Your wishlist has been cleared.',
+                  icon: 'success',
+                  confirmButtonColor: '#3085d6',
+                });
+              }
+            });
+          }, [dispatch, user]);
 	
   useEffect(() => {
     // setLoading(true)
@@ -375,6 +406,15 @@ getWishlistItems(userInfo)
                                             )}
                                         </tbody>
                                     </table>
+                                </div>
+                                <div className="text-right">
+                                    <button 
+                                        onClick={handleClearWishlist}
+                                        className="btn btn-danger mt-3"
+                                        style={{marginBottom: '20px'}}
+                                    >
+                                        Clear Wishlist
+                                    </button>
                                 </div>
                             </div>
                         </div>

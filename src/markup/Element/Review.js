@@ -28,6 +28,7 @@ function Review() {
 
   const SubmitNote = (e) => {
     e.preventDefault();
+    
     addNoteData.contact_id = user.contact_id;
     addNoteData.rating = rating;
     addNoteData.creation_date = new Date();
@@ -122,6 +123,7 @@ function Review() {
             value={addNoteData.comments}
             onChange={handleData}
             style={textareaStyle}
+            required
           />
           <input type="submit" value="Submit" className="btn btnhover" 
         //   style={buttonStyle}

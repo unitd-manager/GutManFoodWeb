@@ -330,7 +330,8 @@ const Shopproduct = () => {
                 type="button"
                 onClick={() => setActiveTab("description")}
                 style={{
-                  background: "none",
+                  background: activeTab === "description" ? "#a020f0" : "none",
+          color: activeTab === "description" ? "white" : "#333",
                   border: "none",
                   cursor: "pointer",
                   padding: "10px",
@@ -344,7 +345,8 @@ const Shopproduct = () => {
                 type="button"
                 onClick={() => setActiveTab("reviews")}
                 style={{
-                  background: "none",
+                  background: activeTab === "reviews" ? "#a020f0" : "none",
+                  color: activeTab === "reviews" ? "white" : "#333",
                   border: "none",
                   cursor: "pointer",
                   padding: "10px",
@@ -357,7 +359,9 @@ const Shopproduct = () => {
           <div className="tab-content">
             {activeTab === "description" && (
               <div id="description" className="tab-pane active">
-                {foundProduct?.description?.replace(/<[^>]*>/g, '')}
+                <div style={{ textIndent: "20px" }}>
+  {foundProduct?.description?.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ')  }
+</div>
               </div>
             )}
             {activeTab === "reviews" && (

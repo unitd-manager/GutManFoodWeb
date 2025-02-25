@@ -10573,7 +10573,7 @@ ul[class*="list-"]{
 }
 .dlab-box-bg .icon-box-btn .btn{
 	border-radius: 0;
-    color: #1abc9c;
+    color: #a020f0;
     font-weight: 600;
     margin-bottom: 0;
 }/* >Box New Style */
@@ -12805,12 +12805,12 @@ border: 0;
 .product-brand .search-content .search-content-area {
     margin-bottom: 0;
     font-weight: 400;
-    color: #777;
+    /* color: #777; */
 }
 /* Price */
 .price .amount {
 	border: 0 none;
-    color: #777;
+    color: #a020f0 !important;
     font-weight: 400;
     margin-bottom: 15px;
     padding: 0;

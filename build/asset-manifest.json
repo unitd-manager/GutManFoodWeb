@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.b3f17428.chunk.css",
-    "main.js": "/static/js/main.e0a97565.chunk.js",
-    "main.js.map": "/static/js/main.e0a97565.chunk.js.map",
+    "main.css": "/static/css/main.a42fee30.chunk.css",
+    "main.js": "/static/js/main.76b5da72.chunk.js",
+    "main.js.map": "/static/js/main.76b5da72.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.cf9efd49.js",
     "runtime-main.js.map": "/static/js/runtime-main.cf9efd49.js.map",
     "static/css/2.c39de49e.chunk.css": "/static/css/2.c39de49e.chunk.css",
-    "static/js/2.edd705e8.chunk.js": "/static/js/2.edd705e8.chunk.js",
-    "static/js/2.edd705e8.chunk.js.map": "/static/js/2.edd705e8.chunk.js.map",
+    "static/js/2.1dbfc587.chunk.js": "/static/js/2.1dbfc587.chunk.js",
+    "static/js/2.1dbfc587.chunk.js.map": "/static/js/2.1dbfc587.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.d676d38f593bb87953f42a7888aba9dd.js": "/precache-manifest.d676d38f593bb87953f42a7888aba9dd.js",
+    "precache-manifest.0f7a8cffb1d1141dbc43434153b1335a.js": "/precache-manifest.0f7a8cffb1d1141dbc43434153b1335a.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.c39de49e.chunk.css.map": "/static/css/2.c39de49e.chunk.css.map",
-    "static/css/main.b3f17428.chunk.css.map": "/static/css/main.b3f17428.chunk.css.map",
-    "static/js/2.edd705e8.chunk.js.LICENSE.txt": "/static/js/2.edd705e8.chunk.js.LICENSE.txt",
+    "static/css/main.a42fee30.chunk.css.map": "/static/css/main.a42fee30.chunk.css.map",
+    "static/js/2.1dbfc587.chunk.js.LICENSE.txt": "/static/js/2.1dbfc587.chunk.js.LICENSE.txt",
     "static/media/plugins.css": "/static/media/themify.e23a7dca.ttf",
     "static/media/adv.jpg": "/static/media/adv.c8499f4f.jpg",
     "static/media/adv1.jpg": "/static/media/adv1.0c1e07fb.jpg",
@@ -24,6 +24,7 @@
     "static/media/adv6.jpg": "/static/media/adv6.b73753bc.jpg",
     "static/media/adv7.jpg": "/static/media/adv7.274cdac6.jpg",
     "static/media/adv8.jpg": "/static/media/adv8.6c88e237.jpg",
+    "static/media/balanced-diet.png": "/static/media/balanced-diet.1435352a.png",
     "static/media/templete.css": "/static/media/pattern.9cc3f466.svg",
     "static/media/bg2.jpg": "/static/media/bg2.18816c4f.jpg",
     "static/media/bg3.jpg": "/static/media/bg3.57553a6a.jpg",
@@ -47,7 +48,6 @@
     "static/media/logo4.jpg": "/static/media/logo4.5c809f3f.jpg",
     "static/media/logo5.jpg": "/static/media/logo5.3de091e4.jpg",
     "static/media/logo6.jpg": "/static/media/logo6.afb9baaf.jpg",
-    "static/media/map.png": "/static/media/map.1c1e8ec0.png",
     "static/media/member1.jpg": "/static/media/member1.ea01aebd.jpg",
     "static/media/member2.jpg": "/static/media/member2.d02953c2.jpg",
     "static/media/member3.jpg": "/static/media/member3.ed5d998f.jpg",
@@ -65,6 +65,7 @@
     "static/media/slide1.jpg": "/static/media/slide1.9e7b0e2d.jpg",
     "static/media/slide10.jpg": "/static/media/slide10.8916377f.jpg",
     "static/media/slide2.jpg": "/static/media/slide2.367450de.jpg",
+    "static/media/special-diet-cakes.jpg": "/static/media/special-diet-cakes.0301d3d5.jpg",
     "static/media/thum1.jpg": "/static/media/thum1.879a3fdf.jpg",
     "static/media/thum2.jpg": "/static/media/thum2.e2cb012d.jpg",
     "static/media/thum3.jpg": "/static/media/thum3.d2724a1d.jpg",
@@ -73,8 +74,8 @@
   "entrypoints": [
     "static/js/runtime-main.cf9efd49.js",
     "static/css/2.c39de49e.chunk.css",
-    "static/js/2.edd705e8.chunk.js",
-    "static/css/main.b3f17428.chunk.css",
-    "static/js/main.e0a97565.chunk.js"
+    "static/js/2.1dbfc587.chunk.js",
+    "static/css/main.a42fee30.chunk.css",
+    "static/js/main.76b5da72.chunk.js"
   ]
 }
