@@ -7,8 +7,9 @@ import { useSelector } from 'react-redux';
 import api from '../../constants/api';  // Ensure you have your API setup
 import { getUser } from '../../common/user';
 import Swal from 'sweetalert2';
-import {  OverlayTrigger,Tooltip } from 'react-bootstrap';
 import "../../css/pagination.css";
+import { Tooltip } from 'react-tippy';
+import 'react-tippy/dist/tippy.css';
 
 const Header = () => {
 	const cartItems = useSelector((state) => state.cartItems.cartItems);
@@ -21,11 +22,7 @@ const Header = () => {
 	const [hoveredSectionId, setHoveredSectionId] = useState(null);
 	const [hoveredCategoryId, setHoveredCategoryId] = useState(null);
 
-	const renderTooltip = (props) => (
-		<Tooltip id="button-tooltip" {...props}>
-		  This is a tooltip!
-		</Tooltip>
-	  );
+	
 
 	useEffect(() => {
 		// Fetch sections, categories, and subcategories
@@ -161,10 +158,10 @@ const Header = () => {
 										
 									</li>
 									<li>
-									<NavLink
+									 <NavLink
           to="/shop"
            activeClassName="active-menu"
-        >   <AiOutlineShopping className="nav-icon" size={22}/> </NavLink>
+        >  <AiOutlineShopping className="nav-icon" size={22}/> </NavLink>
 										{/* <ul className="sub-menu">
 											<li><Link to ={'/shop'}>Shop</Link></li>
 											<li><Link to ={'/shop-sidebar'}>Shop Sidebar</Link></li>
