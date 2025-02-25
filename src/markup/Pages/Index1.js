@@ -185,6 +185,7 @@ import Slider from './../Element/Slider';
 import Category from './../Element/Category';
 import Booking from './../Pages/Booking';
 import Blog from './../Pages/blog';
+import Offer from './../Pages/Offer';
 import BestSeller from './../Element/BestSeller';
 // import Accord from './../Element/Accord';
 import DummyInstagramFeed from '../Element/DummyInstaFeed';
@@ -211,95 +212,7 @@ class Index1 extends Component{
 					<div className="content-block">
 						<Slider />
 					<Category />			
-						<div className="section-full content-inner service-area2 bg-img-fix bg-line-top bg-line-bottom" style={{backgroundImage: "url(" + img4 + ")",  backgroundSize: "cover" }}>
-							<div className="container">
-								<div className="row">
-									<div className="col-lg-12">
-										<div className="section-head text-center">
-											<h2 className="text-white">What Do We Offer For You?</h2>
-											<p className="text-bold">Personalized health solutions to slow ageing and boost vitality.
-											Science-backed strategies for a healthier, longer life.</p>
-											<div className="dlab-separator style1 bg-primary"></div>
-										</div>
-									</div>
-								</div>
-								<div className="row">
-									<div className="col-lg-4 m-b30">
-										<img src={require('./../../images/special-diet-cakes.jpg')} className="img-cover radius-sm" alt="" />
-									</div>
-									<div className="col-lg-8">
-										<div className="row p-l30">
-											<div className="col-lg-6 col-sm-6 m-b30">
-												<div className="icon-bx-wraper text-white service-box2">
-													<div className="icon-bx">
-														<Link to={''} className="icon-cell"><img src={require('./../../images/icons/service-icon/icon2.png')} alt="" /></Link>
-													</div>
-													<div className="icon-content">
-														<h5 className="dlab-tilte">Pancakes</h5>
-														<p>Lorem Ipsum is dummy</p>
-													</div>
-												</div>
-											</div>
-											<div className="col-lg-6 col-sm-6 m-b30">
-												<div className="icon-bx-wraper text-white service-box2">
-													<div className="icon-bx">
-														<Link to={''} className="icon-cell"><img src={require('./../../images/icons/service-icon/icon3.png')} alt="" /></Link> 
-													</div>
-													<div className="icon-content">
-														<h5 className="dlab-tilte">Muffin</h5>
-														<p>Lorem Ipsum is dummy</p>
-													</div>
-												</div>
-											</div>
-											<div className="col-lg-6 col-sm-6 m-b30">
-												<div className="icon-bx-wraper text-white service-box2">
-													<div className="icon-bx">
-														<Link to={''} className="icon-cell"><img src={require('./../../images/icons/service-icon/icon4.png')} alt="" /></Link> 
-													</div>
-													<div className="icon-content">
-														<h5 className="dlab-tilte">Pumpkin cakes</h5>
-														<p>Lorem Ipsum is dummy</p>
-													</div>
-												</div>
-											</div>
-											<div className="col-lg-6 col-sm-6 m-b30">
-												<div className="icon-bx-wraper text-white service-box2">
-													<div className="icon-bx">
-														<Link to={''} className="icon-cell"><img src={require('./../../images/icons/service-icon/icon5.png')} alt="" /></Link> 
-													</div>
-													<div className="icon-content">
-														<h5 className="dlab-tilte">Pumpkin Cupcakes</h5>
-														<p>Lorem Ipsum is dummy</p>
-													</div>
-												</div>
-											</div>
-											<div className="col-lg-6 col-sm-6 m-b30">
-												<div className="icon-bx-wraper text-white service-box2">
-													<div className="icon-bx">
-														<Link to={''} className="icon-cell"><img src={require('./../../images/icons/service-icon/icon5.png')} alt="" /></Link> 
-													</div>
-													<div className="icon-content">
-														<h5 className="dlab-tilte">Cake Services</h5>
-														<p>Lorem Ipsum is dummy</p>
-													</div>
-												</div>
-											</div>
-											<div className="col-lg-6 col-sm-6 m-b30">
-												<div className="icon-bx-wraper text-white service-box2">
-													<div className="icon-bx"> 
-														<Link to={''} className="icon-cell"><img src={require('./../../images/icons/service-icon/icon1.png')} alt="" /></Link>  
-													</div>
-													<div className="icon-content">
-														<h5 className="dlab-tilte">Birthday Cake</h5>
-														<p>Lorem Ipsum is dummy</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+					<Offer />
 						
 						{/* <div className="section-full content-inner bg-gray" style={{backgroundImage:"url(" + img2 + ")",  backgroundSize:"100%"}}>
 							<div className="container">
