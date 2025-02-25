@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { AiOutlineHeart, AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai';
+import { Link,NavLink } from 'react-router-dom';
+import { AiOutlineHeart, AiOutlineShopping, AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai';
 import { BiLogIn } from 'react-icons/bi';
 import { MdOutlineAppRegistration } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 import api from '../../constants/api';  // Ensure you have your API setup
 import { getUser } from '../../common/user';
+import Swal from 'sweetalert2';
+import {  OverlayTrigger,Tooltip } from 'react-bootstrap';
+import "../../css/pagination.css";
 
 const Header = () => {
 	const cartItems = useSelector((state) => state.cartItems.cartItems);
@@ -17,6 +20,12 @@ const Header = () => {
 	const [subCategories, setSubCategories] = useState([]);
 	const [hoveredSectionId, setHoveredSectionId] = useState(null);
 	const [hoveredCategoryId, setHoveredCategoryId] = useState(null);
+
+	const renderTooltip = (props) => (
+		<Tooltip id="button-tooltip" {...props}>
+		  This is a tooltip!
+		</Tooltip>
+	  );
 
 	useEffect(() => {
 		// Fetch sections, categories, and subcategories
@@ -40,10 +49,26 @@ const Header = () => {
 	const getSubCategoriesForCategory = (categoryId) => subCategories.filter(sub => sub.category_id === categoryId);
 
 	const logout = () => {
-		localStorage.clear();
-		setTimeout(() => {
-			window.location.reload();
-		}, 200);
+		
+						  Swal.fire({
+							title: 'Are you sure?',
+							text: "Do you want to logout?",
+							icon: 'warning',
+							showCancelButton: true,
+							confirmButtonColor: '#3085d6',
+							cancelButtonColor: '#d33',
+							confirmButtonText: 'Yes, Logout',
+							cancelButtonText: 'Cancel',
+						  }).then((result) => {
+							if (result.isConfirmed) {
+								localStorage.clear();
+								setTimeout(() => {
+									window.location.reload();
+								}, 200);
+							  
+							}
+						  });
+		
 	};
 
 	return (
@@ -64,7 +89,9 @@ const Header = () => {
 									<li key={section.id}
 										onMouseEnter={() => setHoveredSectionId(section.section_id)}
 										onMouseLeave={() => setHoveredSectionId(null)}>
-										<Link  to={`/${section.section_title}`}>{section.section_title} <i className="fa fa-chevron-down"></i></Link>
+										<NavLink activeClassName="active-menu"  to={`/${section.section_title}`}><span className='nav-icon'>{section.section_title} </span>
+										{/* <i className="fa fa-chevron-down"></i> */}
+										</NavLink>
 										{hoveredSectionId === section.section_id && getCategoriesForSection(section.section_id).length > 0 && (
     <ul className="sub-menu">
         {getCategoriesForSection(section.section_id).map((category) => (
@@ -113,14 +140,20 @@ const Header = () => {
         ) : (
           <>
             <li>
-              <Link to={'/shop-login'}>
+			<NavLink
+          to="/shop-login"
+          activeClassName="active-menu nav-icon"
+        >
                 <BiLogIn size={20} title="Login" /> Sign In
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to={'/shop-register'}>
+			<NavLink
+          to="/shop-register"
+           activeClassName="active-menu nav-icon"
+        >
                 <MdOutlineAppRegistration size={22} title="Register" /> Register
-              </Link>
+              </NavLink>
             </li>
           </>
         )}
@@ -128,7 +161,10 @@ const Header = () => {
 										
 									</li>
 									<li>
-										<Link to={'/shop'}>Shop </Link>
+									<NavLink
+          to="/shop"
+           activeClassName="active-menu"
+        >   <AiOutlineShopping className="nav-icon" size={22}/> </NavLink>
 										{/* <ul className="sub-menu">
 											<li><Link to ={'/shop'}>Shop</Link></li>
 											<li><Link to ={'/shop-sidebar'}>Shop Sidebar</Link></li>
@@ -136,11 +172,21 @@ const Header = () => {
 										</ul> */}
 									</li>
 									<li>
-										<Link to={'/shop-cart'}><AiOutlineShoppingCart size={22} /> <span style={getBadgeStyle(cartItems.length)}>{cartItems.length}</span> </Link>
+									<NavLink
+          to="/shop-cart"
+           activeClassName="active-menu"
+        >    
+										
+										<AiOutlineShoppingCart className="nav-icon" size={22} /> <span style={getBadgeStyle(cartItems.length)}>{cartItems.length}</span>
+										 </NavLink>
 									</li>
 									<li>
-										<Link to={'/shop-wishlist'}><AiOutlineHeart size={22} /><span style={getBadgeStyle(wishlistItems.length)} >{wishlistItems.length}
-          </span></Link>
+									<NavLink
+          to="/shop-wishlist"
+          activeClassName="active-menu"
+        
+        ><AiOutlineHeart size={22} className="nav-icon" /><span style={getBadgeStyle(wishlistItems.length)} >{wishlistItems.length}
+          </span></NavLink>
 									</li>
                                 {/* <li>
                                     <Link to={''}>Contact Us <i className="fa fa-chevron-down"></i></Link>

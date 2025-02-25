@@ -65,4 +65,8 @@
 	  min-width: 15px;
 	}
   }
-  
+  .active-menu .nav-icon {
+	color: purple !important;              /* Icon color */
+	border-bottom: 2px solid purple;  /* Underline the icon */
+	padding-bottom: 2px;        /* Adjust spacing so the border is closer */
+  }

@@ -312,7 +312,7 @@ const ShopCheckout = () => {
 
   const [orderDetail, setOrderDetail] = useState({});
   const [allCountries, setAllCountries] = useState([]);
-
+  console.log("location", location);
   console.log("cartItems", cartItems);
 
   useEffect(() => {
@@ -331,7 +331,7 @@ const ShopCheckout = () => {
   };
 
   const getTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.qty, 0);
+    return cartItems?.reduce((total, item) => total + item.price * item.qty, 0);
   };
 
   console.log("getTotalPrice", getTotalPrice());
