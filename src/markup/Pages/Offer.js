@@ -11,7 +11,7 @@ const ServiceSection = () => {
   // Fetch category data
   const getCategory = async () => {
     try {
-      const res = await api.get('/category/getAllCategoryWeb');
+      const res = await api.get('/content/getAllOfferPage');
       const data = res.data.data.map((el) => ({
         ...el,
         images: el.images ? String(el.images).split(",") : [],
@@ -96,7 +96,6 @@ const ServiceSection = () => {
                             <img
                               src={`${imageBase}${encodeURIComponent(service.images[0].trim())}`}
                               alt={service.category_title}
-                              style={{ width: "80px", height: "80px", borderRadius: "50%" , objectFit: "cover", display: "block" }}
                            
                             />
                           ) : (
@@ -105,7 +104,7 @@ const ServiceSection = () => {
                         </Link>
                       </div>
                       <div className="icon-content">
-                        <h5 className="dlab-tilte">{service.category_title || "No Title"}</h5>
+                        <h5 className="dlab-tilte">{service.title || "No Title"}</h5>
                       </div>
                     </div>
                   </div>

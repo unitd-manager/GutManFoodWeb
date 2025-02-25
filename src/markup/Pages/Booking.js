@@ -4,7 +4,7 @@ import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 import api from '../../constants/api';
 
-var img1 = require('./../../images/banner/bnr1.jpg'); 
+var img1 = require('./../../images/booking.jpg'); 
 var img2 = require('./../../images/background/bg5.jpg'); 
 
 const Booking = () => {
@@ -49,7 +49,7 @@ const Booking = () => {
                 <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + img1 + ")" }}>
                     <div className="container">
                         <div className="dlab-bnr-inr-entry">
-                            <h1 className="text-white">Booking</h1>
+                            <h1 className="text-white">For Booking</h1>
                             <div className="breadcrumb-row">
                                 {/* <ul className="list-inline">
                                     <li><Link to={'./'}><i className="fa fa-home"></i></Link></li>
@@ -67,7 +67,8 @@ const Booking = () => {
                                 <div className="appointment-form">
                                     <div className="section-head m-b30">
                                         <h2 className="main-title">Contact Us</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut blandit arcu in pretium.</p>
+                                        <p>Have questions or need assistance? We're here to help!
+                                        Contact us today, and let’s take the next step toward better health together.</p>
                                     </div>
                                     {message && <div className="alert alert-info">{message}</div>}
                                     <form onSubmit={handleSubmit}>
@@ -115,7 +116,7 @@ const Booking = () => {
                             </div>
 
                             <div className="col-xl-6 col-lg-6 m-b30">
-                                <img src={require('./../../images/about/pic7.jpg')} alt="" className="img-cover radius-sm" />
+                                <img src={require('./../../images/contact.jpg')} alt="" className="img-cover radius-sm" />
                             </div>
                         </div>
                     </div>
