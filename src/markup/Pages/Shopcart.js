@@ -463,7 +463,7 @@ const history=useHistory();
                                         </tbody>
                                     </table>
                                 </div>
-                                <div className="text-right">
+                                {cartItems.length > 0 && <div className="text-right">
                                     <button 
                                         onClick={handleClearCart}
                                         className="btn btn-danger mt-3"
@@ -471,7 +471,7 @@ const history=useHistory();
                                     >
                                         Clear Cart
                                     </button>
-                                </div>
+                                </div>}
 								<div className="row">
  							<div className="col-lg-6 col-md-6 m-b30">
 							<form className="shop-form"> 

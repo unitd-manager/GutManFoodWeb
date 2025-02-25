@@ -407,7 +407,7 @@ getWishlistItems(userInfo)
                                         </tbody>
                                     </table>
                                 </div>
-                                <div className="text-right">
+                                {wishlistItems.length > 0 && <div className="text-right">
                                     <button 
                                         onClick={handleClearWishlist}
                                         className="btn btn-danger mt-3"
@@ -415,7 +415,7 @@ getWishlistItems(userInfo)
                                     >
                                         Clear Wishlist
                                     </button>
-                                </div>
+                                </div>}
                             </div>
                         </div>
                     </div>
