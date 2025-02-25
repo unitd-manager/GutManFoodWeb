@@ -31,7 +31,11 @@ const Slider = () => {
           <Carousel.Item key={index}>
             <div
               className="slide"
-              style={{ backgroundImage: `url(${imageBase}${slide.images[0]})` }}
+			  style={{
+				backgroundImage: `url(${imageBase}${encodeURIComponent(slide.images[0].trim())})`,
+				backgroundSize: "cover",
+				backgroundPosition: "center",
+			  }}
             >
               <div className="content">
                 <span>GutMan</span>

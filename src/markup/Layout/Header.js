@@ -50,9 +50,9 @@ const Header = () => {
 		<header className="site-header header center mo-left header-style-2">
 			<div className="sticky-header main-bar-wraper navbar-expand-lg">
 				<div className="main-bar clearfix">
-					<div className="container-fluid">
+					<div className="container">
 						<div className="logo-header mostion">
-							<Link to={'/'}><img src={require('./../../images/logo.png')} alt="logo" /></Link>
+							<Link to={'/'}><img src={require('./../../images/logos.png')} alt="logo" /></Link>
 						</div>
 						<button className="navbar-toggler collapsed navicon" type="button">
 							<span></span><span></span><span></span>
