@@ -30,7 +30,7 @@ const BlogScreen = () => {
             <div className="col-lg-12">
                 <div className="section-head text-center">
                     <div className="icon-bx icon-bx-xl">
-                        <img src={require('./../../images/cake1.jpg')} alt="" />
+                        <img src={require('./../../images/balanced.png')} alt="" />
                     </div>
                     <h3>From The Blog</h3>
                     <p>Latest news and updates</p>

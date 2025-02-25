@@ -293,7 +293,7 @@ class Index1 extends Component{
 							<div className="container">
 								<div className="row m-lr0 about-area1">
 									<div className="col-lg-6 p-lr0">
-										<img className="img-cover" src={require('./../../images/limit.jpg')} alt="" />
+										<img className="img-cover" src={require('./../../images/limited.jpg')} alt="" />
 									</div>
 									<div className="col-lg-6 p-lr0 d-flex align-items-center text-center">
 										<div className="about-bx">
@@ -314,14 +314,13 @@ class Index1 extends Component{
 							<div className="section-full content-inner"></div>
 						<Booking />
 
-							<div className="container">
+							{/* <div className="container">
 								<div className="row client-area1 p-t80">
 									<OurPartners  />
 								</div>
-							</div>
+							</div> */}
 							<DummyInstagramFeed/>
-							<div className="section-full content-inner"></div>
-
+							<div className="section-full"></div>
 						<Blog/>
 						</div>
 					</div>		
