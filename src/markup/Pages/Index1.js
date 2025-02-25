@@ -192,7 +192,7 @@ var img1 = require('./../../images/background/bg5.jpg');
 
 var img2 = require('./../../images/background/bg1.jpg');
 var img3 = require('./../../images/background/bg5.jpg');
-var img4 = require('./../../images/background/bg4.jpg');
+var img4 = require('./../../images/offer.jpg');
 var img6 = require('./../../images/banner/bnr1.jpg'); 
 var img7 = require('./../../images/background/bg5.jpg'); 
 
@@ -338,6 +338,7 @@ class Index1 extends Component{
 								</div>
 							</div>
 						</div> */}
+						<div className="section-full content-inner"></div>
 					<BestSeller />
 						<div className="section-full bg-white" style={{backgroundImage:"url(" + img3 + ")", backgroundSize:"100%" }}>
 							<div className="container content-inner">
@@ -409,7 +410,7 @@ class Index1 extends Component{
 									</div>
 								</div>
 							</div>
-
+							<div className="section-full content-inner"></div>
 						<Booking />
 
 							<div className="container">
