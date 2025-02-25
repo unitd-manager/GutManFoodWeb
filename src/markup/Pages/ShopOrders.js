@@ -5,10 +5,11 @@ import Footer from "../Layout/Footer";
 import { getUser } from "../../common/user";
 import imageBase from "../../constants/imageBase";
 import api from "../../constants/api";
+const placeholderImage = "https://via.placeholder.com/100"; // Fallback image
 
 const bnr = require("./../../images/banner/bnr2.jpg");
 
-const Shopwishlist = () => {
+const ShopOrders = () => {
   const [orders, setOrders] = useState();
   const user = getUser();
   console.log("contactId", user.contact_id);
@@ -58,23 +59,29 @@ const Shopwishlist = () => {
                     <thead>
                       <tr>
                         <th>Product</th>
+                        <th>Order Code</th>
+                        <th>Invoice Code</th>
                         <th>Product Name</th>
                         <th>Unit Price</th>
                         <th>Quantity</th>
                         <th>Order Date</th>
                         <th>Order Status</th>
+                        <th>Payment Method</th>
                       </tr>
                     </thead>
                     <tbody>
                       {orders?.length > 0 ? (
                         orders.map((item) => (
-                          <tr key={item.id} className="alert">
-                            <td className="product-item-img">
-                              <img
-                                src={`${imageBase}${item.images[0]}`}
-                                alt={item.title}
-                              />
-                            </td>
+                          <tr key={item.order_id} className="alert">
+                         <td className="p-3">
+                        <img
+                          src={item.image ? `${imageBase}${item.image}` : placeholderImage}
+                          alt={item.item_title}
+                          className="w-16 h-16 object-cover rounded"
+                        />
+                      </td>
+                            <td className="product-item-name">{item.order_code}</td>
+                            <td className="product-item-name">{item.invoice_code}</td>
                             <td className="product-item-name">{item.item_title}</td>
                             <td className="product-item-price">
                               ${item.unit_price?.toFixed(2)}
@@ -85,6 +92,9 @@ const Shopwishlist = () => {
                             </td>
                             <td className="product-item-name">
                               {item.order_status}
+                            </td>
+                            <td className="product-item-name">
+                              {item.payment_method}
                             </td>
                           </tr>
                         ))
@@ -108,4 +118,4 @@ const Shopwishlist = () => {
   );
 };
 
-export default Shopwishlist;
+export default ShopOrders;
