@@ -299,13 +299,27 @@ const Shop = () => {
                           <Link
                                 to={`/shop-product-details/${product.product_id}`}
                               >
-                            <h6 className="item-title">
+                                <div  style={{
+      minHeight: "40px", // fixed height for two lines
+      maxHeight: "40px",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      overflow: "hidden",
+    }}>
+                            <h6 className="item-title"  style={{
+        display: "-webkit-box",
+        WebkitLineClamp: 2,       // limit to 2 lines
+        WebkitBoxOrient: "vertical",
+        overflow: "hidden",
+        margin: 0,
+        textAlign: "center",
+      }}>
                              
-                                {product.title.length > 30
-                                  ? product.title.slice(0, 30) + "..."
-                                  : product.title}
+                                {product.title}
                              
                             </h6>
+                            </div>
                             </Link>
                             {/* <div className="quantity-selector mb-2"></div> */}
                             <button

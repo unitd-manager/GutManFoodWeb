@@ -179,10 +179,12 @@ import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 import {Link} from 'react-router-dom';
 import CountUp from 'react-countup';
+
 import OurPartners from './../Element/OurPartners';
 import Slider from './../Element/Slider';
 import Category from './../Element/Category';
 import Booking from './../Pages/Booking';
+import Blog from './../Pages/blog';
 import BestSeller from './../Element/BestSeller';
 // import Accord from './../Element/Accord';
 import DummyInstagramFeed from '../Element/DummyInstaFeed';
@@ -196,21 +198,6 @@ var img4 = require('./../../images/offer.jpg');
 var img6 = require('./../../images/banner/bnr1.jpg'); 
 var img7 = require('./../../images/background/bg5.jpg'); 
 
-
-const blogNews = [
-	{
-		image: require('./../../images/blog/grid/pic1.jpg'),
-		title: 'Understand The Background Of Bakery Now.',
-	},
-	{
-		image: require('./../../images/blog/grid/pic2.jpg'),
-		title: 'Seven Reliable Sources To Learn About Bakery.',
-	},
-	{
-		image: require('./../../images/blog/grid/pic3.jpg'),
-		title: 'Ten Places That You Can Find Bakery.',
-	},
-]
 
 
 
@@ -338,7 +325,7 @@ class Index1 extends Component{
 								</div>
 							</div>
 						</div> */}
-						<div className="section-full content-inner"></div>
+						<div className="section-full content-inner-3"></div>
 					<BestSeller />
 						<div className="section-full bg-white" style={{backgroundImage:"url(" + img3 + ")", backgroundSize:"100%" }}>
 							<div className="container content-inner">
@@ -419,46 +406,9 @@ class Index1 extends Component{
 								</div>
 							</div>
 							<DummyInstagramFeed/>
-							<div className="container content-inner">
-								<div className="row">
-									<div className="col-lg-12">
-										<div className="section-head text-center">
-											<div className="icon-bx icon-bx-xl">
-												<img src={require('./../../images/cake1.jpg')} alt="" />
-											</div>
-											<h3>From The Blog</h3>
-											<p>Latest news and updates</p>
-										</div>
-									</div>
-								</div>
-								<div className="row">
-									{blogNews.map((item,index) =>(
-									
-										<div className="col-lg-4 col-md-6" key={index}>
-											<div className="blog-post blog-grid blog-rounded" >
-												<div className="dlab-post-media dlab-img-effect"> 
-													<Link to={'/blog-single-sidebar'}><img src={item.image} alt="" /></Link> 
-												</div>
-												<div className="dlab-info p-a25">
-													<div className="dlab-post-title">
-														<h4 className="post-title"><Link to={'/blog-single-sidebar'}>{item.title}</Link></h4>
-													</div>
-													<div className="dlab-post-meta">
-														<ul>
-															<li className="post-folder">
-																<i className="fa fa-folder-open-o"></i> 
-																<Link to={''}>Cake</Link>,  
-																<Link to={''}> Biscuits</Link> 
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									))}
-									
-								</div>
-							</div>
+							<div className="section-full content-inner"></div>
+
+						<Blog/>
 						</div>
 					</div>		
 				</div>
