@@ -49,7 +49,7 @@ const Booking = () => {
                 <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + img1 + ")" }}>
                     <div className="container">
                         <div className="dlab-bnr-inr-entry">
-                            <h1 className="text-white">Booking</h1>
+                            <h1 className="text-white">For Booking</h1>
                             <div className="breadcrumb-row">
                                 {/* <ul className="list-inline">
                                     <li><Link to={'./'}><i className="fa fa-home"></i></Link></li>
@@ -67,7 +67,8 @@ const Booking = () => {
                                 <div className="appointment-form">
                                     <div className="section-head m-b30">
                                         <h2 className="main-title">Contact Us</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut blandit arcu in pretium.</p>
+                                        <p>Have questions or need assistance? We're here to help!
+                                        Contact us today, and let’s take the next step toward better health together.</p>
                                     </div>
                                     {message && <div className="alert alert-info">{message}</div>}
                                     <form onSubmit={handleSubmit}>
