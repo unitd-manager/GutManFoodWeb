@@ -15,6 +15,7 @@ import Swal from "sweetalert2";
 import "../../css/pagination.css";
 import { Tooltip } from "react-tippy";
 import "react-tippy/dist/tippy.css";
+import "../../css/pagination.css"
 
 const Header = () => {
   const cartItems = useSelector((state) => state.cartItems.cartItems);
@@ -28,7 +29,11 @@ const Header = () => {
   const [subCategories, setSubCategories] = useState([]);
   const [hoveredSectionId, setHoveredSectionId] = useState(null);
   const [hoveredCategoryId, setHoveredCategoryId] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
   useEffect(() => {
     // Fetch sections, categories, and subcategories
     api
@@ -85,11 +90,33 @@ const Header = () => {
                 <img src={require("./../../images/logos.png")} alt="logo" />
               </Link>
             </div>
-            <button className="navbar-toggler collapsed navicon" type="button">
+            <button className= {`navbar-toggler collapsed navicon ${menuOpen ? "open" : ""}`} type="button"
+			 onClick={toggleMenu}>
               <span></span>
               <span></span>
               <span></span>
             </button>
+
+			  {/* Mobile Menu */}
+
+			  {menuOpen &&
+			  <div className={`header-nav navbar-collapse ${menuOpen ? "show" : ""}`} id="navbarNavDropdown">
+              <ul className="nav navbar-nav">
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/about-1">About Us</Link>
+                </li>
+                <li>
+                  <Link to="/shop">Shop</Link>
+                </li>
+                <li>
+                  <Link to="/contact-1">Contact</Link>
+                </li>
+              </ul>
+            </div>
+             }
 
             <div className="header-nav navbar-collapse myNavbar collapse justify-content-between">
               <ul className="nav navbar-nav nav1">

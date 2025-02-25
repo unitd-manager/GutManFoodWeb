@@ -73,3 +73,17 @@
   .tippy-tooltip {
 	z-index: 99999 !important;
   }
+
+  @media (max-width: 991px) {
+	.header-nav {
+	  display: none;
+	}
+	.header-nav.show {
+	  display: block !important;
+	}
+  }
+  
+
+  .shop-form select.form-control {
+    height: 45px !important;
+}
