@@ -1,42 +1,64 @@
-import React,{Component} from 'react';
-import {Link} from 'react-router-dom';
-import {Carousel} from 'react-bootstrap';
-import slider1 from './../../images/main-slider/slide1.jpg';
-import slider2 from './../../images/main-slider/slide2.jpg';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Carousel } from "react-bootstrap";
+import imageBase from "../../constants/imageBase";
+import api from "../../constants/api";
 
-class Slider extends Component{
-	render(){
-		return(
-			<div className="main-slider">
-				<Carousel indicators={false}>
-					<Carousel.Item>
-						<div className="slide" style={{ backgroundImage: "url("+ slider1 +")"}} >
-							{/* <img className="d-block w-100 slider" src={require('./../../images/main-slider/slide1.jpg')}	alt="Second slide"	/> */}
-							<div className="content">
-								<span>Cakes & Bakery</span>
-								<h2 className="title">Welcome To Bakery</h2>
-								<h4 className="sub-title">The Best Cakes In New York</h4>
-								<Link to={"/about-1"} className="btn btnhover">About Us</Link>
-								<Link to={''} className="btn white" data-toggle="modal" data-target="#exampleModal">Subscribe Now</Link>
-							</div>	
-						</div>	
-					</Carousel.Item>
-					<Carousel.Item>
-						<div className="slide" style={{ backgroundImage: "url("+ slider2 +")"}} >
-							{/* <img className="d-block w-100 slider"	src={require('./../../images/main-slider/slide2.jpg')}	alt="Second slide"	/> */}
-							<div className="content">
-								<span>Cakes & Bakery</span>
-								<h2 className="title">Occasion Cakes</h2>
-								<h4 className="sub-title">The Best Coffee In China</h4>
-								<Link to={"/about-1"} className="btn btnhover">About Us</Link>
-								<Link to={''} className="btn white" data-toggle="modal" data-target="#exampleModal">Subscribe Now</Link>
-							</div>	
-						</div>	
-					</Carousel.Item>
-				</Carousel>
-			</div>
-		)
-	}	
-}
+const Slider = () => {
+  const [products, setProducts] = useState([]);
+
+  const fetchProducts = async () => {
+    try {
+      const response = await api.get("/content/getBannerPage");
+      const data = response.data.data.map((el) => ({
+        ...el,
+        images: String(el.images).split(","),
+      }));
+      setProducts(data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  return (
+    <div className="main-slider">
+      <Carousel indicators={false}>
+        {products.map((slide, index) => (
+          <Carousel.Item key={index}>
+            <div
+              className="slide"
+              style={{ backgroundImage: `url(${imageBase}${slide.images[0]})` }}
+            >
+              <div className="content">
+                <span>GutMan</span>
+                <h2 className="title">{slide.title}</h2>
+                <h4
+				className="sub-title"
+				dangerouslySetInnerHTML={{ __html: slide.description }}
+				></h4>
+
+                <Link to={"/"} className="btn btnhover">
+                  About Us
+                </Link>
+                <Link
+                  to={"/Shop"}
+                  className="btn white"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                >
+                  Subscribe Now
+                </Link>
+              </div>
+            </div>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    </div>
+  );
+};
 
 export default Slider;

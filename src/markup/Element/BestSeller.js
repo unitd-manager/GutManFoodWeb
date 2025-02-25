@@ -29,12 +29,12 @@ const Portfolio = () => {
   }, []);
 
   return (
-    
+   
     <div className="section-full bg-white">
           <h2
         style={{
           textAlign: "center",
-          marginBottom: "1.5rem",
+          marginBottom: "4.5rem",
           fontSize: "2rem",
           color: "#333",
         }}

@@ -51,10 +51,10 @@ const Booking = () => {
                         <div className="dlab-bnr-inr-entry">
                             <h1 className="text-white">Booking</h1>
                             <div className="breadcrumb-row">
-                                <ul className="list-inline">
+                                {/* <ul className="list-inline">
                                     <li><Link to={'./'}><i className="fa fa-home"></i></Link></li>
                                     <li>Booking</li>
-                                </ul>
+                                </ul> */}
                             </div>
                         </div>
                     </div>
