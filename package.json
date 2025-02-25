@@ -35,7 +35,8 @@
     "redux-multilanguage": "^0.1.2",
     "redux-thunk": "^2.3.0",
     "simple-react-google-maps": "^1.1.2",
-    "simple-react-lightbox": "^3.5.4"
+    "simple-react-lightbox": "^3.5.4",
+    "sweetalert2": "^11.17.2"
   },
   "scripts": {
     "start": "react-scripts start",

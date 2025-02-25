@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import Index1 from './Pages/Index1';
 import Index2 from './Pages/Index2';
@@ -60,7 +60,7 @@ class Markup extends Component{
 	
 	render(){
 		return(
-			<BrowserRouter>
+			<HashRouter>
 				<Switch>
 					<Route path='/' exact component={Index1} />
 					<Route path='/Home' exact component={Index1} />
@@ -119,7 +119,7 @@ class Markup extends Component{
 					
 					
 				</Switch>
-			</ BrowserRouter>
+			</ HashRouter>
 		)
 		
 	}

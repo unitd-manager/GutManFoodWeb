@@ -128,12 +128,12 @@ const Header = () => {
 										
 									</li>
 									<li>
-										<Link to={''}>Shop <i className="fa fa-chevron-down"></i></Link>
-										<ul className="sub-menu">
+										<Link to={'/shop'}>Shop </Link>
+										{/* <ul className="sub-menu">
 											<li><Link to ={'/shop'}>Shop</Link></li>
 											<li><Link to ={'/shop-sidebar'}>Shop Sidebar</Link></li>
 											
-										</ul>
+										</ul> */}
 									</li>
 									<li>
 										<Link to={'/shop-cart'}><AiOutlineShoppingCart size={22} /> <span style={getBadgeStyle(cartItems.length)}>{cartItems.length}</span> </Link>
@@ -161,7 +161,7 @@ const getBadgeStyle = (count) => ({
 	position: "absolute",
 	top: "35px",
 	right: "-8px",
-	background: count === 0 ? "red" : "#05d3b1",
+	background: count === 0 ? "red" : "#a020f0",
 	color: "white",
 	fontSize: "12px",
 	fontWeight: "bold",
