@@ -67,7 +67,7 @@ const DummyInstagramFeed = () => {
           style={{
             marginBottom: "1.5rem",
             fontSize: "2rem",
-            color: "#333",
+            color: "#a020f0",
           }}
         >
           Follow Us on Instagram
