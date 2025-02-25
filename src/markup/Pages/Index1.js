@@ -293,7 +293,7 @@ class Index1 extends Component{
 							<div className="container">
 								<div className="row m-lr0 about-area1">
 									<div className="col-lg-6 p-lr0">
-										<img className="img-cover" src={require('./../../images/about/pic3.jpg')} alt="" />
+										<img className="img-cover" src={require('./../../images/limit.jpg')} alt="" />
 									</div>
 									<div className="col-lg-6 p-lr0 d-flex align-items-center text-center">
 										<div className="about-bx">

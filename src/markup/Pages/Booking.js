@@ -4,7 +4,7 @@ import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 import api from '../../constants/api';
 
-var img1 = require('./../../images/banner/bnr1.jpg'); 
+var img1 = require('./../../images/booking.jpg'); 
 var img2 = require('./../../images/background/bg5.jpg'); 
 
 const Booking = () => {
@@ -115,7 +115,7 @@ const Booking = () => {
                             </div>
 
                             <div className="col-xl-6 col-lg-6 m-b30">
-                                <img src={require('./../../images/about/pic7.jpg')} alt="" className="img-cover radius-sm" />
+                                <img src={require('./../../images/contact.jpg')} alt="" className="img-cover radius-sm" />
                             </div>
                         </div>
                     </div>
