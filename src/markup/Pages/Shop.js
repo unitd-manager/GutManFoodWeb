@@ -383,85 +383,72 @@ const Shop = () => {
                   </div>
 
                   <div className="th-pagination text-center pt-4">
-                    <ul className="pagination justify-content-center">
-                      {/* First Page */}
-                      <li
-                        className={`page-item ${
-                          currentPage === 1 ? "disabled" : ""
-                        }`}
-                      >
-                        <button
-                          className="page-link"
-                          onClick={() => handlePageChange(1)}
-                          disabled={currentPage === 1}
-                        >
-                          First
-                        </button>
-                      </li>
+  <ul className="pagination justify-content-center">
+    {/* Render "First" button if there’s more than one page and you're not on the first page */}
+    {totalPage > 1 && currentPage > 1 && (
+      <li className="page-item">
+        <button
+          className="page-link"
+          onClick={() => handlePageChange(1)}
+        >
+          First
+        </button>
+      </li>
+    )}
 
-                      {/* Previous Page */}
-                      <li
-                        className={`page-item ${
-                          currentPage === 1 ? "disabled" : ""
-                        }`}
-                      >
-                        <button
-                          className="page-link"
-                          onClick={() => handlePageChange(currentPage - 1)}
-                          disabled={currentPage === 1}
-                        >
-                          &laquo; Prev
-                        </button>
-                      </li>
+    {/* Render "Previous" button if you're not on the first page */}
+    {currentPage > 1 && (
+      <li className="page-item">
+        <button
+          className="page-link"
+          onClick={() => handlePageChange(currentPage - 1)}
+        >
+          &laquo; Prev
+        </button>
+      </li>
+    )}
 
-                      {/* Page Numbers */}
-                      {Array.from({ length: totalPage }, (_, index) => (
-                        <li
-                          key={index + 1}
-                          className={`page-item ${
-                            currentPage === index + 1 ? "active" : ""
-                          }`}
-                        >
-                          <button
-                            className="page-link"
-                            onClick={() => handlePageChange(index + 1)}
-                          >
-                            {index + 1}
-                          </button>
-                        </li>
-                      ))}
+    {/* Render page number buttons */}
+    {Array.from({ length: totalPage }, (_, index) => (
+      <li
+        key={index + 1}
+        className={`page-item ${currentPage === index + 1 ? "active" : ""}`}
+      >
+        <button
+          className="page-link"
+          onClick={() => handlePageChange(index + 1)}
+        >
+          {index + 1}
+        </button>
+      </li>
+    ))}
 
-                      {/* Next Page */}
-                      <li
-                        className={`page-item ${
-                          currentPage === totalPage ? "disabled" : ""
-                        }`}
-                      >
-                        <button
-                          className="page-link"
-                          onClick={() => handlePageChange(currentPage + 1)}
-                          disabled={currentPage === totalPage}
-                        >
-                          Next &raquo;
-                        </button>
-                      </li>
+    {/* Render "Next" button if you're not on the last page */}
+    {currentPage < totalPage && (
+      <li className="page-item">
+        <button
+          className="page-link"
+          onClick={() => handlePageChange(currentPage + 1)}
+        >
+          Next &raquo;
+        </button>
+      </li>
+    )}
 
-                      {/* Last Page */}
-                      <li
-                        className={`page-item ${
-                          currentPage === totalPage ? "disabled" : ""
-                        }`}
-                      >
-                        <button
-                          className="page-link"
-                          onClick={() => handlePageChange(totalPage)}
-                          disabled={currentPage === totalPage}
-                        >
-                          Last
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
+    {/* Render "Last" button if there’s more than one page and you're not on the last page */}
+    {totalPage > 1 && currentPage < totalPage && (
+      <li className="page-item">
+        <button
+          className="page-link"
+          onClick={() => handlePageChange(totalPage)}
+        >
+          Last
+        </button>
+      </li>
+    )}
+  </ul>
+</div>
+
                 </>
               ) : (
                 <div className="text-center">
