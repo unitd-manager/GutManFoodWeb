@@ -118,8 +118,13 @@ const ShopRegister = () => {
             console.log('cont',formData);
           })
           .catch((err) => {
-            
-           toast.error(err.message)
+            if (err.response && err.response.status === 401) {
+              // Display the error message from the backend
+              toast.error(err.response.data.msg || "User already registered");
+            } else {
+              toast.error(err.message || "Registration failed");
+            }
+          
            console.log('err',err);
           });
 

@@ -21,6 +21,7 @@ import "../../css/pagination.css";
 const Shop = () => {
   const history = useHistory();
 
+  const [isAdding, setIsAdding] = useState(false);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
@@ -56,6 +57,9 @@ const Shop = () => {
   console.log("user", user);
 
   const onUpdateCart = (data) => {
+    if (isAdding) return;
+    
+    setIsAdding(true);
     // if (avaiableQuantity === 0) {
     //   return;
     // }
@@ -69,6 +73,9 @@ const Shop = () => {
   };
 
   const onAddToCart = (data) => {
+    if (isAdding) return;
+    
+    setIsAdding(true);
     if (user) {
       if (data.price) {
         data.contact_id = user.contact_id;
@@ -83,9 +90,15 @@ const Shop = () => {
         history.push("/shop-login"); // Navigate to the login page
       }
     }
+    setTimeout(() => {
+      setIsAdding(false);
+    }, 2000);
   };
 
   const onAddToWishlist = (data) => {
+    if (isAdding) return;
+    
+    setIsAdding(true);
     if (user) {
       data.contact_id = user.contact_id;
       dispatch(insertWishlistData(data));
@@ -98,6 +111,9 @@ const Shop = () => {
         history.push("/shop-login"); // Navigate to the login page
       }
     }
+    setTimeout(() => {
+      setIsAdding(false);
+    }, 2000);
   };
 
   useEffect(() => {
@@ -181,14 +197,18 @@ const Shop = () => {
                 <>
                   <div className="row">
                     {visibleGallery.map((product) => (
+                      
                       <div
                         className="col-lg-3 col-md-6 col-sm-6"
                         key={product.product_id}
                       >
+                        
                         <div
                           className="item-box shop-item"
                           style={{ height: "450px" }}
-                        >
+                        > <Link
+                        to={`/shop-product-details/${product.product_id}`}
+                      >
                           <div
                             className="item-img"
                             style={{
@@ -236,18 +256,20 @@ const Shop = () => {
                                 <>${product.price}</>
                               )}
                             </div>
-                          </div>
+                          </div></Link>
                           <div className="item-info text-center">
-                            <h4 className="item-title">
-                              <Link
+                          <Link
                                 to={`/shop-product-details/${product.product_id}`}
                               >
-                                {product.title.length > 20
-                                  ? product.title.slice(0, 20) + "..."
+                            <h6 className="item-title">
+                             
+                                {product.title.length > 30
+                                  ? product.title.slice(0, 30) + "..."
                                   : product.title}
-                              </Link>
-                            </h4>
-                            <div className="quantity-selector mb-2"></div>
+                             
+                            </h6>
+                            </Link>
+                            {/* <div className="quantity-selector mb-2"></div> */}
                             <button
                               onClick={() => {
                                 if (

@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Review from '../Element/Review';
 import ProductStar from '../Element/ProductStar';
 import ProductImageGallery from '../Element/ProductImageGallery';
+import BackRow from '../Element/Back';
 
 var img1= require('./../../images/banner/bnr1.jpg');
 
@@ -29,7 +30,7 @@ const Shopproduct = () => {
    const[user,setUser]=useState();
 
    const [activeTab, setActiveTab] = useState("description");
-
+   
    const dispatch=useDispatch();
    const cartItems = useSelector((state) => state.cartItems.cartItems);
    const wishlistItems=useSelector(state=>state.wishlistItems.wishlistItems);
@@ -59,6 +60,7 @@ const Shopproduct = () => {
     }
     else{
       console.log('please login');
+	  toast.error('please login');
     }
    
   };
@@ -68,10 +70,11 @@ const Shopproduct = () => {
 
       data.contact_id=user.contact_id
       dispatch(insertWishlistData(data));
-      toast.success("Added to wishlist!");
+      //toast.success("Added to wishlist!");
   }
     else{
       console.log('please login');
+	  toast.error('please login');
     }
   };
 
@@ -98,8 +101,9 @@ const Shopproduct = () => {
           .post("/product/getProductbyCategoryId", {
             category_id: res.data.data[0].category_id,
           })
-          .then((res) => {
-            setRelatedProducts(res.data.data);
+          .then((resp) => {
+			const filtered=resp.data.data.filter((product) => product.product_id !=  res.data.data[0].product_id);
+            setRelatedProducts(filtered);
             setLoading(false);
           })
           .catch((err) => {
@@ -136,6 +140,7 @@ const Shopproduct = () => {
 								<div className="breadcrumb-row">
 									<ul className="list-inline">
 										<li><Link to={'./'}><i className="fa fa-home"></i></Link></li>
+										<li><Link to={'/shop'}>Shop List</Link></li>
 										<li>Shop Details</li>
 									</ul>
 								</div>
@@ -145,7 +150,7 @@ const Shopproduct = () => {
 					</div>
 					
 					<div className="content-block">
-						
+					<BackRow backLink="/shop" />
 						<div className="section-full content-inner-1 bg-gray-light">
 							<div className="container woo-entry">
 								<div className="row">
@@ -274,7 +279,8 @@ const Shopproduct = () => {
 												</div>
 											</div>
 										</div> */}
-										<button className="btn btnhover" onClick={() => { 
+										<button type='button' className="btn btnhover" onClick={() => { 
+											console.log('cart')
               if(cartItems.filter(
                 cartItem => cartItem.product_id === foundProduct.product_id
               )[0]?.qty>0){
@@ -292,7 +298,7 @@ const Shopproduct = () => {
 											<i className="ti-shopping-cart"></i>Add To Cart
 										</button>
 
-                     <button 
+                     <button type='button'
                       onClick={() => {
                         const isInWishlist = wishlistItems.filter(
                           wishlistItem => wishlistItem.product_id === foundProduct.product_id
@@ -351,7 +357,7 @@ const Shopproduct = () => {
           <div className="tab-content">
             {activeTab === "description" && (
               <div id="description" className="tab-pane active">
-                {foundProduct?.description}
+                {foundProduct?.description?.replace(/<[^>]*>/g, '')}
               </div>
             )}
             {activeTab === "reviews" && (

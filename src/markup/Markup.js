@@ -56,11 +56,11 @@ import ForgotPassword from './Pages/ForgotPassword';
 
 
 
-class Markup extends Component{
+class Markup extends Component{ 
 	
 	render(){
 		return(
-			<BrowserRouter basename='/react'>
+			<BrowserRouter>
 				<Switch>
 					<Route path='/' exact component={Index1} />
 					<Route path='/index-2' exact component={Index2} />
@@ -109,7 +109,7 @@ class Markup extends Component{
 					<Route path='/mail-verification' exact component ={MailVerification} />
 					<Route path='/reset-password' exact component ={ResetPassword} />
 					<Route path='/forgot-password' exact component ={ForgotPassword} />
-					
+
 					<Route path='/contact-1' exact component ={Contact} />
 					<Route path='/contact-2' exact component ={Contact2} />
 				

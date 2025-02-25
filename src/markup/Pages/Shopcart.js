@@ -283,6 +283,7 @@ const Shopcart = () => {
   const user = JSON.parse(localStorage.getItem("user")); // Replace with your auth logic
 const cartItems = useSelector((state) => state.cartItems.cartItems);
 console.log('Cart Items:', cartItems);
+console.log('state',useSelector((state) => state));
   const loading=false;
     const userId = 1; // Replace with actual user ID logic
 const history=useHistory();
@@ -352,12 +353,12 @@ const history=useHistory();
                                                cartItems.length > 0 ? cartItems?.map((item) => (
                                                     <tr key={item.basket_id}>
                                                         <td className="product-item-img">
-                                                            <img src={`${imageBase}${item.images}`} alt={item.title} width="50" />
+                                                            <img src={`${imageBase}${item?.images}`} alt={item.title} width="50" />
                                                         </td>
                                                         <td>{item.title}</td>
                                                         <td>${item?.price?.toFixed(2)}</td>
                                                         <td>
-														<td className="product-quantity">
+														<td >
                             {/* <div className="cart-plus-minus">
                               <button
                                 className="dec qtybutton"
@@ -381,7 +382,7 @@ const history=useHistory();
 							<div style={{
   display: "flex",
   alignItems: "center",
-  border: "1px solid #ddd",
+  border: "none",
   borderRadius: "6px",
   overflow: "hidden",
   maxWidth: "120px"

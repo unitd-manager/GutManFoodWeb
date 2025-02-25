@@ -175,9 +175,15 @@ const dispatch=useDispatch();
 				},300)
 			  }
 		})
-		.catch((err) => {
-			setError("Invalid email or password");
-			toast.error("Invalid email or password");
+		.catch((error) => {
+            if (error.response && error.response.status === 403) {
+                toast.error(error.response.data.msg || "Please verify your account before logging in.");
+              } else if (error.response && error.response.data.msg) {
+                toast.error(error.response.data.msg);
+              } else {
+                toast.error("Login failed. Please check your credentials.");
+              }
+			
 		});
 	};
 
