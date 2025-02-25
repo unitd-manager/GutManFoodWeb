@@ -4,7 +4,7 @@ import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
 import api from '../../constants/api';
 
-var img1 = require('./../../images/booking.jpg'); 
+var img1 = require('./../../images/book.jpg'); 
 var img2 = require('./../../images/background/bg5.jpg'); 
 
 const Booking = () => {
@@ -46,7 +46,8 @@ const Booking = () => {
         <>
        
             <div className="page-content bg-white">
-                <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + img1 + ")" }}>
+                <div className="dlab-bnr-inr overlay-black-middle" style={{ backgroundImage: "url(" + img1 + ")" , backgroundSize: "cover",
+                    backgroundPosition: "center"}}>
                     <div className="container">
                         <div className="dlab-bnr-inr-entry">
                             <h1 className="text-white">For Booking</h1>

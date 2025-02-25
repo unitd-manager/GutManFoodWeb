@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import img4 from "./../../images/offer.jpg"; 
+import img4 from "./../../images/image.png"; 
 import specialDietCakes from "./../../images/special-diet-cakes.jpg";
 import imageBase from "../../constants/imageBase";
 import api from "../../constants/api";
@@ -64,8 +64,7 @@ const ServiceSection = () => {
             <div className="section-head text-center">
               <h2 className="text-white">{products.title}</h2>
               <div className="text-bolds"   style={{ color: "white" }} 
- dangerouslySetInnerHTML={{ __html: products.description }}>
-            
+                 dangerouslySetInnerHTML={{ __html: products.description }}>
               </div>
               <div className="dlab-separator style1 bg-primary"></div>
             </div>
