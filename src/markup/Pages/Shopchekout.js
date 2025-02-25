@@ -41,7 +41,7 @@ const ShopCheckout = () => {
   };
 
   const getTotalPrice = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.qty, 0);
+    return cartItems?.reduce((total, item) => total + item.price * item.qty, 0);
   };
 
   console.log("getTotalPrice", getTotalPrice());
