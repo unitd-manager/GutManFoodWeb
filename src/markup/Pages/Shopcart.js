@@ -266,7 +266,7 @@
 
 import React, { useEffect,useCallback,useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory,Link } from 'react-router-dom';
 import { Form } from 'react-bootstrap';
 import Header from './../Layout/Header';
 import Footer from './../Layout/Footer';
@@ -278,6 +278,8 @@ import {
   } from "../../redux/actions/cartItemActions";
 import imageBase from '../../constants/imageBase';
 import Swal from 'sweetalert2';
+
+const bnr = require('./../../images/banner/bnr2.jpg');
 
 const Shopcart = () => {
     const dispatch = useDispatch();
@@ -356,6 +358,19 @@ const history=useHistory();
         <>
             <Header />
             <div className="page-content bg-white">
+            <div className="dlab-bnr-inr overlay-black-middle bg-pt" style={{ backgroundImage: `url(${bnr})` }}>
+                    <div className="container">
+                        <div className="dlab-bnr-inr-entry">
+                            <h1 className="text-white">Cart</h1>
+                            <div className="breadcrumb-row">
+                                <ul className="list-inline">
+                                    <li><Link to={'./'}>Home</Link></li>
+                                    <li>Cart</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div className="section-full content-inner">
                     <div className="container">
                         <div className="row">
