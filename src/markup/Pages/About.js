@@ -311,7 +311,7 @@ const About = () => {
           </div>
 
           <div
-            className="section-full content-inner bg-gray"
+            className="section-full content-inner-3 bg-gray"
             style={{
               backgroundImage: "url(" + img2 + ")",
               backgroundSize: "100%",
@@ -323,9 +323,6 @@ const About = () => {
                   <div className="m-r20">
                     <div className="section-head text-left">
                       <h2>Gutman foods Journey</h2>
-                      <p className="text-bold">
-                        Where to buy our high quality{" "}
-                      </p>
                       <div className="dlab-separator style1 bg-primary"></div>
                     </div>
                     <div className="clearfix">
@@ -377,7 +374,7 @@ const About = () => {
           </div>
 
           <div
-            className="section-full content-inner bg-gray"
+            className="section-full content-inner-3 bg-gray"
             style={{
               backgroundImage: "url(" + img2 + ")",
               backgroundSize: "100%",
@@ -431,7 +428,7 @@ const About = () => {
             </div>
           </div>
           <div
-            className="section-full content-inner bg-gray"
+            className="section-full content-inner-3 bg-gray"
             style={{
               backgroundImage: "url(" + img2 + ")",
               backgroundSize: "100%",
