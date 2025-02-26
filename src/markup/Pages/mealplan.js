@@ -29,7 +29,7 @@ const BannerPage = () => {
       </Link> */}
 
       {/* Heading */}
-      <h1 style={{ fontSize: "2rem", marginBottom: "10px" }}>Meal Plan</h1>
+      <h1 style={{ fontSize: "2rem", marginTop: "80px" }}>Meal Plan</h1>
 
       <img
         src={require("./../../images/meals.jpg")}
