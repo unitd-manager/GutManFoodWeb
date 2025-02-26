@@ -7,7 +7,7 @@ import '../../css/pagination.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { insertCartData, updateCartData } from '../../redux/actions/cartItemActions';
 import Swal from 'sweetalert2';
-import { insertWishlistData, removeWishlistData } from '../../redux/actions/wishlistItemActions';
+import { fetchWishlistData, insertWishlistData, removeWishlistData } from '../../redux/actions/wishlistItemActions';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import toast from 'react-hot-toast';
 import { getUser } from '../../common/user';
@@ -112,8 +112,8 @@ const history=useHistory();
 			setIsAdding(true);
 			if (user) {
 			  data.contact_id = user.contact_id;
-			  dispatch(insertWishlistData(data));
-			  toast.success("Added to wishlist!");
+			  dispatch(insertWishlistData(data)).then(()=> dispatch(fetchWishlistData(user)))
+			  
 			} else {
 		   
 						  Swal.fire({
@@ -340,7 +340,7 @@ const history=useHistory();
 										 (item) =>
 										   item.product_id === product.product_id
 									   )
-										 ? "btn-primary"
+										 ? "btn-wish"
 										 : ""
 									 }`}
 								   >

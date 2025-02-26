@@ -394,13 +394,17 @@ const history=useHistory();
                                                cartItems.length > 0 ? cartItems?.map((item) => (
                                                     <tr key={item.basket_id}>
                                                         <td className="product-item-img">
+                                                            <Link
+                                                                                                                                                      to={`/shop-product-details/${item.product_id}`}
+                                                                                                                                                    >
                                                         <img
     src={`${imageBase}${Array.isArray(item?.images) ? item?.images[0] : item?.images}`}
     alt={item.title}
     width="50"
   />
+  </Link>
                                                         </td>
-                                                        <td>{item.title}</td>
+                                                        <td>  <Link to={`/shop-product-details/${item.product_id}`} >{item.title}</Link></td>
                                                         <td>${item?.price?.toFixed(2)}</td>
                                                         <td>
 														<td style={{ border: "none" }} >

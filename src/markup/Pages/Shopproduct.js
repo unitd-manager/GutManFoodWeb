@@ -7,7 +7,7 @@ import {Form} from 'react-bootstrap';
 import api from '../../constants/api';
 import imageBase from '../../constants/imageBase';
 import { insertCartData,updateCartData } from "../../redux/actions/cartItemActions";
-import { insertWishlistData,removeWishlistData } from "../../redux/actions/wishlistItemActions";
+import { fetchWishlistData, insertWishlistData,removeWishlistData } from "../../redux/actions/wishlistItemActions";
 import { getUser } from "../../common/user";
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
@@ -69,7 +69,7 @@ const Shopproduct = () => {
     if(user){
 
       data.contact_id=user.contact_id
-      dispatch(insertWishlistData(data));
+     dispatch(insertWishlistData(data)).then(()=> dispatch(fetchWishlistData(user)))
       //toast.success("Added to wishlist!");
   }
     else{
@@ -314,7 +314,7 @@ const Shopproduct = () => {
                           onAddToWishlist(foundProduct);
                         }
                       }} 
-                      className={`btn btnhover m-1 ${wishlistItems.some(item => item.product_id === foundProduct.product_id) ? 'btn-primary' : ''}`}
+                      className={`btn btnhover m-1 ${wishlistItems.some(item => item.product_id === foundProduct.product_id) ? 'btn-wish' : ''}`}
                               >
   <i className="ti-heart m-r5"></i>
   {wishlistItems.some(item => item.product_id === foundProduct.product_id) 

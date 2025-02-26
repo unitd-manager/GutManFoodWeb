@@ -350,9 +350,14 @@ getWishlistItems(userInfo)
                                                 wishlistItems.map(item => (
                                                     <tr key={item.id} className="alert">
                                                         <td className="product-item-img">
-                                                            <img src={`${imageBase}${item.images[0]}`} alt={item.title} />
+                                                              <Link
+                                                                                            to={`/shop-product-details/${item.product_id}`}
+                                                                                          >
+                                                            <img src={`${imageBase}${item.images[0]}`} alt={item.title} /></Link>
                                                         </td>
-                                                        <td className="product-item-name">{item.title}</td>
+                                                        <td className="product-item-name">  <Link
+                                                                                            to={`/shop-product-details/${item.product_id}`}
+                                                                                          >{item.title}</Link></td>
                                                         <td className="product-item-price">${item.price?.toFixed(2)}</td>
                                                         {/* <td className="product-item-quantity">
                                                             <div className="quantity btn-quantity max-w80">
