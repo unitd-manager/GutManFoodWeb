@@ -289,7 +289,7 @@ const ShopCheckout = () => {
           <div className="container">
             <form className="shop-form">
               <div className="row">
-                <div className="form-group">
+                <div className="col-lg-6 col-md-12 form-group">
                   <h3>Billing & Shipping Address</h3>
                   <div className="form-group">
                     <Form.Control
