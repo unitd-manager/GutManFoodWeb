@@ -49,17 +49,32 @@ const Shop = () => {
         page, 
         limit: itemsPerPage
       });
-      
-      response.data.data.forEach((el) => {
+  
+      const productData = Array.isArray(response.data.data) ? response.data.data : [];
+  
+      productData.forEach((el) => {
         el.images = String(el.images).split(",");
       });
-      setProducts(response.data.data);
+  
+      setProducts(productData);
       setTotalPages(response.data.totalPages || 1);
+      
+      console.log("Fetched Products:", productData);
+      if (productData.length > 0) {
+        console.log("First product ID:", productData[0].product_id);
+      } else {
+        console.log("No products found");
+      }
+  
     } catch (error) {
       console.error("Error fetching products:", error);
     }
     setLoading(false);
   };
+
+
+  console.log("Firstsss product ID:", products.length > 0 ? products[0].product_id : "No products found");
+
   
   const [user, setUser] = useState();
   const [sessionId, setSessionId] = useState("");
@@ -188,7 +203,7 @@ const Shop = () => {
                 <div className="text-center">
                   <h4>Loading products...</h4>
                 </div>
-              ) : Array.isArray(products) && products.length > 0 ? (
+              )  : products.length > 0 && products[0].product_id ? (
                 <>
                   <div className="row">
                     {visibleGallery.map((product) => (

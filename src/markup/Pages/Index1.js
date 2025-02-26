@@ -186,6 +186,7 @@ import Category from './../Element/Category';
 import Booking from './../Pages/Booking';
 import Blog from './../Pages/blog';
 import Offer from './../Pages/Offer';
+import Limited from './../Pages/Limited';
 import BestSeller from './../Element/BestSeller';
 // import Accord from './../Element/Accord';
 import DummyInstagramFeed from '../Element/DummyInstaFeed';
@@ -290,27 +291,7 @@ class Index1 extends Component{
 									</div>
 								</div> */}
 							</div>
-							<div className="container">
-								<div className="row m-lr0 about-area1">
-									<div className="col-lg-6 p-lr0">
-										<img className="img-cover" src={require('./../../images/limited.jpg')} alt="" />
-									</div>
-									<div className="col-lg-6 p-lr0 d-flex align-items-center text-center">
-										<div className="about-bx">
-											<div className="section-head text-center text-white">
-												<h4 className="text-white">Limited Time Offer</h4>
-												<p>Hurry! Grab this exclusive deal before it’s gone!</p>
-												<div className="icon-bx">
-													<img src={require('./../../images/icons/service-icon/icon2.png')} alt="" />
-												</div>
-											</div>
-											<p>Don't miss out on this special offer—available for a limited time!
-											Act now and take advantage of exclusive savings!</p>
-											<Link to={"/Shop"} className="btn-secondry white btnhover btn-md"><i className="fa fa-cart"></i>GET NOW</Link>
-										</div>
-									</div>
-								</div>
-							</div>
+						<Limited />
 							<div className="section-full content-inner"></div>
 						<Booking />
 
