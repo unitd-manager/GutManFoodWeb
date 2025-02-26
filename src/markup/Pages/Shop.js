@@ -368,7 +368,7 @@ const deleteItemFromWishlist = (Item) => {
                             </div>
                             </Link>
                             {/* <div className="quantity-selector mb-2"></div> */}
-                            <div className="button-container">
+                            <div className="button-container" style={{ marginTop: 10 }}>
                             <button
                               onClick={() => {
                                 if (
