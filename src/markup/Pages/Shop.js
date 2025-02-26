@@ -333,11 +333,11 @@ const deleteItemFromWishlist = (Item) => {
                             <div className="price">
                               {product.sale_price ? (
                                 <>
-                                  <del>${product.original_price}</del> $
+                                  <del>${product.original_price}</del> ₹
                                   {product.sale_price}
                                 </>
                               ) : (
-                                <>${product.price}</>
+                                <>₹{product.price}</>
                               )}
                             </div>
                           </div></Link>

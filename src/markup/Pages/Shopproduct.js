@@ -178,7 +178,7 @@ const Shopproduct = () => {
 											</div>
 										</div>
 										<div className="relative">
-											<h3 className="m-tb10">${foundProduct.price} </h3>
+											<h3 className="m-tb10">₹{foundProduct.price} </h3>
 											<div className="shop-item-rating">
 												{/* <span className="rating-bx"> 
 													<i className="fa fa-star"></i> 
