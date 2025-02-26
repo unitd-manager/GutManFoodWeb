@@ -365,7 +365,7 @@ const About = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-5 col-md-6 m-b10">
+                <div className="col-lg-5 col-md-6 m-b30">
                   <img
                     src={require("./../../images/About Join1.jpg")}
                     alt=""
@@ -385,7 +385,7 @@ const About = () => {
           >
             <div className="container">
               <div className="row faq-area1">
-                <div className="col-lg-5 col-md-6 m-b10">
+                <div className="col-lg-5 col-md-6 m-b30">
                   <img
                     src={require("./../../images/About image 1.jpg")}
                     alt=""
@@ -441,7 +441,7 @@ const About = () => {
               <div className="row faq-area1">
              
 
-                <div className="col-lg-7 m-b10">
+                <div className="col-lg-7 m-b30">
                   <div className="m-r20">
                     <div className="section-head text-left">
                       <h2>Gutman food's commitment to You</h2>
@@ -470,8 +470,6 @@ const About = () => {
                   <img
                     src={require("./../../images/About image 2.jpg")}
                     alt=""
-                    
-                    style={{ height: "100%" }} 
                     className="section-head text-left"
                   />
                 </div>
