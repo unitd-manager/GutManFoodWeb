@@ -223,12 +223,14 @@ const toggleMenu = () => {
       <>
         <li>
           <Link to="/shop-Orders">
-            <i className="fa fa-box"></i> My Orders
+          {/* <i className="fas fa-box-open"></i> */}
+           My Orders
           </Link>
         </li>
         <li>
           <Link to="/shop-Profile">
-            <i className="fa fa-user"></i> My Profile
+          {/* <i className="fa fa-user"></i>  */}
+            My Profile
           </Link>
         </li>
         <li>
@@ -236,7 +238,8 @@ const toggleMenu = () => {
             onClick={logout}
             style={{ background: "none", border: "none", cursor: "pointer" }}
           >
-            <i className="fa fa-right-from-bracket"></i> Logout
+            {/* <i className="fas fa-sign-out-alt"></i>  */}
+            Logout
           </Link>
         </li>
       </>
