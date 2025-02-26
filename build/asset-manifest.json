@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.2faac966.chunk.css",
-    "main.js": "/static/js/main.510651aa.chunk.js",
-    "main.js.map": "/static/js/main.510651aa.chunk.js.map",
+    "main.js": "/static/js/main.e5d87d37.chunk.js",
+    "main.js.map": "/static/js/main.e5d87d37.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.cf9efd49.js",
     "runtime-main.js.map": "/static/js/runtime-main.cf9efd49.js.map",
     "static/css/2.44f87fc4.chunk.css": "/static/css/2.44f87fc4.chunk.css",
-    "static/js/2.2ea2abfe.chunk.js": "/static/js/2.2ea2abfe.chunk.js",
-    "static/js/2.2ea2abfe.chunk.js.map": "/static/js/2.2ea2abfe.chunk.js.map",
+    "static/js/2.fa37bdc6.chunk.js": "/static/js/2.fa37bdc6.chunk.js",
+    "static/js/2.fa37bdc6.chunk.js.map": "/static/js/2.fa37bdc6.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.b6c9bba796c40a7327714328a0daa8a6.js": "/precache-manifest.b6c9bba796c40a7327714328a0daa8a6.js",
+    "precache-manifest.fd7a5a23527d0d0d7a815b524f2a5e67.js": "/precache-manifest.fd7a5a23527d0d0d7a815b524f2a5e67.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.44f87fc4.chunk.css.map": "/static/css/2.44f87fc4.chunk.css.map",
     "static/css/main.2faac966.chunk.css.map": "/static/css/main.2faac966.chunk.css.map",
-    "static/js/2.2ea2abfe.chunk.js.LICENSE.txt": "/static/js/2.2ea2abfe.chunk.js.LICENSE.txt",
+    "static/js/2.fa37bdc6.chunk.js.LICENSE.txt": "/static/js/2.fa37bdc6.chunk.js.LICENSE.txt",
     "static/media/plugins.css": "/static/media/themify.e23a7dca.ttf",
     "static/media/adv.jpg": "/static/media/adv.c8499f4f.jpg",
     "static/media/adv1.jpg": "/static/media/adv1.0c1e07fb.jpg",
@@ -69,6 +69,7 @@
     "static/media/pic8.jpg": "/static/media/pic8.a8d17fb4.jpg",
     "static/media/pt1.jpg": "/static/media/pt1.fe284c88.jpg",
     "static/media/styles.css": "/static/media/revicons.2feb69cc.eot",
+    "static/media/shops.jpg": "/static/media/shops.ef80462c.jpg",
     "static/media/slide10.jpg": "/static/media/slide10.8916377f.jpg",
     "static/media/special-diet-cakes.jpg": "/static/media/special-diet-cakes.0301d3d5.jpg",
     "static/media/thum1.jpg": "/static/media/thum1.879a3fdf.jpg",
@@ -79,8 +80,8 @@
   "entrypoints": [
     "static/js/runtime-main.cf9efd49.js",
     "static/css/2.44f87fc4.chunk.css",
-    "static/js/2.2ea2abfe.chunk.js",
+    "static/js/2.fa37bdc6.chunk.js",
     "static/css/main.2faac966.chunk.css",
-    "static/js/main.510651aa.chunk.js"
+    "static/js/main.e5d87d37.chunk.js"
   ]
 }
