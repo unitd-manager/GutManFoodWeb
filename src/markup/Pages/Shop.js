@@ -56,6 +56,8 @@ const Shop = () => {
   const [user, setUser] = useState();
   const [sessionId, setSessionId] = useState("");
   console.log("user", user);
+  const bgimg1 = require('./../../images/shops.jpg');
+
 
   const onUpdateCart = (data) => {
     if (isAdding) return;
@@ -221,9 +223,7 @@ const Shop = () => {
         {/* Banner */}
         <div
           className="dlab-bnr-inr overlay-black-middle"
-          style={{
-            backgroundImage: "url(https://via.placeholder.com/1500x500)",
-          }}
+         style={{ backgroundImage: `url(${bgimg1})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         >
           <div className="container">
             <div className="dlab-bnr-inr-entry">
