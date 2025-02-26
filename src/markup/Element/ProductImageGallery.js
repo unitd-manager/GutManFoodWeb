@@ -38,7 +38,7 @@ const ProductImageGallery = ({ images }) => {
             style={{
               padding: '0.5rem',
               cursor: 'pointer',
-              border: mainImage === img ? '2px solid #10B981' : '2px solid transparent',
+              border: mainImage === img ? '2px solid #a020f0' : '2px solid transparent',
               borderRadius: '4px'
             }}
             onClick={() => handleThumbnailClick(img)}

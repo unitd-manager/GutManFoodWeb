@@ -1375,8 +1375,8 @@
 }
 .shop-item .sale,
 .shop-item .price {
-	color: #5fcac7;
-    background-color: rgba(95,202,199,0.1);
+	color: #a020f0;
+    background-color: rgba(160, 32, 240, 0.1);
     padding: 5px 10px;
     border-radius: 6px;
     position: absolute;
@@ -1514,7 +1514,7 @@
     border-radius: 6px;
     overflow: hidden;
     margin-right: 0;
-    border:2px solid rgba(95,202,199,0.3);
+    border:2px solid rgba(208, 189, 217,0.3);
 }
 .woo-entry .product-gallery .check-km{
 	position: absolute;
@@ -1576,7 +1576,7 @@
 /* Product Description */
 .product-description .tab-content{
 	padding: 25px;
-    border: 2px solid #5fcac7;
+    border: 2px solid #a020f0;
     border-radius: 0 6px 6px 6px;
     background: #fff;	
 }
