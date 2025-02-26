@@ -10,6 +10,7 @@ import {
   updateCartData,
 } from "../../redux/actions/cartItemActions";
 import {
+  fetchWishlistData,
   insertWishlistData,
   removeWishlistData,
 } from "../../redux/actions/wishlistItemActions";
@@ -57,6 +58,11 @@ const Shop = () => {
   const [sessionId, setSessionId] = useState("");
   console.log("user", user);
 
+  const [wishlistUpdated, setWishlistUpdated] = useState(false);
+
+  useEffect(() => {
+    setWishlistUpdated((prev) => !prev); // Flip state to trigger re-render
+  }, [wishlistItems]);
   const onUpdateCart = (data) => {
     if (isAdding) return;
     
@@ -88,7 +94,11 @@ const Shop = () => {
       });
     }
   };
-
+const deleteItemFromWishlist = (Item) => {
+  console.log('item to delete',Item);
+    dispatch(removeWishlistData(Item))
+ 
+  };
   const onAddToCart = (data) => {
     if (isAdding) return;
     
@@ -121,6 +131,9 @@ const Shop = () => {
       setIsAdding(false);
     }, 2000);
   };
+  const isWishlisted =(product)=> wishlistItems.some(
+    (item) => item.product_id === product.product_id
+  );
 
   const onAddToWishlist = (data) => {
     if (isAdding) return;
@@ -128,8 +141,8 @@ const Shop = () => {
     setIsAdding(true);
     if (user) {
       data.contact_id = user.contact_id;
-      dispatch(insertWishlistData(data));
-      toast.success("Added to wishlist!");
+      dispatch(insertWishlistData(data)).then(()=> dispatch(fetchWishlistData(user)))
+    
     } else {
    
                   Swal.fire({
@@ -355,6 +368,7 @@ const Shop = () => {
                             </div>
                             </Link>
                             {/* <div className="quantity-selector mb-2"></div> */}
+                            <div className="button-container">
                             <button
                               onClick={() => {
                                 if (
@@ -386,29 +400,27 @@ const Shop = () => {
                               Cart
                             </button>
                             <button
+                             key={wishlistUpdated}  
                               onClick={() => {
                                 const isInWishlist = wishlistItems.filter(
-                                  (cartItem) =>
-                                    cartItem.product_id === product.product_id
+                                  (wishlistItem) =>
+                                    wishlistItem.product_id === product.product_id
                                 )[0];
                                 console.log("wishlistitem", isInWishlist);
                                 if (isInWishlist) {
-                                  dispatch(removeWishlistData(isInWishlist));
+                                  deleteItemFromWishlist(isInWishlist);
                                 } else {
                                   onAddToWishlist(product);
                                 }
+                                //setIsWishlisted(!isWishlisted);
                               }}
-                              className={`btn btnhover m-1 ${
-                                wishlistItems.some(
-                                  (item) =>
-                                    item.product_id === product.product_id
-                                )
-                                  ? "btn-primary"
+                              className={`btn btnhover m-1 ${isWishlisted(product)? "btn-wish"
                                   : ""
                               }`}
                             >
                               <i className="ti-heart m-r5"></i>
                             </button>
+                            </div>
                           </div>
                         </div>
                       </div>

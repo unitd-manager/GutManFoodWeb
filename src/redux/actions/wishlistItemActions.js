@@ -42,12 +42,14 @@ export const fetchWishlistData = (userInfo) => {
       dispatch(insertWishlistDataRequest(data));
   
       // Make the API call
-      api.post('/contact/insertToWishlist',data)
+      return api.post('/contact/insertToWishlist',data)
         .then(() => {dispatch(insertWishlistDataSuccess(data));
-          toast.success("Added to wishlist!");})
+          toast.success("Added to wishlist!");
+          return Promise.resolve();
+    })
         .catch((error) => {dispatch(insertWishlistDataFailure(error));
           toast.error("Unable to add to wishlist!");
-
+          return Promise.reject(error);
         });
     };
   };
