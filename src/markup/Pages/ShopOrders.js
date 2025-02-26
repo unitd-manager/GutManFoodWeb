@@ -84,7 +84,7 @@ const ShopOrders = () => {
                             <td className="product-item-name">{item.invoice_code}</td>
                             <td className="product-item-name">{item.item_title}</td>
                             <td className="product-item-price">
-                              ${item.unit_price?.toFixed(2)}
+                            ₹{item.unit_price?.toFixed(2)}
                             </td>
                             <td className="product-item-name">{item.qty}</td>
                             <td className="product-item-name">
