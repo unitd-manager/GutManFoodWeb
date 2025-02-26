@@ -73,6 +73,20 @@
   .tippy-tooltip {
 	z-index: 99999 !important;
   }
+
+  @media (max-width: 991px) {
+	.header-nav {
+	  display: none;
+	}
+	.header-nav.show {
+	  display: block !important;
+	}
+  }
+  
+
+  .shop-form select.form-control {
+    height: 45px !important;
+}
   .sub-menu {
 	display: none; /* Initially hidden */
 	position: absolute;
@@ -111,3 +125,37 @@
   .shop-form select.form-control {
     height: 45px !important;
 }
+
+.shop-item {
+	height: 400px; /* Ensure all cards are the same height */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+  }
+  
+  .item-img {
+	height: 250px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+  
+  .item-title {
+	height: 48px; 
+	line-height: 24px; 
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 2; 
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	white-space: normal;
+  }
+  
+  .item-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	flex-grow: 1; /* Push content to bottom if title is short */
+  }
+  

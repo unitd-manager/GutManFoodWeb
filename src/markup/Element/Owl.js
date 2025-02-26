@@ -1,8 +1,16 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import imageBase from '../../constants/imageBase';
+import '../../css/pagination.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { insertCartData, updateCartData } from '../../redux/actions/cartItemActions';
+import Swal from 'sweetalert2';
+import { insertWishlistData, removeWishlistData } from '../../redux/actions/wishlistItemActions';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import toast from 'react-hot-toast';
+import { getUser } from '../../common/user';
 
 const responsive = {
   superLargeDesktop: {
@@ -24,8 +32,119 @@ const responsive = {
   }
 };
 
-const Owl=({products,deviceType})=>{		
-	
+const Owl=({products,deviceType})=>{
+
+	 const [user, setUser] = useState();
+	  const [isAdding, setIsAdding] = useState();
+	const cartItems = useSelector((state) => state.cartItems.cartItems);
+	  const wishlistItems = useSelector(
+		(state) => state.wishlistItems.wishlistItems)
+		const dispatch=useDispatch();
+const history=useHistory();
+		const onUpdateCart = (data) => {
+			if (isAdding) return;
+			
+			setIsAdding(true);
+			// if (avaiableQuantity === 0) {
+			//   return;
+			// }
+			console.log("updatedata", data);
+			if (user) {
+			  console.log("user", user);
+			  data.contact_id = user.contact_id;
+			  dispatch(updateCartData(data));
+			} else {
+			  
+			  Swal.fire({
+				title: 'You are not logged in!',
+				text: "Do you want to login?",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes',
+				cancelButtonText: 'Cancel',
+			  }).then((result) => {
+				if (result.isConfirmed) {
+				  history.push('/shop-login')
+				  
+				}
+			  });
+			}
+		  };
+		
+		  const onAddToCart = (data) => {
+			if (isAdding) return;
+			
+			setIsAdding(true);
+			if (user) {
+			  if (data.price) {
+				data.contact_id = user.contact_id;
+		
+				dispatch(insertCartData(data));
+			  }
+			} else {
+			  
+			  Swal.fire({
+				title: 'You are not logged in!',
+				text: "Do you want to login?",
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes',
+				cancelButtonText: 'Cancel',
+			  }).then((result) => {
+				if (result.isConfirmed) {
+				  history.push('/shop-login')
+				  
+				}
+			  });
+			}
+			setTimeout(() => {
+			  setIsAdding(false);
+			}, 2000);
+		  };
+		
+		  const onAddToWishlist = (data) => {
+			if (isAdding) return;
+			
+			setIsAdding(true);
+			if (user) {
+			  data.contact_id = user.contact_id;
+			  dispatch(insertWishlistData(data));
+			  toast.success("Added to wishlist!");
+			} else {
+		   
+						  Swal.fire({
+							title: 'You are not logged in!',
+							text: "Do you want to login?",
+							icon: 'warning',
+							showCancelButton: true,
+							confirmButtonColor: '#3085d6',
+							cancelButtonColor: '#d33',
+							confirmButtonText: 'Yes',
+							cancelButtonText: 'Cancel',
+						  }).then((result) => {
+							if (result.isConfirmed) {
+							  history.push('/shop-login')
+							  
+							}
+						  });
+					   
+			}
+			setTimeout(() => {
+			  setIsAdding(false);
+			}, 2000);
+		  };
+		
+		  useEffect(() => {
+			const userInfo = getUser();
+			setUser(userInfo);
+		  }, []);
+		
+	 
+	console.log('products',products);
 		return(
 			<div class="section-full related-products content-inner bg-gray-light">
 				<div class="container">
@@ -131,38 +250,108 @@ const Owl=({products,deviceType})=>{
 								</div>
 							</div> */}
  {products?.map((product, index) => (
-              <div key={index} className="p-a15">
-                <div className="item-box shop-item" style={{height: '400px'}}>
-                  <div className="item-img" style={{height: '250px', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                    {product?.images && product.images.length > 0 ? (
-                      <img src={`${imageBase}${product.images[0]}`} alt={product.title} style={{maxHeight: '100%', maxWidth: '100%', objectFit: 'contain'}} />
-                    ) : (
-                      <div style={{width: '100%', height: '100%', background: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                        No Image Available
-                      </div>
-                    )}
-                    {product.sale && <span className="sale">Sale!</span>}
-                    <div className="price">
-                      {product.discountPrice ? (
-                        <>
-                          <del>${product.originalPrice}</del> ${product.discountPrice}
-                        </>
-                      ) : (
-                        `$${product.price}`
-                      )}
-                    </div>
-                  </div>
-                  <div className="item-info text-center">
-                    <h4 className="item-title">
-                      <Link to={`/shop-product-details/${product.product_id}`}>{product.title}</Link>
-                    </h4>
-                    <Link to={`/shop-product-details/${product.product_id}`} className="btn btnhover">
-                      <i className="ti-shopping-cart m-r5"></i> Add To Cart
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}							
+  <div key={index} className="p-a15">
+    <div className="item-box shop-item">
+      <div className="item-img">
+        {product?.images && product.images.length > 0 ? (
+          <img
+            src={`${imageBase}${product.images[0]}`}
+            alt={product.title}
+            style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }}
+          />
+        ) : (
+          <div
+            style={{
+              width: "100%",
+              height: "100%",
+              background: "#f5f5f5",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            No Image Available
+          </div>
+        )}
+        {product.sale && <span className="sale">Sale!</span>}
+        <div className="price">
+          {product.discountPrice ? (
+            <>
+              <del>${product.originalPrice}</del> ${product.discountPrice}
+            </>
+          ) : (
+            `$${product.price}`
+          )}
+        </div>
+      </div>
+      <div className="item-info text-center">
+	  <Link to={`/shop-product-details/${product.product_id}`}>
+        <h6 className="item-title">
+         
+            {product.title}
+         
+        </h6>
+		</Link>
+		<div className="button-container">
+        <button
+									 onClick={() => {
+									   if (
+										 cartItems.filter(
+										   (cartItem) =>
+											 cartItem.product_id === product.product_id
+										 )[0]?.qty > 0
+									   ) {
+										 product.qty =
+										   parseFloat(
+											 cartItems.filter(
+											   (cartItem) =>
+												 cartItem.product_id ===
+												 product.product_id
+											 )[0]?.qty
+										   ) + Number(1);
+										 product.basket_id = cartItems.filter(
+										   (cartItem) =>
+											 cartItem.product_id === product.product_id
+										 )[0].basket_id;
+										 onUpdateCart(product);
+									   } else {
+										 onAddToCart(product);
+									   }
+									 }}
+									 className="btn btnhover m-1"
+								   >
+									 <i className="ti-shopping-cart m-r5"></i> 
+								   </button>
+								   <button
+									 onClick={() => {
+									   const isInWishlist = wishlistItems.filter(
+										 (cartItem) =>
+										   cartItem.product_id === product.product_id
+									   )[0];
+									   console.log("wishlistitem", isInWishlist);
+									   if (isInWishlist) {
+										 dispatch(removeWishlistData(isInWishlist));
+									   } else {
+										 onAddToWishlist(product);
+									   }
+									 }}
+									 className={`btn btnhover m-1 ${
+									   wishlistItems.some(
+										 (item) =>
+										   item.product_id === product.product_id
+									   )
+										 ? "btn-primary"
+										 : ""
+									 }`}
+								   >
+									 <i className="ti-heart m-r5"></i>
+								   </button>
+								   </div>
+      </div>
+    </div>
+  </div>
+))}
+						
 						</Carousel>
 					</div>
 				</div>		

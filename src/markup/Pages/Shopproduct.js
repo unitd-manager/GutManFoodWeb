@@ -102,6 +102,9 @@ const Shopproduct = () => {
             category_id: res.data.data[0].category_id,
           })
           .then((resp) => {
+            resp.data.data.forEach((el) => {
+              el.images = String(el.images).split(",");
+            });
 			const filtered=resp.data.data.filter((product) => product.product_id !=  res.data.data[0].product_id);
             setRelatedProducts(filtered);
             setLoading(false);
