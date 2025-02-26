@@ -98,7 +98,7 @@ class Contact extends Component {
                                                     </div>
                                                     <div className="icon-content">
                                                         <h6 className="text-uppercase m-tb0 dlab-tilte">Email:</h6>
-                                                        <p>info@example.com</p>
+                                                        <p>info@gutmanfoods.com</p>
                                                     </div>
                                                 </li>
                                                 <li className="icon-bx-wraper left">
@@ -106,8 +106,8 @@ class Contact extends Component {
                                                         <Link to={''} className="icon-cell"><i className="ti-mobile"></i></Link>
                                                     </div>
                                                     <div className="icon-content">
-                                                        <h6 className="text-uppercase m-tb0 dlab-tilte">PHONE</h6>
-                                                        <p>+61 3 8376 6284</p>
+                                                        <h6 className="text-uppercase m-tb0 dlab-tilte">MOBILE</h6>
+                                                        <p>(+91) 7550009493</p>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -120,19 +120,19 @@ class Contact extends Component {
                                             {this.state.message && <div className="alert alert-info">{this.state.message}</div>}
                                             <form onSubmit={this.handleSubmit}>
                                                 <div className="row sp15">
-                                                    <div className="col-lg-4 col-md-4 col-sm-4">
+                                                    <div className="col-md-12">
                                                         <div className="form-group">
                                                             <input name="first_name" type="text" required className="form-control" placeholder="Your Name"
                                                                 value={this.state.first_name} onChange={this.handleChange} />
                                                         </div>
                                                     </div>
-                                                    <div className="col-lg-4 col-md-4 col-sm-4">
+                                                    <div className="col-md-12">
                                                         <div className="form-group">
                                                             <input name="email" type="email" required className="form-control" placeholder="Your Email Id"
                                                                 value={this.state.email} onChange={this.handleChange} />
                                                         </div>
                                                     </div>
-                                                    <div className="col-lg-4 col-md-4 col-sm-4">
+                                                    <div className="col-md-12">
                                                         <div className="form-group">
                                                             <input name="phone" type="text" required className="form-control" placeholder="Phone Number"
                                                                 value={this.state.phone} onChange={this.handleChange} />
