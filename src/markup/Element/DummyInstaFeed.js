@@ -20,7 +20,7 @@ const dummyPosts = [
     image:
       'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=300&q=60',
     link: 'https://instagram.com',
-    caption: 'Delicious Pizza',
+    caption: 'Healthy Meals',
   },
   {
     id: 4,
