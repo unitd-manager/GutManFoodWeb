@@ -9,6 +9,7 @@ import api from "../../constants/api";
 import { getUser } from "../../common/user";
 import { clearCartData } from "../../redux/actions/cartItemActions";
 import imageBase from "../../constants/imageBase";
+import "../../css/pagination.css"
 
 const bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -22,6 +23,7 @@ const ShopCheckout = () => {
 
   const [orderDetail, setOrderDetail] = useState({});
   const [allCountries, setAllCountries] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   // console.log("cartItems", cartItems);
 
@@ -67,6 +69,8 @@ const ShopCheckout = () => {
 
   const placeOrder = async () => {
     try {
+
+      setLoading(true);
       console.log("Starting placeOrder function...");
 
       // Step 1: Get order code
@@ -188,6 +192,9 @@ const ShopCheckout = () => {
     } catch (error) {
       console.error("Error placing order:", error);
     }
+    finally {
+      setLoading(false); // Stop Loader
+    }
   };
 
   const sendEmail = () => {
@@ -284,6 +291,12 @@ const ShopCheckout = () => {
             </div>
           </div>
         </div>
+
+        {loading && (
+      <div className="loader-container">
+        <div className="loader"></div>
+      </div>
+    )}
 
         <div className="section-full content-inner">
           <div className="container">
