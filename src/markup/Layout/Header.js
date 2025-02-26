@@ -128,12 +128,12 @@ const Header = () => {
                   >
                     <NavLink
                       activeClassName="active-menu"
-                      to={`/${section.section_title}`}
+                      to={`/${section.seo_title}`}
                     >
                       <span className="nav-icon">{section.section_title} </span>
                       {/* <i className="fa fa-chevron-down"></i> */}
                     </NavLink>
-                    {hoveredSectionId === section.section_id &&
+                    {/* {hoveredSectionId === section.section_id &&
                       getCategoriesForSection(section.section_id).length >
                         0 && (
                         <ul className="sub-menu">
@@ -169,7 +169,7 @@ const Header = () => {
                             )
                           )}
                         </ul>
-                      )}
+                      )} */}
                   </li>
                 ))}
               </ul>
