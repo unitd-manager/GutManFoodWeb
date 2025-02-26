@@ -4,7 +4,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 import Index1 from './Pages/Index1';
 import Index2 from './Pages/Index2';
 
-
+import Meal from './Pages/mealplan';
 import About from './Pages/About';
 import Ourservices from './Pages/Ourservices';
 import Faqs from './Pages/Faq';
@@ -66,7 +66,7 @@ class Markup extends Component{
 					<Route path='/' exact component={Index1} />
 					<Route path='/Home' exact component={Index1} />
 					<Route path='/index-2' exact component={Index2} />
-					
+					<Route path='/Meal-Plan' exact component ={Meal} />
 					<Route path='/about-1' exact component ={About} />
 					<Route path='/our-services' exact component ={Ourservices} />
 					<Route path='/faq' exact component ={Faqs} />
@@ -115,7 +115,7 @@ class Markup extends Component{
 					<Route path='/reset-password' exact component ={ResetPassword} />
 					<Route path='/forgot-password' exact component ={ForgotPassword} />
 
-					<Route path='/contact-1' exact component ={Contact} />
+					<Route path='/Contact-Us' exact component ={Contact} />
 					<Route path='/contact-2' exact component ={Contact2} />
 				
 					

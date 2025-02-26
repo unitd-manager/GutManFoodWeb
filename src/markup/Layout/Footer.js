@@ -19,7 +19,7 @@ class Footer extends Component{
 									<ul>
 										<li>
 											<i className="fa fa-map-marker"></i> 
-											<p>Marmora City, Vietnam</p>
+											<p>Gutman Squad<br/>Plot no 250,17th street<br/>Ashtalakshmi nagar Maduravoyal,<br/> Chennai - 600116</p>
 										</li>
 										<li>
 											<i className="fa fa-phone"></i> 
