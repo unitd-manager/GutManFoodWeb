@@ -1568,8 +1568,7 @@
 	color: #000;
 	top: 7px;
 }
-.custom-select:focus{
-	
+.custom-select:focus{	
 	box-shadow: none;
 }
 
