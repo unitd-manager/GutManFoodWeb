@@ -289,7 +289,7 @@ const ShopCheckout = () => {
           <div className="container">
             <form className="shop-form">
               <div className="row">
-                <div className="form-group">
+                <div className="col-lg-6 col-md-12 form-group">
                   <h3>Billing & Shipping Address</h3>
                   <div className="form-group">
                     <Form.Control
@@ -601,7 +601,7 @@ const ShopCheckout = () => {
                         <td>{product.title}</td>
                         <td>{product.qty}</td>
                         <td className="product-price">
-                          {(product.price * product.qty).toFixed(2)}
+                        ₹{(product.price * product.qty).toFixed(2)}
                         </td>
                       </tr>
                     ))}
@@ -617,22 +617,22 @@ const ShopCheckout = () => {
                         <td>Order Subtotal</td>
                         <td className="product-price">
                           {" "}
-                          {getTotalPrice().toFixed(2)}
+                          ₹{getTotalPrice().toFixed(2)}
                         </td>
                       </tr>
                       <tr>
                         <td>Shipping</td>
                         <td>Free Shipping</td>
                       </tr>
-                      <tr>
+                      {/* <tr>
                         <td>Coupon</td>
                         <td className="product-price">00.00</td>
-                      </tr>
+                      </tr> */}
                       <tr>
                         <td>Total</td>
                         <td className="product-price-total">
                           {" "}
-                          {getTotalPrice().toFixed(2)}
+                          ₹{getTotalPrice().toFixed(2)}
                         </td>
                       </tr>
                     </tbody>
