@@ -61,7 +61,7 @@ const dummyPosts = [
 
 const DummyInstagramFeed = () => {
   return (
-    <div style={{ padding: "2rem 0", backgroundColor: "#f9f9f9" }}>
+    <div style={{ padding: "5rem 0 7rem", backgroundColor: "#f9f9f9" }}>
       <div style={{ maxWidth: "1300px", margin: "0 auto", textAlign: "center" }}>
         <h2
           style={{
@@ -72,6 +72,7 @@ const DummyInstagramFeed = () => {
         >
           Follow Us on Instagram
         </h2>
+        <div className="container">
         <div
           style={{
             display: "grid",
@@ -79,7 +80,6 @@ const DummyInstagramFeed = () => {
             gap: "35px",
             justifyContent: "center",
             alignItems: "center",
-            padding: "0 1rem",
           }}
         >
           {dummyPosts.map((post) => (
@@ -129,6 +129,7 @@ const DummyInstagramFeed = () => {
               </div>
             </a>
           ))}
+        </div>
         </div>
       </div>
     </div>
