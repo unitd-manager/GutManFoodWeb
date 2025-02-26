@@ -1,19 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.2faac966.chunk.css",
-    "main.js": "/static/js/main.e5d87d37.chunk.js",
-    "main.js.map": "/static/js/main.e5d87d37.chunk.js.map",
+    "main.css": "/static/css/main.9932556d.chunk.css",
+    "main.js": "/static/js/main.e621c9b1.chunk.js",
+    "main.js.map": "/static/js/main.e621c9b1.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.cf9efd49.js",
     "runtime-main.js.map": "/static/js/runtime-main.cf9efd49.js.map",
     "static/css/2.44f87fc4.chunk.css": "/static/css/2.44f87fc4.chunk.css",
-    "static/js/2.fa37bdc6.chunk.js": "/static/js/2.fa37bdc6.chunk.js",
-    "static/js/2.fa37bdc6.chunk.js.map": "/static/js/2.fa37bdc6.chunk.js.map",
+    "static/js/2.9ee8d257.chunk.js": "/static/js/2.9ee8d257.chunk.js",
+    "static/js/2.9ee8d257.chunk.js.map": "/static/js/2.9ee8d257.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.fd7a5a23527d0d0d7a815b524f2a5e67.js": "/precache-manifest.fd7a5a23527d0d0d7a815b524f2a5e67.js",
+    "precache-manifest.ac14560c901b7586bb394e603405c26f.js": "/precache-manifest.ac14560c901b7586bb394e603405c26f.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.44f87fc4.chunk.css.map": "/static/css/2.44f87fc4.chunk.css.map",
-    "static/css/main.2faac966.chunk.css.map": "/static/css/main.2faac966.chunk.css.map",
-    "static/js/2.fa37bdc6.chunk.js.LICENSE.txt": "/static/js/2.fa37bdc6.chunk.js.LICENSE.txt",
+    "static/css/main.9932556d.chunk.css.map": "/static/css/main.9932556d.chunk.css.map",
+    "static/js/2.9ee8d257.chunk.js.LICENSE.txt": "/static/js/2.9ee8d257.chunk.js.LICENSE.txt",
+    "static/media/About Join1.jpg": "/static/media/About Join1.af950fab.jpg",
+    "static/media/About image 1.jpg": "/static/media/About image 1.e8d961db.jpg",
+    "static/media/About image 2.jpg": "/static/media/About image 2.1112becc.jpg",
+    "static/media/AboutBanner.jpg": "/static/media/AboutBanner.0bc853e2.jpg",
     "static/media/plugins.css": "/static/media/themify.e23a7dca.ttf",
     "static/media/adv.jpg": "/static/media/adv.c8499f4f.jpg",
     "static/media/adv1.jpg": "/static/media/adv1.0c1e07fb.jpg",
@@ -45,7 +49,6 @@
     "static/media/item6.jpg": "/static/media/item6.197c2444.jpg",
     "static/media/item7.jpg": "/static/media/item7.4fbd9be4.jpg",
     "static/media/item8.jpg": "/static/media/item8.2511e0af.jpg",
-    "static/media/limited.jpg": "/static/media/limited.ea83797f.jpg",
     "static/media/logo1.jpg": "/static/media/logo1.4fb43442.jpg",
     "static/media/logo2.jpg": "/static/media/logo2.bfe11ed4.jpg",
     "static/media/logo3.jpg": "/static/media/logo3.8c6e026b.jpg",
@@ -80,8 +83,8 @@
   "entrypoints": [
     "static/js/runtime-main.cf9efd49.js",
     "static/css/2.44f87fc4.chunk.css",
-    "static/js/2.fa37bdc6.chunk.js",
-    "static/css/main.2faac966.chunk.css",
-    "static/js/main.e5d87d37.chunk.js"
+    "static/js/2.9ee8d257.chunk.js",
+    "static/css/main.9932556d.chunk.css",
+    "static/js/main.e621c9b1.chunk.js"
   ]
 }

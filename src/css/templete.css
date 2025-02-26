@@ -271,6 +271,8 @@
 	line-height: 62px;
     font-weight: 700;
 	margin-bottom: 0;
+}
+.section-head h2.main-title {
 	color: #a020f0;
 }
 .section-head h3 {
