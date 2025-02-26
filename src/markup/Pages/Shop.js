@@ -27,8 +27,10 @@ const Shop = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  // const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 8;
+  const pageRange = 3;
+
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cartItems.cartItems);
   const wishlistItems = useSelector(
@@ -37,17 +39,15 @@ const Shop = () => {
   console.log("cartitems", cartItems);
   console.log("wishlistitems", wishlistItems);
   // Fetch products from API with pagination and search query
-  const fetchProducts = async (page = 1, search = "") => {
+  const fetchProducts = async () => {
     setLoading(true);
     try {
-      const response = await api.get("/product/getAllProducts", {
-        params: { page, search, limit: itemsPerPage },
-      });
+      const response = await api.get("/product/getAllProducts");
       response.data.data.forEach((el) => {
         el.images = String(el.images).split(",");
       });
       setProducts(response.data.data);
-      setTotalPages(response.data.totalPages || 1);
+      // setTotalPages(response.data.totalPages || 1);
     } catch (error) {
       console.error("Error fetching products:", error);
     }
@@ -161,24 +161,57 @@ const Shop = () => {
 
   // Fetch products when page or search query changes
   useEffect(() => {
-    fetchProducts(currentPage, searchQuery);
-  }, [currentPage, searchQuery]);
+    fetchProducts();
+  }, []);
 
   // Handle search input change
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-    setCurrentPage(1); // Reset to first page on new search
+  // const handleSearchChange = (e) => {
+  //   setSearchQuery(e.target.value);
+  //   setCurrentPage(1); // Reset to first page on new search
+  // };
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
   };
 
-  const totalPage = Math.ceil(products.length / itemsPerPage);
+  // const totalPages = Math.ceil(products.length / itemsPerPage);
+
+  // const handlePageChange = (pageNumber) => {
+  //   setCurrentPage(pageNumber);
+  // };
+
+  // const startIndex = (currentPage - 1) * itemsPerPage;
+  // const endIndex = startIndex + itemsPerPage;
+  // const visibleGallery = products.slice(startIndex, endIndex);
+  const applyFilters = () => {
+    let filteredData = [...products];
+
+   
+    if (searchQuery !== "") {
+      filteredData = filteredData.filter(
+        (item) =>
+          (item.title &&
+            item.title.toLowerCase().includes(searchQuery.toLowerCase()))
+      );
+    }
+
+    return filteredData;
+  };
+
+  const filteredGallery = applyFilters();
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
+
+  const totalPages = Math.ceil(filteredGallery.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const visibleGallery = products.slice(startIndex, endIndex);
+  const visibleGallery = filteredGallery.slice(startIndex, endIndex);
+
+  const startPage = Math.floor((currentPage - 1) / pageRange) * pageRange + 1;
+  const endPage = Math.min(startPage + pageRange - 1, totalPages);
 
   return (
     <>
@@ -382,73 +415,32 @@ const Shop = () => {
                     ))}
                   </div>
 
-                  <div className="th-pagination text-center pt-4">
-  <ul className="pagination justify-content-center">
-    {/* Render "First" button if there’s more than one page and you're not on the first page */}
-    {totalPage > 1 && currentPage > 1 && (
-      <li className="page-item">
-        <button
-          className="page-link"
-          onClick={() => handlePageChange(1)}
-        >
-          First
-        </button>
-      </li>
-    )}
-
-    {/* Render "Previous" button if you're not on the first page */}
-    {currentPage > 1 && (
-      <li className="page-item">
-        <button
-          className="page-link"
-          onClick={() => handlePageChange(currentPage - 1)}
-        >
-          &laquo; Prev
-        </button>
-      </li>
-    )}
-
-    {/* Render page number buttons */}
-    {Array.from({ length: totalPage }, (_, index) => (
-      <li
-        key={index + 1}
-        className={`page-item ${currentPage === index + 1 ? "active" : ""}`}
-      >
-        <button
-          className="page-link"
-          onClick={() => handlePageChange(index + 1)}
-        >
-          {index + 1}
-        </button>
-      </li>
-    ))}
-
-    {/* Render "Next" button if you're not on the last page */}
-    {currentPage < totalPage && (
-      <li className="page-item">
-        <button
-          className="page-link"
-          onClick={() => handlePageChange(currentPage + 1)}
-        >
-          Next &raquo;
-        </button>
-      </li>
-    )}
-
-    {/* Render "Last" button if there’s more than one page and you're not on the last page */}
-    {totalPage > 1 && currentPage < totalPage && (
-      <li className="page-item">
-        <button
-          className="page-link"
-          onClick={() => handlePageChange(totalPage)}
-        >
-          Last
-        </button>
-      </li>
-    )}
-  </ul>
-</div>
-
+                  <nav>
+                <ul className="pagination justify-content-center">
+                  <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+                    <button className="page-link" onClick={() => setCurrentPage(1)}>First</button>
+                  </li>
+                  <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+                    <button className="page-link" onClick={() => setCurrentPage(currentPage - 1)}>&laquo; Prev</button>
+                  </li>
+                  {Array.from({ length: endPage - startPage + 1 }, (_, index) => (
+                    <li key={startPage + index} className={`page-item ${currentPage === startPage + index ? "active" : ""}`}>
+                      <button className="page-link" onClick={() => setCurrentPage(startPage + index)}>
+                        {startPage + index}
+                      </button>
+                    </li>
+                  ))}
+                  <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
+                    <button className="page-link" onClick={() => setCurrentPage(currentPage + 1)}>Next &raquo;</button>
+                  </li>
+                  <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
+                    <button className="page-link" onClick={() => setCurrentPage(totalPages)}>Last</button>
+                  </li>
+                  <li className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}>
+                    <button className="page-link" onClick={() => setCurrentPage(totalPages)}>...{totalPages}</button>
+                  </li>
+                </ul>
+              </nav>
                 </>
               ) : (
                 <div className="text-center">

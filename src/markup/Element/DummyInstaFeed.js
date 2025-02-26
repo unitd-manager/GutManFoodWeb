@@ -6,56 +6,56 @@ const dummyPosts = [
     image:
       'https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=300&q=60',
     link: 'https://instagram.com',
-    caption: 'Delicious Pizza',
+    caption: 'Healthy for Diabetics',
   },
   {
     id: 2,
     image:
-      'https://images.unsplash.com/photo-1553163147-622ab57e14a7?auto=format&fit=crop&w=300&q=60',
+      'https://m.media-amazon.com/images/I/61f0XAJtJnL.UF1000,1000_QL80.jpg',
     link: 'https://instagram.com',
-    caption: 'Fresh Salad',
+    caption: 'Keto Diet',
   },
   {
     id: 3,
     image:
       'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=300&q=60',
     link: 'https://instagram.com',
-    caption: 'Tasty Burger',
+    caption: 'Delicious Pizza',
   },
   {
     id: 4,
     image:
-      'https://images.unsplash.com/photo-1612874740700-23a8a0bfe7e8?auto=format&fit=crop&w=300&q=60',
+      'https://www.mayoclinichealthsystem.org/-/media/national-files/images/hometown-health/2021/items-promoting-healthy-weight.jpg?sc_lang=en&hash=9C54C2EEB9D5163EC0823F673962A339',
     link: 'https://instagram.com',
-    caption: 'Sushi Platter',
+    caption: 'Balanced Weight Reduction',
   },
   {
     id: 5,
     image:
-      'https://images.unsplash.com/photo-1604908177528-d4a6d2eb7d81?auto=format&fit=crop&w=300&q=60',
+      'https://drbest.in/wp-content/uploads/2019/07/001.jpg',
     link: 'https://instagram.com',
-    caption: 'Creamy Pasta',
+    caption: 'Essential Health Boosters',
   },
   {
     id: 6,
     image:
       'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=300&q=60',
     link: 'https://instagram.com',
-    caption: 'Fresh Juices',
+    caption: 'Nourishing Munchies',
   },
   {
     id: 7,
     image:
-      'https://images.unsplash.com/photo-1566843979283-0b7a8e94653e?auto=format&fit=crop&w=300&q=60',
+      'https://www.makeaheadmealmom.com/wp-content/uploads/2019/09/EasyBreakfastPastries_FeaturedImage_Compressed.jpg',
     link: 'https://instagram.com',
-    caption: 'Assorted Snacks',
+    caption: 'Guiltfree Pastries',
   },
   {
     id: 8,
     image:
       'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=300&q=60',
     link: 'https://instagram.com',
-    caption: 'Homemade Cake',
+    caption: 'Wholesome Nibbles',
   },
 ];
 
@@ -67,7 +67,7 @@ const DummyInstagramFeed = () => {
           style={{
             marginBottom: "1.5rem",
             fontSize: "2rem",
-            color: "#333",
+            color: "#a020f0",
           }}
         >
           Follow Us on Instagram
@@ -118,7 +118,7 @@ const DummyInstagramFeed = () => {
                   bottom: "0",
                   left: "0",
                   right: "0",
-                  background: "rgba(0,0,0,0.5)",
+                  background: "rgb(160, 32, 240, 0.7)",
                   color: "#fff",
                   padding: "0.5rem",
                   textAlign: "center",

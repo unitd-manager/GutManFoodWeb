@@ -271,12 +271,14 @@
 	line-height: 62px;
     font-weight: 700;
 	margin-bottom: 0;
+	color: #a020f0;
 }
 .section-head h3 {
     font-size: 32px;
     font-weight: 700;
     line-height: 42px;
     margin-bottom: 10px;
+	color: #a020f0;
 }
 .section-head h4 {
     font-size: 30px;
@@ -675,6 +677,10 @@
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 10px;
+	color: #a020f0;
+}
+.blog-post.blog-grid .post-title a{
+	color: #a020f0;
 }
 .blog-post.blog-rounded{
 	border-radius: 4px;

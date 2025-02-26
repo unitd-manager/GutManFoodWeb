@@ -7,6 +7,7 @@ import { Form } from "react-bootstrap";
 import toast from "react-hot-toast";
 import api from "../../constants/api";
 import { getUser } from "../../common/user";
+import "../../css/pagination.css";
 
 const bnr = require("./../../images/banner/bnr1.jpg");
 
@@ -27,7 +28,7 @@ const Profile = () => {
     address_city: "",
     address_state: "",
     address_po_code: "",
-    address_country_code:"",
+    address_country_code: "",
   });
 
   const contactId = user?.contact_id || null; // Use optional chaining
@@ -86,10 +87,10 @@ const Profile = () => {
       });
 
       if (response.data.msg === "Success") {
-        toast.success("User details updated successfully!"); 
+        toast.success("User details updated successfully!");
         console.log("User details updated successfully!");
       } else {
-        toast.success("Failed to update user details"); 
+        toast.success("Failed to update user details");
         console.log("Failed to update user details");
       }
     } catch (error) {
@@ -133,7 +134,17 @@ const Profile = () => {
                   <h3>MY Profile</h3>
                   <div className="row">
                     <div className="form-group col-md-6">
-                      <label>First Name</label>
+                      <label
+                        style={{
+                          background:
+                            "linear-gradient(to right, #a01ff0, #ff1f8f)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        First Name
+                      </label>
                       <input
                         type="text"
                         className="form-control"
@@ -144,7 +155,17 @@ const Profile = () => {
                       />
                     </div>
                     <div className="form-group col-md-6">
-                      <label>Last Name</label>
+                      <label
+                        style={{
+                          background:
+                            "linear-gradient(to right, #a01ff0, #ff1f8f)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Last Name
+                      </label>
                       <input
                         type="text"
                         className="form-control"
@@ -158,7 +179,17 @@ const Profile = () => {
 
                   <div className="row">
                     <div className="form-group col-md-6">
-                      <label>Address 1</label>
+                      <label
+                        style={{
+                          background:
+                            "linear-gradient(to right, #a01ff0, #ff1f8f)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Address 1
+                      </label>
                       <textarea
                         className="form-control"
                         name="address1"
@@ -168,7 +199,17 @@ const Profile = () => {
                       />
                     </div>
                     <div className="form-group col-md-6">
-                      <label>Address 2</label>
+                      <label
+                        style={{
+                          background:
+                            "linear-gradient(to right, #a01ff0, #ff1f8f)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Address 2
+                      </label>
                       <textarea
                         className="form-control"
                         name="address2"
@@ -181,7 +222,17 @@ const Profile = () => {
 
                   <div className="row">
                     <div className="form-group col-md-6">
-                      <label>City</label>
+                      <label
+                        style={{
+                          background:
+                            "linear-gradient(to right, #a01ff0, #ff1f8f)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        City
+                      </label>
                       <input
                         type="text"
                         className="form-control"
@@ -192,7 +243,17 @@ const Profile = () => {
                       />
                     </div>
                     <div className="form-group col-md-6">
-                      <label>State</label>
+                      <label
+                        style={{
+                          background:
+                            "linear-gradient(to right, #a01ff0, #ff1f8f)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        State
+                      </label>
                       <input
                         type="text"
                         className="form-control"
@@ -206,7 +267,17 @@ const Profile = () => {
 
                   <div className="row">
                     <div className="form-group col-md-6">
-                      <label>Postal Code</label>
+                      <label
+                        style={{
+                          background:
+                            "linear-gradient(to right, #a01ff0, #ff1f8f)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Postal Code
+                      </label>
                       <input
                         type="text"
                         className="form-control"
@@ -217,7 +288,17 @@ const Profile = () => {
                       />
                     </div>
                     <div className="form-group col-md-6">
-                      <label>Email</label>
+                      <label
+                        style={{
+                          background:
+                            "linear-gradient(to right, #a01ff0, #ff1f8f)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Email
+                      </label>
                       <input
                         type="email"
                         className="form-control"
@@ -231,7 +312,18 @@ const Profile = () => {
 
                   <div className="row">
                     <div className="form-group col-md-6">
-                      <label>Mobile</label>
+                      <label
+                        style={{
+                          background:
+                            "linear-gradient(to right, #a01ff0, #ff1f8f)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Mobile
+                      </label>
+
                       <input
                         type="text"
                         className="form-control"
@@ -242,7 +334,26 @@ const Profile = () => {
                       />
                     </div>
                     <div className="form-group col-md-6">
-                      <label>Country</label>
+                      {/* <label>
+  <span style={{ color: "#a01ff0" }}>C</span>
+  <span style={{ color: "#ff1f8f" }}>o</span>
+  <span style={{ color: "#1ff09d" }}>u</span>
+  <span style={{ color: "#f0a11f" }}>n</span>
+  <span style={{ color: "#ff1f8f" }}>t</span>
+  <span style={{ color: "#a01ff0" }}>r</span>
+  <span style={{ color: "#ff1f8f" }}>Y</span>
+</label> */}{" "}
+                      <label
+                        style={{
+                          background:
+                            "linear-gradient(to right, #a01ff0, #ff1f8f)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Country
+                      </label>
                       <select
                         className="form-control"
                         onChange={handleChange}
@@ -265,7 +376,7 @@ const Profile = () => {
                 <div className="form-group col-md-6">
                   <button
                     className="btn button-lg btnhover btn-block "
-                    style={{ backgroundColor: "green" }}
+                    style={{ background: "linear-gradient(to right, #a01ff0, #ff1f8f)" }}
                     onClick={goBackToHome}
                   >
                     Back To Home
@@ -274,6 +385,7 @@ const Profile = () => {
                 <div className="form-group col-md-6">
                   <button
                     className="btn button-lg btnhover btn-block"
+                    style={{ background: "linear-gradient(to right, #a01ff0, #ff1f8f)" }}
                     type="submit"
                   >
                     Update Profile

@@ -36,7 +36,7 @@ const Portfolio = () => {
           textAlign: "center",
           marginBottom: "4.5rem",
           fontSize: "2rem",
-          color: "#333",
+          color: "#a020f0",
         }}
       >
         Best Seller

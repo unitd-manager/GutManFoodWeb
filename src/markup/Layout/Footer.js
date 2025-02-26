@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-var bgfoter = require('./../../images/background/bg2.jpg');	
+var bgfoter = require('./../../images/footers.jpg');	
 
 
 class Footer extends Component{
@@ -39,13 +39,11 @@ class Footer extends Component{
 
 							<div className="col-xl-3 col-lg-6 col-md-6 col-sm-6">
 								<div className="widget widget_getintuch">
-									<h5 className="footer-title text-white"></h5>
 								
 								</div>
 							</div>
 							<div className="col-xl-3 col-lg-6 col-md-6 col-sm-6">
 								<div className="widget widget_getintuch">
-									<h5 className="footer-title text-white"></h5>
 								
 								</div>
 							</div>
