@@ -91,7 +91,7 @@ const Bloggridrightsidebar = () => {
                               <h5 className="widget-title style-1">Tags</h5>
                               <div className="tagcloud">
                                   {blogs.map((blog, index) => (
-                                    <Link key={index} to={`/blog/${blog.blog_id}`}>{blog.tags}</Link>
+                                    <Link key={index} to={`/blogDetail/${blog.blog_id}`}>{blog.tags}</Link>
                                   ))}
                                 </div>
 
