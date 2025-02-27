@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../constants/api';
 import { Link } from "react-router-dom";
+import ReactHtmlParser from "react-html-parser";
+
 import imageBase from "../../constants/imageBase";
 
 const BlogScreen = () => {
@@ -8,11 +10,11 @@ const BlogScreen = () => {
 
     const getBlog = async () => {
         try {
-            const res = await api.get('/content/getBlog');
+            const res = await api.get('/blog/getBlogPublish');
             console.log("API Response:", res.data);
             const data = res.data.data.map((el) => ({
                 ...el,
-                images: String(el.images).split(","),
+                images: String(el.file_name).split(","),
             }));
             setBlog(data);
         } catch (error) {
@@ -42,7 +44,7 @@ const BlogScreen = () => {
         <div className="col-lg-4 col-md-6" key={index}>
             <div className="blog-post blog-grid blog-rounded">
                 <div className="dlab-post-media dlab-img-effect"> 
-                    <Link to={'/blog-single-sidebar'}>
+                      <Link to={`/blogDetail/${item.blog_id}`}>
                         {item.images?.length > 0 && (
                             <img
                                 src={`${imageBase}${encodeURIComponent(item.images[0].trim())}`}
@@ -54,10 +56,18 @@ const BlogScreen = () => {
                 </div>
                         <div className="dlab-info p-a25">
                             <div className="dlab-post-title">
-                                <h4 className="post-title"><Link to={'/blog-single-sidebar'}>{item.title}</Link></h4>
+                                <h4 className="post-title"><Link to={`/blogDetail/${item.blog_id}`}>
+                                {item.title
+                                    ? ReactHtmlParser(item.title.split(" ").slice(0, 3).join(" ") + (item.title.split(" ").length > 3 ? "..." : ""))
+                                    : "No title available."}
+                                </Link></h4>
                             </div>
                             <div className="dlab-post-meta">
-                                <p className="main-text" dangerouslySetInnerHTML={{ __html: item.description }}></p>
+                                 <p className="main-text">
+                                  {item.description
+                                    ? ReactHtmlParser(item.description.split(" ").slice(0, 10).join(" ") + (item.description.split(" ").length > 10 ? "..." : ""))
+                                    : "No description available."}
+                                </p>
                             </div>
                         </div>
                     </div>

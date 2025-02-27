@@ -18,7 +18,7 @@ import Ourmenustyle2 from './Pages/Ourmenustyle2';
 import Ourmenustyle3 from './Pages/Ourmenustyle3';
 import Ourmenustyle4 from './Pages/Ourmenustyle4';
 
-
+import blogDetails from './Pages/blogDetail';
 import Bloggrid2 from './Pages/Bloggrid2';
 import Bloggridrightsidebar from './Pages/Bloggridrightsidebar';
 import Bloggridleftsidebar from './Pages/Bloggridleftsidebar';
@@ -111,6 +111,7 @@ class Markup extends Component{
 					<Route path='/shop-register' exact component ={Shopregister} />
 					<Route path='/mail-verification' exact component ={MailVerification} />
 					<Route path="/CategoryDetail/:categoryId" exact component ={ProductDetails} />
+					<Route path="/blogDetail/:blogId" exact component ={blogDetails} />
 
 					<Route path='/reset-password' exact component ={ResetPassword} />
 					<Route path='/forgot-password' exact component ={ForgotPassword} />

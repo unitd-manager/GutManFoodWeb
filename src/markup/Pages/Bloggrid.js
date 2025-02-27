@@ -10,132 +10,81 @@ const masonryOptions = {
 const imagesLoadedOptions = { background: '.my-bg-image-el' };
 
 class Bloggrid extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentPage: 1,
+      blogsPerPage: 6,
+    };
+  }
+
+  handlePageChange = (pageNumber) => {
+    this.setState({ currentPage: pageNumber });
+  };
+
   render() {
     const { blogs, searchResults } = this.props;
-
-    // Use searchResults if available, otherwise use blogs
+    const { currentPage, blogsPerPage } = this.state;
+    
     const displayBlogs = searchResults.length > 0 ? searchResults : blogs;
+    const totalPages = Math.ceil(displayBlogs.length / blogsPerPage);
+
+    const indexOfLastBlog = currentPage * blogsPerPage;
+    const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
+    const currentBlogs = displayBlogs.slice(indexOfFirstBlog, indexOfLastBlog);
 
     return (
       <div className="dlab-blog-grid-2" id="masonry" style={{ width: "100%" }}>
-        <Masonry
-          className={'my-gallery-class'} // default ''
-          options={masonryOptions} // default {}
-          disableImagesLoaded={false} // default false
-          updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
-          imagesLoadedOptions={imagesLoadedOptions} // default {}
-        >
-          {displayBlogs.map((blog, index) => (
-            <div
-              className="post card-container col-lg-4 col-md-4 col-sm-12"
-              key={index}
-              style={{
-                padding: "15px", // Add padding for spacing between boxes
-              }}
-            >
-                <div
-                className="blog-post blog-grid blog-rounded blog-effect1"
-                style={{
-                  height: "100%", // Ensure all boxes have the same height
-                  display: "flex",
-                  flexDirection: "column",
-                  border: "1px solid #e0e0e0", // Optional: Add a border
-                  borderRadius: "8px", // Optional: Add rounded corners
-                  overflow: "hidden", // Ensure content doesn't overflow
-                }}
-              >
+        <Masonry className={'my-gallery-class'} options={masonryOptions} disableImagesLoaded={false} imagesLoadedOptions={imagesLoadedOptions}>
+          {currentBlogs.map((blog, index) => (
+            <div className="post card-container col-lg-4 col-md-4 col-sm-12" key={index} style={{ padding: "15px" }}>
+              <div className="blog-post blog-grid blog-rounded blog-effect1" style={{ height: "100%", display: "flex", flexDirection: "column", border: "1px solid #e0e0e0", borderRadius: "8px", overflow: "hidden" }}>
                 <div className="dlab-post-media dlab-img-effect">
-                  <Link to={`/blog-single/${blog.blog_id}`}>
-                    <img
-                      src={`https://gutmanfoodsadmin.unitdtechnologies.com/storage/uploads///${blog.file_name}`}
-                      alt={blog.title}
-                      style={{
-                        width: "100%",
-                        height: "200px", // Fixed height for images
-                        objectFit: "cover", // Ensure images fill the container
-                      }}
-                    />
+                  <Link to={`/blogDetail/${blog.blog_id}`}>
+                    <img src={`https://gutmanfoodsadmin.unitdtechnologies.com/storage/uploads///${blog.file_name}`} alt={blog.title} style={{ width: "100%", height: "200px", objectFit: "cover" }} />
                   </Link>
                 </div>
-				<div
-                  className="dlab-info"
-                  style={{
-                    flex: 1, // Ensure the content stretches to fill the height
-                    padding: "15px", // Add padding for better spacing
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between", // Space out content evenly
-                  }}
-                >
+                <div className="dlab-info" style={{ flex: 1, padding: "15px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                   <div className="dlab-post-title">
                     <h4 className="post-title">
-                      <Link to={`/blog-single/${blog.blog_id}`}>{blog.title}</Link>
+                    <Link to={`/blogDetail/${blog.blog_id}`}>
+                        {blog.title.split(" ").slice(0, 2).join(" ") + (blog.title.split(" ").length > 2 ? "..." : "")}
+                      </Link>
+
                     </h4>
                   </div>
-                  <div className="dlab-post-meta">
-                    <div className="post-author-thumb">
-                      <img
-                        src={require('./../../images/testimonials/pic1.jpg')}
-                        alt=""
-                        style={{
-                          width: "40px",
-                          height: "40px",
-                          borderRadius: "50%", // Make the author image round
-                        }}
-                      />
-                    </div>
-                    <ul>
-                      <li className="post-author">
-                        <Link to={''}>{blog.author}</Link>
-                      </li>
-                      <li className="post-date">{new Date(blog.date).toLocaleDateString()}</li>
-                    </ul>
-                  </div>
-				  <div className="dlab-post-text">
-				  <p>{blog.description
-          ? ReactHtmlParser(blog.description)
-          : "No description available."}</p>
-                    {/* <p>{blog.description}</p> */}
-                  </div>
-                  <div className="dlab-post-readmore">
-                    <Link
-                      to={`/blog-single/${blog.blog_id}`}
-                      title="READ MORE"
-                      rel="bookmark"
-                      className="btn btn-sm btn1 btnhover"
-                    >
-                      <i className="fa fa-angle-right"></i>READ MORE
-                    </Link>
+                  <div className="dlab-post-text">
+                  <p>
+  {blog.description
+    ? ReactHtmlParser(blog.description.split(" ").slice(0, 10).join(" ") + (blog.description.split(" ").length > 10 ? "..." : ""))
+    : "No description available."}
+</p>
                   </div>
                 </div>
               </div>
             </div>
           ))}
-
-          <div className="pagination-bx clearfix primary rounded-sm col-md-12 text-center">
-            <ul className="pagination">
-              <li className="previous">
-                <Link to={''}>
-                  <i className="ti-arrow-left"></i> Prev
-                </Link>
-              </li>
-              <li className="active">
-                <Link to={''}>1</Link>
-              </li>
-              <li>
-                <Link to={''}>2</Link>
-              </li>
-              <li>
-                <Link to={''}>3</Link>
-              </li>
-              <li className="next">
-                <Link to={''}>
-                  Next <i className="ti-arrow-right"></i>
-                </Link>
-              </li>
-            </ul>
-          </div>
         </Masonry>
+
+        <div className="pagination-bx clearfix primary rounded-sm col-md-12 text-center">
+          <ul className="pagination">
+            <li className={`previous ${currentPage === 1 ? 'disabled' : ''}`}>
+              <button onClick={() => this.handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                <i className="ti-arrow-left"></i> Prev
+              </button>
+            </li>
+            {[...Array(totalPages).keys()].map((number) => (
+              <li key={number + 1} className={currentPage === number + 1 ? 'active' : ''}>
+                <button onClick={() => this.handlePageChange(number + 1)}>{number + 1}</button>
+              </li>
+            ))}
+            <li className={`next ${currentPage === totalPages ? 'disabled' : ''}`}>
+              <button onClick={() => this.handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                Next <i className="ti-arrow-right"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     );
   }

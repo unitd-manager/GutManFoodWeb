@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../constants/api';
+import { Link } from "react-router-dom";
 import pic1 from "./../../images/our-work/pic1.jpg";
 import pic2 from "./../../images/our-work/pic2.jpg";
 import pic3 from "./../../images/our-work/pic3.jpg";
@@ -47,6 +48,8 @@ const Portfolio = () => {
             <div key={item.id} className="col-lg-3 col-md-6 col-sm-6">
               <div className={`port-box1 text-white ${index === portfolioItems.length - 1 ? "m-md-b0 m-sm-b0" : ""}`}>
                 <div className="dlab-media">
+                <Link to={`/shop-product-details/${item.product_id}`}>
+
                 {item?.images[0] ? (
                               <img
                                 src={`${imageBase}${item.images[0]}`}
@@ -71,6 +74,7 @@ const Portfolio = () => {
                                 <span>No Image Available</span>
                               </div>
                             )}
+                            </Link >
                 </div>
                 <div className="dlab-info">
                   <h2 className="title">{item.title}</h2>
