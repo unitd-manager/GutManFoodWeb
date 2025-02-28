@@ -54,6 +54,7 @@ class Footer extends Component{
 								   <h4 className="footer-title">Quick Links</h4>
 									<ul className="list-2">
 										<li><Link to={'/'}>Home</Link></li>
+										<li><Link to={'/blog-grid-2-sidebar'}>Blog</Link></li>
 										<li><Link to={'/shop'}>Shop</Link></li>
 										<li><Link to={'/Meal-Plan'}>Meal Plan</Link></li>
 										<li><Link to={'/About-Us'}>About Us</Link></li>
