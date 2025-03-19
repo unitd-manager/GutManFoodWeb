@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.fbb48047.chunk.css",
-    "main.js": "/static/js/main.ea1265e3.chunk.js",
-    "main.js.map": "/static/js/main.ea1265e3.chunk.js.map",
+    "main.css": "/static/css/main.1244cd67.chunk.css",
+    "main.js": "/static/js/main.c0ab2b72.chunk.js",
+    "main.js.map": "/static/js/main.c0ab2b72.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.cf9efd49.js",
     "runtime-main.js.map": "/static/js/runtime-main.cf9efd49.js.map",
     "static/css/2.44f87fc4.chunk.css": "/static/css/2.44f87fc4.chunk.css",
     "static/js/2.2d615f6f.chunk.js": "/static/js/2.2d615f6f.chunk.js",
     "static/js/2.2d615f6f.chunk.js.map": "/static/js/2.2d615f6f.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.cfefb69b2af96943c08b4d2e6dbb2af8.js": "/precache-manifest.cfefb69b2af96943c08b4d2e6dbb2af8.js",
+    "precache-manifest.445487b6e5ef7cf319dbdfe75962b340.js": "/precache-manifest.445487b6e5ef7cf319dbdfe75962b340.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.44f87fc4.chunk.css.map": "/static/css/2.44f87fc4.chunk.css.map",
-    "static/css/main.fbb48047.chunk.css.map": "/static/css/main.fbb48047.chunk.css.map",
+    "static/css/main.1244cd67.chunk.css.map": "/static/css/main.1244cd67.chunk.css.map",
     "static/js/2.2d615f6f.chunk.js.LICENSE.txt": "/static/js/2.2d615f6f.chunk.js.LICENSE.txt",
     "static/media/AboutBanner.jpg": "/static/media/AboutBanner.0bc853e2.jpg",
     "static/media/plugins.css": "/static/media/themify.e23a7dca.ttf",
@@ -52,7 +52,7 @@
     "static/media/logo4.jpg": "/static/media/logo4.5c809f3f.jpg",
     "static/media/logo5.jpg": "/static/media/logo5.3de091e4.jpg",
     "static/media/logo6.jpg": "/static/media/logo6.afb9baaf.jpg",
-    "static/media/logos.png": "/static/media/logos.3c5e2c3c.png",
+    "static/media/logos.png": "/static/media/logos.e138ea05.png",
     "static/media/meals.jpg": "/static/media/meals.ae505cf7.jpg",
     "static/media/member1.jpg": "/static/media/member1.ea01aebd.jpg",
     "static/media/member2.jpg": "/static/media/member2.d02953c2.jpg",
@@ -81,7 +81,7 @@
     "static/js/runtime-main.cf9efd49.js",
     "static/css/2.44f87fc4.chunk.css",
     "static/js/2.2d615f6f.chunk.js",
-    "static/css/main.fbb48047.chunk.css",
-    "static/js/main.ea1265e3.chunk.js"
+    "static/css/main.1244cd67.chunk.css",
+    "static/js/main.c0ab2b72.chunk.js"
   ]
 }

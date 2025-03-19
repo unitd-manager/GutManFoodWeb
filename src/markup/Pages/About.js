@@ -121,7 +121,7 @@ const About = () => {
                     </div>
                     <h3> {about1[0]?.title}</h3>
                     <p>Nourishing Your Health, One Bite at a Time</p>
-                    <p style={alignStyle} dangerouslySetInnerHTML={{ __html: about1[0]?.description }}>
+                    <p dangerouslySetInnerHTML={{ __html: about1[0]?.description }}>
                     </p>
                   </div>
                 </div>
@@ -147,7 +147,7 @@ const About = () => {
                     </div>
                     <div className="clearfix">
                       
-                      <p style={alignStyle} dangerouslySetInnerHTML={{ __html: about2[0]?.description }}>
+                      <p dangerouslySetInnerHTML={{ __html: about2[0]?.description }}>
                       </p>
                       {/* <p className="text">
                         🥑 Keto & Low-Carb Snacks – Perfect for those looking to
@@ -214,7 +214,7 @@ const About = () => {
                       <div className="dlab-separator style1 bg-primary"></div>
                     </div>
                     <div className="clearfix">
-                    <p style={alignStyle} dangerouslySetInnerHTML={{ __html: about3[0]?.description }}></p>
+                    <p dangerouslySetInnerHTML={{ __html: about3[0]?.description }}></p>
                         {/* 💚 100% Quality Assurance – We source only the finest
                         ingredients to ensure you get the best nutrition with
                         every product.
@@ -259,7 +259,7 @@ const About = () => {
                       <div className="dlab-separator style1 bg-primary"></div>
                     </div>
                     <div className="clearfix">
-                    <p style={alignStyle} dangerouslySetInnerHTML={{ __html: about4[0]?.description }}></p>
+                    <p dangerouslySetInnerHTML={{ __html: about4[0]?.description }}></p>
                       {/* At Gutman foods, we put our customers first. Every product we offer is carefully selected and backed by science, crafted with passion, and tested for quality. We are committed to:
                       </p>
                       <p className="text">
