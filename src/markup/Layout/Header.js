@@ -305,7 +305,7 @@ const getBadgeStyle = (count, isMobile) => ({
   position: "absolute",
   top: isMobile ? "10px" : "35px",
   right: isMobile ? "15px" : "-8px",
-  background: count === 0 ? "red" : "#a020f0",
+  background: count === 0 ? "red" : "#3D6B46",
   color: "white",
   fontSize: "12px",
   fontWeight: "bold",

@@ -14,6 +14,7 @@
 .btn.shadow{
 	box-shadow: 0px 5px 20px rgba(0,0,0,0.25);
 }
+
 .btn.white:hover{
 	color: #fff!important;
 }
@@ -273,14 +274,14 @@
 	margin-bottom: 0;
 }
 .section-head h2.main-title {
-	color: #a020f0;
+	color: #3D6B46;
 }
 .section-head h3 {
     font-size: 32px;
     font-weight: 700;
     line-height: 42px;
     margin-bottom: 10px;
-	color: #a020f0;
+	color: #3D6B46;
 }
 .section-head h4 {
     font-size: 30px;
@@ -596,8 +597,8 @@
 .port-box1 .dlab-info .title{
     margin-bottom: 0;
     padding: 50px 30px 20px;
-    background-image: linear-gradient(0deg,#ca81f7,rgba(0,24,23,0.0));
-    font-size: 24px;
+    background-image: linear-gradient(0deg,#3D6B46,rgba(0,24,23,0.0));
+    font-size: 20px;
     line-height: 1.3;
     text-transform: capitalize;	
 	text-align: center;
@@ -648,7 +649,7 @@
 
 /* About Us */
 .about-area1{
-	background-color: #a020f0;
+	background-color: #3D6B46;
     box-shadow: 0px 20px 50px 0 rgba(0,0,0,0.1);	
 }
 .about-area1 .about-bx {
@@ -669,7 +670,7 @@
 }
 
 .about-bx .btn-secondry {
-	background-color: #F5ff;
+	background-color: #E67E22;
 }
 
 /* Blog */
@@ -680,10 +681,10 @@
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 10px;
-	color: #a020f0;
+	color: #3D6B46;
 }
 .blog-post.blog-grid .post-title a{
-	color: #a020f0;
+	color: #3D6B46;
 }
 .blog-post.blog-rounded{
 	border-radius: 4px;
@@ -861,7 +862,7 @@
 	line-height: 30px;
 }
 .site-footer .footer-bottom{
-	background-color: #5a068f;
+	background-color: #3D6B46;
 	border-top: 0;
 }
 .footer-bottom a:hover{
@@ -1378,7 +1379,7 @@
 }
 .shop-item .sale,
 .shop-item .price {
-	color: #a020f0;
+	color: #3D6B46;
     background-color: rgba(160, 32, 240, 0.1);
     padding: 5px 10px;
     border-radius: 6px;
@@ -1578,7 +1579,7 @@
 /* Product Description */
 .product-description .tab-content{
 	padding: 25px;
-    border: 2px solid #a020f0;
+    border: 2px solid #3D6B46;
     border-radius: 0 6px 6px 6px;
     background: #fff;	
 }

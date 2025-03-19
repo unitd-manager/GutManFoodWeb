@@ -6500,7 +6500,7 @@ button:focus{
 /* white */
 
 .btn.white {
-    background-color: #fff;
+    background-color: red;
     color: #777;
 }
 .btn.white:hover,
@@ -6642,7 +6642,7 @@ button:focus{
 /* white */
 
 .btn.white {
-    background-color: #fff;
+    background-color: #EADBC8;
     color: #000;
 }
 .btn.white:hover,
@@ -10581,7 +10581,7 @@ ul[class*="list-"]{
 }
 .dlab-box-bg .icon-box-btn .btn{
 	border-radius: 0;
-    color: #a020f0;
+    color: #3D6B46;
     font-weight: 600;
     margin-bottom: 0;
 }/* >Box New Style */
@@ -12818,7 +12818,7 @@ border: 0;
 /* Price */
 .price .amount {
 	border: 0 none;
-    color: #a020f0 !important;
+    color: #3D6B46 !important;
     font-weight: 400;
     margin-bottom: 15px;
     padding: 0;
@@ -13194,7 +13194,7 @@ border: 0;
 ================================================ */
 /* Header Box */
 .logo-header{
-	width: 170px;
+	width: 190px;
 }
 .header-full .main-bar{
 	padding:30px 0;

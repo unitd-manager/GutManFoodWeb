@@ -333,7 +333,7 @@ const Shopproduct = () => {
                 type="button"
                 onClick={() => setActiveTab("description")}
                 style={{
-                  background: activeTab === "description" ? "#a020f0" : "none",
+                  background: activeTab === "description" ? "#3D6B46" : "none",
           color: activeTab === "description" ? "white" : "#333",
                   border: "none",
                   cursor: "pointer",
@@ -348,7 +348,7 @@ const Shopproduct = () => {
                 type="button"
                 onClick={() => setActiveTab("reviews")}
                 style={{
-                  background: activeTab === "reviews" ? "#a020f0" : "none",
+                  background: activeTab === "reviews" ? "#3D6B46" : "none",
                   color: activeTab === "reviews" ? "white" : "#333",
                   border: "none",
                   cursor: "pointer",

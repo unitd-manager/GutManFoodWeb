@@ -61,13 +61,13 @@ const dummyPosts = [
 
 const DummyInstagramFeed = () => {
   return (
-    <div style={{ padding: "5rem 0 7rem", backgroundColor: "#f9f9f9" }}>
+    <div style={{ padding: "5rem 0 7rem", backgroundColor: "#EADBC8" }}>
       <div style={{ maxWidth: "1300px", margin: "0 auto", textAlign: "center" }}>
         <h2
           style={{
             marginBottom: "1.5rem",
             fontSize: "2rem",
-            color: "#a020f0",
+            color: "#3D6B46",
           }}
         >
           Follow Us on Instagram
@@ -127,7 +127,7 @@ const DummyInstagramFeed = () => {
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(160, 32, 240, 0.7);
+            background: rgba(61, 107, 70, 0.7);
             color: #fff;
             padding: 0.5rem;
             text-align: center;

@@ -48,7 +48,7 @@ const BannerPage = () => {
           fontSize: "1.5rem",
           marginTop: "20px",
           fontWeight: "bold",
-          color: "#a020f0",
+          color: "#3D6B46",
         }}
       >
        Something Exciting is Coming Soon!<br/> We’re working behind the scenes to bring you a premium selection of healthy meals.

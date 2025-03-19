@@ -25,15 +25,15 @@
   }
   
   .page-link:hover {
-	background: #a020f0;
+	background: #3D6B46;
 	color: white;
-	border-color: #a020f0;
+	border-color: #3D6B46;
   }
   
   .page-item.active .page-link {
-	background: #a020f0;
+	background: #3D6B46;
 	color: white;
-	border-color: #a020f0;
+	border-color: #3D6B46;
   }
   
   .page-item.disabled .page-link {
@@ -66,8 +66,8 @@
 	}
   }
   .active-menu .nav-icon {
-	color: #a020f0 !important;              /* Icon color */
-	border-bottom: 2px solid #a020f0;  /* Underline the icon */
+	color: #3D6B46 !important;              /* Icon color */
+	border-bottom: 2px solid #3D6B46;  /* Underline the icon */
 	padding-bottom: 2px;        /* Adjust spacing so the border is closer */
   }
   .tippy-tooltip {
