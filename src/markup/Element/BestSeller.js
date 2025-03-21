@@ -29,6 +29,8 @@ const Portfolio = () => {
     getCategory();
   }, []);
 
+
+
   return (
    
     <div className="section-full bg-white">
@@ -48,7 +50,10 @@ const Portfolio = () => {
             <div key={item.id} className="col-lg-3 col-md-6 col-sm-6">
               <div className={`port-box1 text-white ${index === portfolioItems.length - 1 ? "m-md-b0 m-sm-b0" : ""}`}>
                 <div className="dlab-media">
-                <Link to={`/shop-product-details/${item.product_id}`}>
+                <Link
+  to={`/shop-product-details/${item.product_id}`}
+  onClick={() => window.scrollTo(0, 0)}
+>
 
                 {item?.images[0] ? (
                               <img

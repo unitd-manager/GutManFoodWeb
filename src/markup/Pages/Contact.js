@@ -168,7 +168,7 @@ const Contact = () => {
                     <div className="form-group">
                       <input
                         name="phone"
-                        type="text"
+                        type="number"
                         required
                         className="form-control"
                         placeholder="Phone Number"

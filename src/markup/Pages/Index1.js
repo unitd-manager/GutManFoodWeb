@@ -214,31 +214,7 @@ class Index1 extends Component{
 						<Slider />
 					<Category />			
 					<Offer />
-						
-						{/* <div className="section-full content-inner bg-gray" style={{backgroundImage:"url(" + img2 + ")",  backgroundSize:"100%"}}>
-							<div className="container">
-								<div className="row faq-area1">
-									<div className="col-lg-6 m-b30">
-										<div className="m-r20">
-											<div className="section-head text-left">
-												<h2>Sale And Delivery Points</h2>
-												<p className="text-bold">Where to buy our high quality Cake</p>
-												<div className="dlab-separator style1 bg-primary"></div>
-											</div>
-											<div className="clearfix">
-												<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
-												<p className="text">First and foremost I am a chef, whether behind the stove at one of my Northern California restaurants or for the past 15 years in front of the Lorem Ipsum is simply <strong>Bakery</strong> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.</p>
-												<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
-												<Link to={'/faq'} className="btn btn-md btnhover shadow m-t30"><i className="fa fa-angle-right m-r10"></i>Get Started</Link>
-											</div>
-										</div>
-									</div>
-									<div className="col-lg-6 m-b30">
-										<Accord />
-									</div>
-								</div>
-							</div>
-						</div> */}
+					
 						<div className="section-full content-inner-3"></div>
 					<BestSeller />
 						<div className="section-full bg-white" style={{backgroundImage:"url(" + img3 + ")", backgroundSize:"100%" }}>
