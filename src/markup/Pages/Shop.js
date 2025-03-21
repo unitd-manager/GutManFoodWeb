@@ -57,6 +57,8 @@ const Shop = () => {
   const [user, setUser] = useState();
   const [sessionId, setSessionId] = useState("");
   console.log("user", user);
+  const bgimg1 = require('./../../images/shops.jpg');
+
 
   const [wishlistUpdated, setWishlistUpdated] = useState(false);
 
@@ -234,9 +236,7 @@ const deleteItemFromWishlist = (Item) => {
         {/* Banner */}
         <div
           className="dlab-bnr-inr overlay-black-middle"
-          style={{
-            backgroundImage: "url(https://via.placeholder.com/1500x500)",
-          }}
+         style={{ backgroundImage: `url(${bgimg1})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         >
           <div className="container">
             <div className="dlab-bnr-inr-entry">
@@ -333,11 +333,11 @@ const deleteItemFromWishlist = (Item) => {
                             <div className="price">
                               {product.sale_price ? (
                                 <>
-                                  <del>${product.original_price}</del> $
+                                  <del>${product.original_price}</del> ₹
                                   {product.sale_price}
                                 </>
                               ) : (
-                                <>${product.price}</>
+                                <>₹{product.price}</>
                               )}
                             </div>
                           </div></Link>
@@ -368,7 +368,7 @@ const deleteItemFromWishlist = (Item) => {
                             </div>
                             </Link>
                             {/* <div className="quantity-selector mb-2"></div> */}
-                            <div className="button-container">
+                            <div className="button-container" style={{ marginTop: 10 }}>
                             <button
                               onClick={() => {
                                 if (

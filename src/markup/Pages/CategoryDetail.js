@@ -49,17 +49,32 @@ const Shop = () => {
         page, 
         limit: itemsPerPage
       });
-      
-      response.data.data.forEach((el) => {
+  
+      const productData = Array.isArray(response.data.data) ? response.data.data : [];
+  
+      productData.forEach((el) => {
         el.images = String(el.images).split(",");
       });
-      setProducts(response.data.data);
+  
+      setProducts(productData);
       setTotalPages(response.data.totalPages || 1);
+      
+      console.log("Fetched Products:", productData);
+      if (productData.length > 0) {
+        console.log("First product ID:", productData[0].product_id);
+      } else {
+        console.log("No products found");
+      }
+  
     } catch (error) {
       console.error("Error fetching products:", error);
     }
     setLoading(false);
   };
+
+
+  console.log("Firstsss product ID:", products.length > 0 ? products[0].product_id : "No products found");
+
   
   const [user, setUser] = useState();
   const [sessionId, setSessionId] = useState("");
@@ -136,6 +151,7 @@ const Shop = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const visibleGallery = products.slice(startIndex, endIndex);
+  const bgimg1 = require('./../../images/book.jpg');
 
   return (
     <>
@@ -145,9 +161,8 @@ const Shop = () => {
         {/* Banner */}
         <div
           className="dlab-bnr-inr overlay-black-middle"
-          style={{
-            backgroundImage: "url(https://via.placeholder.com/1500x500)",
-          }}
+          style={{ backgroundImage: `url(${bgimg1})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+
         >
           <div className="container">
             <div className="dlab-bnr-inr-entry">
@@ -188,7 +203,7 @@ const Shop = () => {
                 <div className="text-center">
                   <h4>Loading products...</h4>
                 </div>
-              ) : visibleGallery.length > 0 ? (
+              )  : products.length > 0 && products[0].product_id ? (
                 <>
                   <div className="row">
                     {visibleGallery.map((product) => (
@@ -252,10 +267,10 @@ const Shop = () => {
                             <h4 className="item-title">
                            
                               <Link to={`/shop-product-details/${product.product_id}`}>
-    {product.title && product.title.length > 20
-      ? product.title.slice(0, 20) + "..."
-      : product.title || "No Product Available"}
-  </Link>
+                                {product.title && product.title.length > 20
+                                  ? product.title.slice(0, 20) + "..."
+                                  : product.title || "No Product Available"}
+                              </Link>
                             </h4>
                             <div className="quantity-selector mb-2"></div>
                             <button

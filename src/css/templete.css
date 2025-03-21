@@ -14,6 +14,7 @@
 .btn.shadow{
 	box-shadow: 0px 5px 20px rgba(0,0,0,0.25);
 }
+
 .btn.white:hover{
 	color: #fff!important;
 }
@@ -38,7 +39,7 @@
     margin-bottom: 15px;
     display: block;
     color: #fff;
-    font-family: 'Amita', sans-serif;
+    font-family: 'Questrial', sans-serif;
     font-weight: 700;
 }
 .main-slider .title{
@@ -128,7 +129,7 @@
 
 /* Header */
 .header-style-2 .header-nav .nav > li > a {
-    font-family: 'Amita', sans-serif;
+    font-family: 'Questrial', sans-serif;
 }
 .header-style-2 .main-bar:after{
     content: "";
@@ -156,7 +157,7 @@
     margin-right: 4px;
     border-radius: 0 0 6px 6px;
     transition: all 0.5s;
-    font-family: Amita;
+    font-family: Questrial;
     background: #fff;
 }
 .header-style-1 .header-nav .nav > li.active > a,
@@ -271,14 +272,16 @@
 	line-height: 62px;
     font-weight: 700;
 	margin-bottom: 0;
-	color: #a020f0;
+}
+.section-head h2.main-title {
+	color: #3D6B46;
 }
 .section-head h3 {
     font-size: 32px;
     font-weight: 700;
     line-height: 42px;
     margin-bottom: 10px;
-	color: #a020f0;
+	color: #3D6B46;
 }
 .section-head h4 {
     font-size: 30px;
@@ -594,10 +597,11 @@
 .port-box1 .dlab-info .title{
     margin-bottom: 0;
     padding: 50px 30px 20px;
-    background-image: linear-gradient(0deg,#ca81f7,rgba(0,24,23,0.0));
-    font-size: 24px;
+    background-image: linear-gradient(0deg,#3D6B46,rgba(0,24,23,0.0));
+    font-size: 20px;
     line-height: 1.3;
     text-transform: capitalize;	
+	text-align: center;
 }
 .port-box1 .dlab-info .hover{
 	padding: 30px;
@@ -645,7 +649,7 @@
 
 /* About Us */
 .about-area1{
-	background-color: #a020f0;
+	background-color: #3D6B46;
     box-shadow: 0px 20px 50px 0 rgba(0,0,0,0.1);	
 }
 .about-area1 .about-bx {
@@ -666,7 +670,7 @@
 }
 
 .about-bx .btn-secondry {
-	background-color: #F5ff;
+	background-color: #E67E22;
 }
 
 /* Blog */
@@ -677,10 +681,10 @@
     font-weight: 700;
     margin-top: 0;
     margin-bottom: 10px;
-	color: #a020f0;
+	color: #3D6B46;
 }
 .blog-post.blog-grid .post-title a{
-	color: #a020f0;
+	color: #3D6B46;
 }
 .blog-post.blog-rounded{
 	border-radius: 4px;
@@ -858,7 +862,7 @@
 	line-height: 30px;
 }
 .site-footer .footer-bottom{
-	background-color: #5a068f;
+	background-color: #3D6B46;
 	border-top: 0;
 }
 .footer-bottom a:hover{
@@ -1361,11 +1365,11 @@
 }
 .shop-item .item-title{
 	margin-bottom: 10px;
-    font-weight: 700;
+    font-weight: 500;
 }
 .shop-item .item-info{
 	padding-top: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 70px;
 }
 .shop-item .item-img{
     background-color: #fff;
@@ -1375,8 +1379,8 @@
 }
 .shop-item .sale,
 .shop-item .price {
-	color: #a020f0;
-    background-color: rgba(160, 32, 240, 0.1);
+	color: #3D6B46;
+    background-color: rgba(61, 107, 70, 0.1);
     padding: 5px 10px;
     border-radius: 6px;
     position: absolute;
@@ -1575,7 +1579,7 @@
 /* Product Description */
 .product-description .tab-content{
 	padding: 25px;
-    border: 2px solid #a020f0;
+    border: 2px solid #3D6B46;
     border-radius: 0 6px 6px 6px;
     background: #fff;	
 }

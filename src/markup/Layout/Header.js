@@ -140,13 +140,13 @@ const toggleMenu = () => {
                   >
                     <NavLink
                       activeClassName="active-menu"
-                      to={`/${section.section_title}`}
+                      to={`/${section.seo_title}`}
                       onClick={() => toggleSection(section.section_id)} 
                     >
                       <span className="nav-icon">{section.section_title} </span>
                       {/* <i className="fa fa-chevron-down"></i> */}
                     </NavLink>
-                    {openSection === section.section_id && getCategoriesForSection(section.section_id).length > 0 && (
+                    {/* {openSection === section.section_id && getCategoriesForSection(section.section_id).length > 0 && (
       <ul className="sub-menu">
         {getCategoriesForSection(section.section_id).map((category) => (
           <li key={category.category_id}>
@@ -171,8 +171,8 @@ const toggleMenu = () => {
           </li>
         ))}
       </ul>
-    )}
-                  {hoveredSectionId === section.section_id &&
+    )} */}
+                  {/* {hoveredSectionId === section.section_id &&
                       getCategoriesForSection(section.section_id).length >
                         0 && (
                         <ul className="sub-menu">
@@ -208,7 +208,7 @@ const toggleMenu = () => {
                             )
                           )}
                         </ul>
-                      )}
+                      )} */}
                   </li>
                 ))}
               </ul>
@@ -224,12 +224,14 @@ const toggleMenu = () => {
       <>
         <li>
           <Link to="/shop-Orders">
-            <i className="fa fa-box"></i> My Orders
+          {/* <i className="fas fa-box-open"></i> */}
+           My Orders
           </Link>
         </li>
         <li>
           <Link to="/shop-Profile">
-            <i className="fa fa-user"></i> My Profile
+          {/* <i className="fa fa-user"></i>  */}
+            My Profile
           </Link>
         </li>
         <li>
@@ -237,7 +239,8 @@ const toggleMenu = () => {
             onClick={logout}
             style={{ background: "none", border: "none", cursor: "pointer" }}
           >
-            <i className="fa fa-right-from-bracket"></i> Logout
+            {/* <i className="fas fa-sign-out-alt"></i>  */}
+            Logout
           </Link>
         </li>
       </>
@@ -303,7 +306,7 @@ const getBadgeStyle = (count, isMobile) => ({
   position: "absolute",
   top: isMobile ? "10px" : "35px",
   right: isMobile ? "15px" : "-8px",
-  background: count === 0 ? "red" : "#a020f0",
+  background: count === 0 ? "red" : "#3D6B46",
   color: "white",
   fontSize: "12px",
   fontWeight: "bold",

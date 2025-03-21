@@ -405,7 +405,7 @@ const history=useHistory();
   </Link>
                                                         </td>
                                                         <td>  <Link to={`/shop-product-details/${item.product_id}`} >{item.title}</Link></td>
-                                                        <td>${item?.price?.toFixed(2)}</td>
+                                                        <td>₹{item?.price?.toFixed(2)}</td>
                                                         <td>
 														<td style={{ border: "none" }} >
                            							<div style={{
@@ -462,7 +462,7 @@ const history=useHistory();
 
                           </td>
                                                         </td>
-                                                        <td>${(item.price * item.qty).toFixed(2)}</td>
+                                                        <td>₹{(item.price * item.qty).toFixed(2)}</td>
                                                         <td>
                                                             <button
                                                                 onClick={() => handleRemove(item)}
@@ -554,19 +554,19 @@ const history=useHistory();
  									<tbody>
  										<tr>
  											<td>Order Subtotal</td>
- 											<td>{`$ ${cartTotalPrice.toFixed(2)}`}</td>
+ 											<td>{`₹ ${cartTotalPrice.toFixed(2)}`}</td>
  										</tr>
  										<tr>
  											<td>Shipping</td>
  											<td>Free Shipping</td>
  										</tr>
- 										<tr>
+ 										{/* <tr>
  											<td>Coupon</td>
  											<td>$00.00</td>
- 										</tr>
+ 										</tr> */}
  										<tr>
  											<td>Total</td>
- 											<td>{`$ ${cartTotalPrice.toFixed(2)}`}</td> 										</tr>
+ 											<td>{`₹ ${cartTotalPrice.toFixed(2)}`}</td> 										</tr>
  									</tbody>
  								</table>
  								{cartItems.length > 0 &&<div className="form-group">

@@ -4,7 +4,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 import Index1 from './Pages/Index1';
 import Index2 from './Pages/Index2';
 
-
+import Meal from './Pages/mealplan';
 import About from './Pages/About';
 import Ourservices from './Pages/Ourservices';
 import Faqs from './Pages/Faq';
@@ -18,7 +18,7 @@ import Ourmenustyle2 from './Pages/Ourmenustyle2';
 import Ourmenustyle3 from './Pages/Ourmenustyle3';
 import Ourmenustyle4 from './Pages/Ourmenustyle4';
 
-
+import blogDetails from './Pages/blogDetail';
 import Bloggrid2 from './Pages/Bloggrid2';
 import Bloggridrightsidebar from './Pages/Bloggridrightsidebar';
 import Bloggridleftsidebar from './Pages/Bloggridleftsidebar';
@@ -66,8 +66,8 @@ class Markup extends Component{
 					<Route path='/' exact component={Index1} />
 					<Route path='/Home' exact component={Index1} />
 					<Route path='/index-2' exact component={Index2} />
-					
-					<Route path='/about-1' exact component ={About} />
+					<Route path='/Meal-Plan' exact component ={Meal} />
+					<Route path='/About-Us' exact component ={About} />
 					<Route path='/our-services' exact component ={Ourservices} />
 					<Route path='/faq' exact component ={Faqs} />
 					<Route path='/booking' exact component ={Booking} />
@@ -111,11 +111,12 @@ class Markup extends Component{
 					<Route path='/shop-register' exact component ={Shopregister} />
 					<Route path='/mail-verification' exact component ={MailVerification} />
 					<Route path="/CategoryDetail/:categoryId" exact component ={ProductDetails} />
+					<Route path="/blogDetail/:blogId" exact component ={blogDetails} />
 
 					<Route path='/reset-password' exact component ={ResetPassword} />
 					<Route path='/forgot-password' exact component ={ForgotPassword} />
 
-					<Route path='/contact-1' exact component ={Contact} />
+					<Route path='/Contact-Us' exact component ={Contact} />
 					<Route path='/contact-2' exact component ={Contact2} />
 				
 					

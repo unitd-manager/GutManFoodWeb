@@ -186,6 +186,7 @@ import Category from './../Element/Category';
 import Booking from './../Pages/Booking';
 import Blog from './../Pages/blog';
 import Offer from './../Pages/Offer';
+import Limited from './../Pages/Limited';
 import BestSeller from './../Element/BestSeller';
 // import Accord from './../Element/Accord';
 import DummyInstagramFeed from '../Element/DummyInstaFeed';
@@ -213,31 +214,7 @@ class Index1 extends Component{
 						<Slider />
 					<Category />			
 					<Offer />
-						
-						{/* <div className="section-full content-inner bg-gray" style={{backgroundImage:"url(" + img2 + ")",  backgroundSize:"100%"}}>
-							<div className="container">
-								<div className="row faq-area1">
-									<div className="col-lg-6 m-b30">
-										<div className="m-r20">
-											<div className="section-head text-left">
-												<h2>Sale And Delivery Points</h2>
-												<p className="text-bold">Where to buy our high quality Cake</p>
-												<div className="dlab-separator style1 bg-primary"></div>
-											</div>
-											<div className="clearfix">
-												<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
-												<p className="text">First and foremost I am a chef, whether behind the stove at one of my Northern California restaurants or for the past 15 years in front of the Lorem Ipsum is simply <strong>Bakery</strong> dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.</p>
-												<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
-												<Link to={'/faq'} className="btn btn-md btnhover shadow m-t30"><i className="fa fa-angle-right m-r10"></i>Get Started</Link>
-											</div>
-										</div>
-									</div>
-									<div className="col-lg-6 m-b30">
-										<Accord />
-									</div>
-								</div>
-							</div>
-						</div> */}
+					
 						<div className="section-full content-inner-3"></div>
 					<BestSeller />
 						<div className="section-full bg-white" style={{backgroundImage:"url(" + img3 + ")", backgroundSize:"100%" }}>
@@ -290,27 +267,7 @@ class Index1 extends Component{
 									</div>
 								</div> */}
 							</div>
-							<div className="container">
-								<div className="row m-lr0 about-area1">
-									<div className="col-lg-6 p-lr0">
-										<img className="img-cover" src={require('./../../images/limited.jpg')} alt="" />
-									</div>
-									<div className="col-lg-6 p-lr0 d-flex align-items-center text-center">
-										<div className="about-bx">
-											<div className="section-head text-center text-white">
-												<h4 className="text-white">Limited Time Offer</h4>
-												<p>Hurry! Grab this exclusive deal before it’s gone!</p>
-												<div className="icon-bx">
-													<img src={require('./../../images/icons/service-icon/icon2.png')} alt="" />
-												</div>
-											</div>
-											<p>Don't miss out on this special offer—available for a limited time!
-											Act now and take advantage of exclusive savings!</p>
-											<Link to={"/Shop"} className="btn-secondry white btnhover btn-md"><i className="fa fa-cart"></i>GET NOW</Link>
-										</div>
-									</div>
-								</div>
-							</div>
+						<Limited />
 							<div className="section-full content-inner"></div>
 						<Booking />
 

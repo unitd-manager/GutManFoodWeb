@@ -325,7 +325,7 @@ const Profile = () => {
                       </label>
 
                       <input
-                        type="text"
+                        type="number"
                         className="form-control"
                         name="mobile"
                         placeholder="Mobile"

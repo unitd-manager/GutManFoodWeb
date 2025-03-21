@@ -45,7 +45,7 @@ const Slider = () => {
 				dangerouslySetInnerHTML={{ __html: slide.description }}
 				></h4>
 
-                <Link to={"/"} className="btn btnhover">
+                <Link to={"/About-Us"} className="btn btnhover">
                   About Us
                 </Link>
                 <Link
