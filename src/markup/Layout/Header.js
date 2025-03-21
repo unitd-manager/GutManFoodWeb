@@ -214,6 +214,7 @@ const toggleMenu = () => {
               </ul>
 
               <ul className="nav navbar-nav nav2">
+              {user && <li>{user?.first_name}</li>}
               <li className={`menu-item ${isUserMenuOpen ? "open" : ""}`}>
   <Link to="#" onClick={toggleUserMenu}>
     <AiOutlineUser size={20} />

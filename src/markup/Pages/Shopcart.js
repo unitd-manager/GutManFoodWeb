@@ -493,33 +493,60 @@ const history=useHistory();
                                 </div>}
 								<div className="row">
  							<div className="col-lg-6 col-md-6 m-b30">
-							<form className="shop-form"> 
-								<h3>Calculate Shipping</h3>
- 									<div className="form-group">
- 										<Form.Group controlId="exampleForm.ControlSelect1">
- 											<Form.Control as="select">
- 												<option value="">Credit Card Type</option>
- 												<option value="">Another option</option>
- 												<option value="">A option</option>
- 												<option value="">Potato</option>												
- 											</Form.Control>
-										</Form.Group>
-											
-								</div>	
-									<div className="row">										<div className="form-group col-lg-6">
-											<input type="text" className="form-control" placeholder="Credit Card Number" />
-										</div>
-									<div className="form-group col-lg-6">
- 											<input type="text" className="form-control" placeholder="Card Verification Number" />
-										</div>
-									</div>
- 									<div className="form-group">
- 										<input type="text" className="form-control" placeholder="Coupon Code" />
- 									</div>
- 									<div className="form-group">
- 									<button className="btn btnhover" type="button">Apply Coupon</button>
- 								</div>
-								</form>	
+               <form className="shop-form"> 
+  <h3>Calculate Shipping</h3>
+
+  {/* Credit Card Type Dropdown */}
+  <div className="form-group">
+    <Form.Group controlId="creditCardType">
+      <Form.Control as="select" required>
+        <option value="">Select Credit Card Type</option>
+        <option value="visa">Visa</option>
+        <option value="mastercard">MasterCard</option>
+        <option value="amex">American Express</option>
+        <option value="discover">Discover</option>
+        <option value="rupay">Rupay</option>
+      </Form.Control>
+    </Form.Group>
+  </div>	
+  
+  <div className="row">
+    {/* Credit Card Number - Only Numbers Allowed */}
+    <div className="form-group col-lg-6">
+      <input 
+        type="text" 
+        className="form-control" 
+        placeholder="Credit Card Number" 
+        maxLength="16"
+        pattern="\d*"
+        onInput={(e) => e.target.value = e.target.value.replace(/\D/g, '')} // Allow only digits
+      />
+    </div>
+
+    {/* CVV Field - Only Numbers Allowed */}
+    <div className="form-group col-lg-6">
+      <input 
+        type="text" 
+        className="form-control" 
+        placeholder="Card Verification Number (CVV)" 
+        maxLength="4"
+        pattern="\d*"
+        onInput={(e) => e.target.value = e.target.value.replace(/\D/g, '')} // Allow only digits
+      />
+    </div>
+  </div>
+
+  {/* Coupon Code Field */}
+  <div className="form-group">
+    <input type="text" className="form-control" placeholder="Coupon Code" />
+  </div>
+
+  {/* Apply Coupon Button */}
+  <div className="form-group">
+    <button className="btn btnhover" type="button">Apply Coupon</button>
+  </div>
+</form>
+
 							</div>
  							<div className="col-lg-6 col-md-6">
  								<h3>Cart Subtotal</h3>
@@ -542,9 +569,9 @@ const history=useHistory();
  											<td>{`$ ${cartTotalPrice.toFixed(2)}`}</td> 										</tr>
  									</tbody>
  								</table>
- 								<div className="form-group">
+ 								{cartItems.length > 0 &&<div className="form-group">
  									<button className="btn btnhover" onClick={()=>{history.push('/shop-checkout',cartItems)}} type="button">Proceed to Checkout</button>
- 								</div>
+ 								</div>}
  							</div>
  						</div> 				   </div>
 					

@@ -159,3 +159,15 @@
 	flex-grow: 1; /* Push content to bottom if title is short */
   }
   
+  .btn-pink {
+	background-color: pink !important;
+	border-color: pink !important;
+	color: white !important;
+  }
+  
+  .btn-default {
+	background-color: #007bff; /* Default Bootstrap blue */
+	border-color: #007bff;
+	color: white;
+  }
+  

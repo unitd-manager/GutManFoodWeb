@@ -306,7 +306,7 @@ const Shop = () => {
                                   (item) =>
                                     item.product_id === product.product_id
                                 )
-                                  ? "btn-primary"
+                                  ? "btn-pink"
                                   : ""
                               }`}
                             >

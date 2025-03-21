@@ -251,6 +251,7 @@ const history=useHistory();
 							</div> */}
  {products?.map((product, index) => (
   <div key={index} className="p-a15">
+	 <Link to={`/shop-product-details/${product.product_id}`}>
     <div className="item-box shop-item">
       <div className="item-img">
         {product?.images && product.images.length > 0 ? (
@@ -349,6 +350,7 @@ const history=useHistory();
 								   </div>
       </div>
     </div>
+	</Link>
   </div>
 ))}
 						
